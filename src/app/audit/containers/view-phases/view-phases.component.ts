@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewPhasesComponent implements OnInit {
 
-  
+
   constructor() { }
 
   ngOnInit() {
