@@ -1,0 +1,18 @@
+// tab overides 
+
+.nav-tabs{
+    border-bottom-color: transparent;
+
+    .nav-link{
+        &.active{
+            border-color:transparent;
+            font-weight: bold;
+        }
+
+        &:hover{
+            border-color:transparent;
+        }
+
+    }
+
+}

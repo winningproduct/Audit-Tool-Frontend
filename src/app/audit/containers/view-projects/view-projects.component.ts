@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-view-projects',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-projects.component.scss']
 })
 export class ViewProjectsComponent implements OnInit {
+  faEllipsisV = faEllipsisV;
 
   constructor() { }
 
