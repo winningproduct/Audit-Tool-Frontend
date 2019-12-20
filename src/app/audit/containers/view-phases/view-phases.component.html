@@ -1,1 +1,44 @@
-<p>view-phases works!</p>
+<div class="row mt-4">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+        <div class="card border-0 bg-light">
+            <div class="card-body">
+                <div class="d-flex flex-row justify-content-between align-items-start">
+                    <div>
+                        <img src="http://via.placeholder.com/300" width="48px" height="48px" class="rounded-circle"/>
+                      </div>
+                      <div class="ml-3">
+                        <p class="h6">Product name</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lectus mi, molestie sed tincidunt interdum, accumsan at ante.</p>
+                      </div>
+                </div>
+                <div class="d-flex flex-column align-items-end">
+                    <p class="text-secondary mb-1"><b>0/9 Completed</b></p>
+                    <progressbar style="height: 8px;" [value]="55"></progressbar>
+                </div>
+              
+            </div>
+          </div>
+          <nav aria-label="breadcrumb" class="mt-4">
+            <ol class="breadcrumb bg-white px-0">
+              <li class="breadcrumb-item"><a href="#">Product</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Product Name</li>
+            </ol>
+          </nav>
+          <h5 class="mb-4">Phases</h5>
+          <div class="card">
+              <div class="card-body">
+                <p class="h6">Product name <span class="ml-3 text-secondary">0/5 Completed</span></p>
+                <div class="d-flex flex-column flex-sm-column flex-md-column flex-lg-row align-items-lg-start justify-content-lg-between">
+                    <div class="pr-lg-2">
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris laoreet sem non metus posuere tempus. Cras sed lacus ut nisi fermentum fermentum. Morbi auctor at sem sit amet rutrum. Morbi ut tempor nunc. Vivamus vitae risus in diam placerat egestas.</p>
+                    </div>
+                    <div class="pl-lg-2 flex-grow-1 mt-3 mt-sm-3 mt-lg-0">
+                        <button type="button" class="btn btn-primary" style="white-space: nowrap;">
+                            Take the audit
+                          </button>
+                    </div>
+                </div>
+              </div>
+          </div>
+    </div>
+</div>
