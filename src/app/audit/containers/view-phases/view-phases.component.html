@@ -25,20 +25,6 @@
             </ol>
           </nav>
           <h5 class="mb-4">Phases</h5>
-          <div class="card">
-              <div class="card-body">
-                <p class="h6">Product name <span class="ml-3 text-secondary">0/5 Completed</span></p>
-                <div class="d-flex flex-column flex-sm-column flex-md-column flex-lg-row align-items-lg-start justify-content-lg-between">
-                    <div class="pr-lg-2">
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris laoreet sem non metus posuere tempus. Cras sed lacus ut nisi fermentum fermentum. Morbi auctor at sem sit amet rutrum. Morbi ut tempor nunc. Vivamus vitae risus in diam placerat egestas.</p>
-                    </div>
-                    <div class="pl-lg-2 flex-grow-1 mt-3 mt-sm-3 mt-lg-0">
-                        <button type="button" class="btn btn-primary" style="white-space: nowrap;">
-                            Take the audit
-                          </button>
-                    </div>
-                </div>
-              </div>
-          </div>
+          <app-phase-tile [phase]="phase" *ngFor="let phase of phases"></app-phase-tile>
     </div>
 </div>

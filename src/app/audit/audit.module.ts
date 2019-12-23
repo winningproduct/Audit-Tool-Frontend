@@ -16,10 +16,11 @@ import { AuditComponent } from './audit.component';
 import { ViewProductsComponent } from './containers/view-products/view-products.component';
 import { ViewPhasesComponent } from './containers/view-phases/view-phases.component';
 import { ProductTileComponent } from './components/product-tile/product-tile.component';
+import { PhaseTileComponent } from './components/phase-tile/phase-tile.component';
 
 
 @NgModule({
-  declarations: [AuditComponent, ViewProductsComponent, ViewPhasesComponent, ProductTileComponent],
+  declarations: [AuditComponent, ViewProductsComponent, ViewPhasesComponent, ProductTileComponent, PhaseTileComponent],
   imports: [
     CommonModule,
     AuditRoutingModule,
