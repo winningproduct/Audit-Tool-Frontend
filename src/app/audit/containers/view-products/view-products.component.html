@@ -1,0 +1,12 @@
+<div class="row mt-4">
+    <div class="col-12">
+        <tabset>
+            <tab heading="Active Products" id="tab1">
+                <div class="flex-container">
+                    <app-product-tile [product]="product" *ngFor="let product of products"></app-product-tile>
+                </div>
+            </tab>
+            <tab heading="Archived Products"></tab>
+        </tabset>
+    </div>
+</div>
