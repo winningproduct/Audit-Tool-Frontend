@@ -7,7 +7,7 @@ import { ViewPhasesComponent } from './containers/view-phases/view-phases.compon
 
 const routes: Routes = [
   { path: 'products', component: ViewProductsComponent },
-  { path: 'phases', component: ViewPhasesComponent },
+  { path: 'products/:productId/phases', component: ViewPhasesComponent },
   { path: '**', component: ViewProductsComponent }
 ];
 

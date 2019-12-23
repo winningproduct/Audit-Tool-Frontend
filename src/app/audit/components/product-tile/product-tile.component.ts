@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product-tile',
@@ -7,6 +8,7 @@ import { Product } from 'src/app/shared/models/product';
   styleUrls: ['./product-tile.component.scss']
 })
 export class ProductTileComponent implements OnInit {
+  faEllipsisV = faEllipsisV;
 
 
   @Input() product: Product;

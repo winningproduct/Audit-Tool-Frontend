@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../../models/product';
-import { linkProducts } from '../../constants';
+import { productRoute } from '../../constants';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ export class ProductApiService {
     constructor(private httpClient: HttpClient) { }
 
     public async get(): Promise<Product[]> {
-        const result = await this.httpClient.get(linkProducts).toPromise();
+        const result = await this.httpClient.get(productRoute).toPromise();
         return result as Product[];
     }
 }
