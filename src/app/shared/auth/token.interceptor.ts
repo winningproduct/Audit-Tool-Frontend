@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
       let cloneReq = null;
       if (!environment.production) {
         cloneReq = req.clone({
-          headers: req.headers.set('token', '1')
+          headers: req.headers.set('Authorization', '1')
         });
       }
       return next.handle(cloneReq);
