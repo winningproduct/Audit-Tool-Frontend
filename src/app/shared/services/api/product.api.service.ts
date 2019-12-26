@@ -14,4 +14,9 @@ export class ProductApiService {
         const result = await this.httpClient.get(productRoute).toPromise();
         return result as Product[];
     }
+
+    public async getById(id:number): Promise<Product[]> {
+        const result = await this.httpClient.get(productRoute+'/'+id).toPromise();
+        return result as Product[];
+    }
 }
