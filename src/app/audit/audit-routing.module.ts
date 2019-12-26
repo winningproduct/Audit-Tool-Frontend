@@ -4,10 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuditComponent } from './audit.component';
 import { ViewProductsComponent } from './containers/view-products/view-products.component';
 import { ViewPhasesComponent } from './containers/view-phases/view-phases.component';
+import { ViewQuestionsComponent } from './containers/view-questions/view-questions.component';
 
 const routes: Routes = [
   { path: 'products', component: ViewProductsComponent },
   { path: 'products/:productId/phases', component: ViewPhasesComponent },
+  { path: 'products/:productId/phases/:productPhaseId', component: ViewQuestionsComponent },
   { path: '**', component: ViewProductsComponent }
 ];
 

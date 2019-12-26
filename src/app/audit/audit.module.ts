@@ -17,10 +17,11 @@ import { ViewProductsComponent } from './containers/view-products/view-products.
 import { ViewPhasesComponent } from './containers/view-phases/view-phases.component';
 import { ProductTileComponent } from './components/product-tile/product-tile.component';
 import { PhaseTileComponent } from './components/phase-tile/phase-tile.component';
+import { ViewQuestionsComponent } from './containers/view-questions/view-questions.component';
 
 
 @NgModule({
-  declarations: [AuditComponent, ViewProductsComponent, ViewPhasesComponent, ProductTileComponent, PhaseTileComponent],
+  declarations: [AuditComponent, ViewProductsComponent, ViewPhasesComponent, ProductTileComponent, PhaseTileComponent, ViewQuestionsComponent],
   imports: [
     CommonModule,
     AuditRoutingModule,
