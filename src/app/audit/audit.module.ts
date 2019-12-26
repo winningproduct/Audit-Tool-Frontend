@@ -7,6 +7,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { HttpClientModule} from '@angular/common/http';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 /* fontawesome module import */
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -30,7 +32,9 @@ import { ViewQuestionsComponent } from './containers/view-questions/view-questio
     ProgressbarModule.forRoot(),
     ButtonsModule.forRoot(),
     CarouselModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule, 
+    AngularEditorModule
   ]
 })
 export class AuditModule { }

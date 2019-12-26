@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-questions.component.scss']
 })
 export class ViewQuestionsComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
