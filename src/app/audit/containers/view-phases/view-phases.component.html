@@ -1,30 +1,29 @@
 <div class="row mt-4">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="card border-0 bg-light">
-            <div class="card-body">
-                <div class="d-flex flex-row justify-content-between align-items-start">
-                    <div>
-                        <img src="http://via.placeholder.com/300" width="48px" height="48px" class="rounded-circle"/>
-                      </div>
-                      <div class="ml-3">
-                        <p class="h6">Product name</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lectus mi, molestie sed tincidunt interdum, accumsan at ante.</p>
-                      </div>
-                </div>
-                <div class="d-flex flex-column align-items-end">
-                    <p class="text-secondary mb-1"><b>0/9 Completed</b></p>
-                    <progressbar style="height: 8px;" [value]="55"></progressbar>
-                </div>
-              
-            </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+    <div class="card border-0 bg-light" *ngIf="products != null">
+      <div class="card-body">
+        <div class="d-flex flex-row justify-content-between align-items-start">
+          <div>
+            <img src="http://via.placeholder.com/300" width="48px" height="48px" class="rounded-circle" />
           </div>
-          <nav aria-label="breadcrumb" class="mt-4">
-            <ol class="breadcrumb bg-white px-0">
-              <li class="breadcrumb-item"><a href="#">Product</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Product Name</li>
-            </ol>
-          </nav>
-          <h5 class="mb-4">Phases</h5>
-          <app-phase-tile [phase]="phase" *ngFor="let phase of phases"></app-phase-tile>
+          <div class="ml-3">
+            <p class="h6">{{products[0].name}}</p>
+            <p>{{products[0].description}}</p>
+          </div>
+        </div>
+        <div class="d-flex flex-column align-items-end">
+          <p class="text-secondary mb-1"><b>0/9 Completed</b></p>
+          <progressbar style="height: 8px;" [value]="55"></progressbar>
+        </div>
+      </div>
     </div>
+    <nav aria-label="breadcrumb" class="mt-4" *ngIf="products != null">
+      <ol class="breadcrumb bg-white px-0">
+        <li class="breadcrumb-item"><a href="#">Product</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{products[0].name}}</li>
+      </ol>
+    </nav>
+    <h5 class="mb-4">Phases</h5>
+    <app-phase-tile [productId]="id" [phase]="phase" *ngFor="let phase of phases"></app-phase-tile>
+  </div>
 </div>

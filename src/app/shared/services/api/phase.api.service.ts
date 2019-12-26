@@ -11,7 +11,7 @@ export class PhaseApiService {
     constructor(private httpClient: HttpClient) { }
 
     public async get(id:number): Promise<Phase[]> {
-        const result = await this.httpClient.get(phaseRoute + '/' + id).toPromise();
+        const result = await this.httpClient.get(phaseRoute + '/' + id + '/phases').toPromise();
         return result as Phase[];
     }
 }

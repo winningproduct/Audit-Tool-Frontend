@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { PhaseApiService } from 'src/app/shared/services/api/phase.api.service';
 import { Phase } from 'src/app/shared/models/phase';
 import { ActivatedRoute } from '@angular/router';
-
+import { ProductApiService } from 'src/app/shared/services/api/product.api.service';
+import { Product } from 'src/app/shared/models/product';
 @Component({
   selector: 'app-view-phases',
   templateUrl: './view-phases.component.html',
@@ -16,20 +17,26 @@ export class ViewPhasesComponent implements OnInit {
   private sub: any;
 
   constructor(private phaseApiService :PhaseApiService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private productApiService:ProductApiService) { }
 
   phases : Phase[];
-
+  products : Product[];
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(async params => {
       this.id = +params['productId']; 
-      console.log(this.id);
-​      this.getAllPhases(this.id);
+      this.getProductDetails(this.id);
+      ​this.getAllPhases(this.id);
    });
   }
 
   async getAllPhases(id:number){
     this.phases = await this.phaseApiService.get(id);
+  }
+
+  async getProductDetails(id:number){
+    this.products = await this.productApiService.getById(id);
+    console.log(this.products);
   }
 
 }
