@@ -1,28 +1,25 @@
 dist: trusty
 sudo: false
-
 language: node_js
 node_js:
   - '11.0'
-
 before_script:
   - npm install -g @angular/cli
-  
 script:
   - npm install
   - npm run-script build
-
 deploy:
   provider: s3
   skip_cleanup: true
-  access_key_id: AKIAW5B3DWY7XATC7I35
-  secret_access_key: WMMNvA/dxROQsi3OkUTy1LUCUQI4qoBJjTVTqkYUPpWCeS7vocRrKfuJ9Noy3X/ZGMgvCihQ1tAEzYMOHBSutfPpBJEomP6jHHNucziRMvHg9wDTWIcggyYmI5leXP5wlp0Hb199RuRdIkxUqaPGlpu2p7wGm+LB3tTpmV+nWncSC89dFRloeiz657m8ZKU7g4RYr7srNKTeZeaO8/JSBW0KPo4GkfI0CtxwcNHmmM2hPi87m+4S++NDIAD3WaJZzN5Nj8zH4dpdv8A6Enuxuc7CbUEjFPuDqrLrRxuF+36sdqKU7moFljcmr6d6XjDL77AI0LPMPVh3EPI0jXpLeZwPKSM4MlOjkSYEpy3ZAHHfhE2LBp3UXsnsW0mZDmvj4n5MNl/jE2u8mW/pXfepSNxxYT63MJ5e+QMunB9yHDlVJdH4HI6ux4viNey+OytsvtHOlwN1xq/TPVM4vb5S66nF6d6IY3ip/toihLtcqOKeU7GjULKS7UZkju/ZZqNf9oaqsxctq5jIGiHI/2J192nuhcbW2jNHwPHiFjfIiXsPGWGFw03H1dl4E3le6waXzWMcS36jv+WISLS6sdMQ+JD3+UQdgf+Beu6l/LdeD/Ek/5cptO1VCXs/z6Ju4gqCG4cIFj0TeUlEACPM5RTCFjO+/9qGbyXIkla5Wa7qPsU=
+  access_key_id: AKIAW5B3DWY7ZCFBEG4T
+  secret_access_key:
+    secure: RCjGcrp0OmLnXYTNCFnpH0FmQxQLL+xDqNTry7VVJa3+o6emhfyHTVG72mlY44y5iLRuI8ZFTBiylAEdc+D2BmdFf7zjDf3Z7gZ/LzO0ZKpPs/3L3rRxelzT+YKUEjovPFvM2DNdTGRPu+ZwR8VAvxYTtwfTWHmQCNuYnL3nNS8YSMGV9IGvwJB9u8ngmR8y18VRvi2sYJOkEKMapQ4YBKFRzmBFT8o8QJ7rBgIU6ISRf9yD2ZxsOVUEkFdJDoGX7g2jWPbtBt2U7LvbQhRrKv/E9wSSbnz2cXcXeN1/Ro+tMSDVp84vK0+mtl+wXA1YPI78IDuJqINv0w/je7las1hXPr6n83ghJUVwwmTEuPSxnht9/uwESmxlHWJRdQO28i3r8zZig2ujqonFGJDKrVnJGNSJou0cYnbwgQwNbOYnxv2vm08JH7tolDJDIlJh17s/IEvZMlZz80AfQnEtMWQKmy2LkzEwYqA9oWCH4zfL0frAjUwJzL1llegTvhQUOGYJQoVnNZNn3IUDuqbz7yL2R3cpdw6yCLyklLIQmP49ILO34tpz5HcCXnZQxwd1Ou8ZrrLAynLJd8Z8tmg1mij9Un+d9LTZUJvON99v2O2TizW5tgaH17zCNQHni8yrKB2K4TDQts/CWRl09ww80ZhFUTYh9tgXvwrWCTxahls=
   bucket: audit-tool-frontend
   local-dir: dist/angular-boiler-plate
   upload-dir: ap-south-1
   acl: public_read
   on:
     repo: WPOCanvas/Audit-Tool-Frontend
-    branches: 
+    branches:
       only:
         - master
