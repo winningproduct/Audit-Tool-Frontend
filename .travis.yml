@@ -15,7 +15,6 @@ deploy:
   secret_access_key: $SECRET_ACCESS_KEY
   bucket: audit-tool-frontend
   local-dir: dist/angular-boiler-plate
-  upload-dir: ap-south-1
   acl: public_read
   on:
     repo: WPOCanvas/Audit-Tool-Frontend
