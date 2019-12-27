@@ -24,4 +24,6 @@ deploy:
   acl: public_read
   on:
     repo: WPOCanvas/Audit-Tool-Frontend
-    branch: master
+    branches: 
+      only:
+        - master
