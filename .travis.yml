@@ -12,8 +12,7 @@ deploy:
   provider: s3
   skip_cleanup: true
   access_key_id: AKIAW5B3DWY7XATC7I35
-  secret_access_key:
-    secure: SKEO+c/HNFqkOPybXDxfGudlquav5+f18/DZzEWjQtvhDAY2JmwPmxmg++yfcmdjJX/0/R6+spnfWmyO6qEj6j1GfPBmihXPxvacSD48PwWhy5UHAWCaY/7VwRULezpfYOAAZCY+wE0VIv++S1I0UaCKWH3qJsjqvdEKsMjH/EQBO/OY+iMFW1mAkjtXA1+rN/8j6aWdOjsqx9Jv0Ql1FOLoeDA5c3m19YQzLR2Sr2MmQRFumMTHCLF3K7H5U9h999W+ODV8dwUAGmSTytHGbnlv8MKFmRQw2nU8x6spoBIKU3vJZ+FlhTB4N1HBZd5aFq/yVxg/8fXsqjizTlEqnLgSVMLkcKUlIQI4027/7dMshVHsCoPfYkY8XsoNx2nYyh6iBZjk1hBQ7Rl4pYLTIQiPT+Tyf/nAcuEodEW9ODVHbOALe7MbVu4Fo6M1TE9HKJYGIu8mWsgGY6cgiIXdnyBb2Uu//LiConrJ4K4sbdvzuSclwIf2AsbBO887Vned/0+6RtR4Pb4iR2Z12dq5nfblIbZ0BHOo8jk5Fm5h2cxyxZMtXGHNUpHmY8JQ6OGs50jN08s2QyPkf4SfiEUKcd08t1l3HL/I/VGyG1u2/yyaxUGqo1zeZ3nfOmGp1FAGJ0DlnZYeOZ+qKpzLJ/tXfRoA7t9SLSUpOHbnKDInUCc=
+  secret_access_key: $SECRET_ACCESS_KEY
   bucket: audit-tool-frontend
   local-dir: dist/angular-boiler-plate
   upload-dir: ap-south-1
