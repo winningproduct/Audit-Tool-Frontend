@@ -3,16 +3,26 @@ sudo: false
 language: node_js
 node_js:
   - '11.0'
+
 before_script:
   - npm install -g @angular/cli
+
+addons:
+  sonarcloud:
+    organization: "wpocanvas"
+    token:
+      secure: VFXINBYxn+9ewMzT4BHdZ7L1Qbv9KW/GJ9ogAGx/7rFRsstmSYaMQbXUJXvuVahH6rCJfFlKNGT6ngXwdsQVgLovVmwKyOJdztAs86qHzd8khvLuqqzMK3XSIy9JSOwAFU17gS/wBuPH30hZDB4Vlr2FXxVDPM4H7ac2T8tSvUlEUVHUpkymrO1mZAM43hDqITzHfA5ccn+46t71lDH3SO/aZ/ApIzhm22fPVfbHL1hS3Yd4a+VA2PzevNdIJAnm21KuUUMjp5SggrtVo+kFp+gXLxdHAitq5znFkG5OMMcUcNMXldD5ANOZUq38y+unoOW+hspYRgLXMbrEBJnWRuhIf2F0oZycguKqF1ZTG/wRkME1AUh/ifSDeQ0N9M2s+0eqwZg5HxoellXiybjAJ4e2EEBFWFwsMnvYewQ7ZfoKPD72kfzN2FVPa2Gm1d1kbW1psW8piZLaNdjqtUDV8rUJLkODVo2t5dABnyPf2PquYyUxggoyJAvw2BNRul/O+IEj/+S/yRTBfTXDvIpBuxR9VCzTJrjm7as5o98AX9GlpnnsFirX6CQ8daf/0clbQrQAU0kidtHmWAbQko7dGc0hDwKILWujSX26Sm18u2K6h/+3vIxXObXmj5kqpmdq0h2kKoG/GZ7Pvrx0nPlBB5PJwS+TcN2gkf94utiz8nY=
+
 script:
   - npm install
   - npm run-script build
+  - sonar-scanner
+  
 deploy:
   provider: s3
   skip_cleanup: true
   access_key_id: AKIAW5B3DWY7XATC7I35
-  secret_access_key: $SECRET_ACCESS_KEY
+  secret_access_key: "$SECRET_ACCESS_KEY"
   bucket: audit-tool-frontend
   local-dir: dist/angular-boiler-plate
   acl: public_read
@@ -20,4 +30,4 @@ deploy:
     repo: WPOCanvas/Audit-Tool-Frontend
     branches:
       only:
-        - master
+      - master
