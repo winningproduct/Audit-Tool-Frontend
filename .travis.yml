@@ -2,14 +2,19 @@ dist: trusty
 sudo: false
 language: node_js
 node_js:
-  - '11.0'
+  - 'node'
 
 before_script:
   - npm install -g @angular/cli
 
+cache:
+  directories:
+    - node_modules
+
 addons:
   sonarcloud:
     organization: "wpocanvas"
+    
 script:
   - npm install
   - npm run-script build
