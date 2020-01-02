@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
-import { PhaseApiService } from 'src/app/shared/services/api/phase.api.service';
-import { Phase } from 'src/app/shared/models/phase';
+import { PhaseApiService } from '@shared/services/api/phase.api.service';
+import { Phase } from '@shared/models/phase';
 import { ActivatedRoute } from '@angular/router';
-import { ProductApiService } from 'src/app/shared/services/api/product.api.service';
-import { Product } from 'src/app/shared/models/product';
+import { ProductApiService } from '@shared/services/api/product.api.service';
+import { Product } from '@shared/models/product';
 @Component({
   selector: 'app-view-phases',
   templateUrl: './view-phases.component.html',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Phase } from 'src/app/shared/models/phase';
-import { Product } from 'src/app/shared/models/product';
+import { Phase } from '@shared/models/phase';
+import { Product } from '@shared/models/product';
 
 @Component({
   selector: 'app-phase-tile',
