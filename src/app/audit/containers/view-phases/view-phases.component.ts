@@ -9,34 +9,35 @@ import { Product } from '@shared/models/product';
 @Component({
   selector: 'app-view-phases',
   templateUrl: './view-phases.component.html',
-  styleUrls: ['./view-phases.component.scss']
+  styleUrls: ['./view-phases.component.scss'],
 })
 export class ViewPhasesComponent implements OnInit {
   faEllipsisV = faEllipsisV;
-  id:number;
+  id: number;
   private sub: any;
 
-  constructor(private phaseApiService :PhaseApiService,
-              private route: ActivatedRoute,
-              private productApiService:ProductApiService) { }
+  constructor(
+    private phaseApiService: PhaseApiService,
+    private route: ActivatedRoute,
+    private productApiService: ProductApiService,
+  ) {}
 
-  phases : Phase[];
-  products : Product[];
+  phases: Phase[];
+  products: Product[];
   ngOnInit() {
     this.sub = this.route.params.subscribe(async params => {
-      this.id = +params['productId']; 
+      this.id = +params.productId;
       this.getProductDetails(this.id);
-      ​this.getAllPhases(this.id);
-   });
+      this.getAllPhases(this.id);
+    });
   }
 
-  async getAllPhases(id:number){
+  async getAllPhases(id: number) {
     this.phases = await this.phaseApiService.get(id);
   }
 
-  async getProductDetails(id:number){
+  async getProductDetails(id: number) {
     this.products = await this.productApiService.getById(id);
     console.log(this.products);
   }
-
 }
