@@ -7,7 +7,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 /* fontawesome module import */
@@ -21,9 +21,15 @@ import { ProductTileComponent } from './components/product-tile/product-tile.com
 import { PhaseTileComponent } from './components/phase-tile/phase-tile.component';
 import { ViewQuestionsComponent } from './containers/view-questions/view-questions.component';
 
-
 @NgModule({
-  declarations: [AuditComponent, ViewProductsComponent, ViewPhasesComponent, ProductTileComponent, PhaseTileComponent, ViewQuestionsComponent],
+  declarations: [
+    AuditComponent,
+    ViewProductsComponent,
+    ViewPhasesComponent,
+    ProductTileComponent,
+    PhaseTileComponent,
+    ViewQuestionsComponent,
+  ],
   imports: [
     CommonModule,
     AuditRoutingModule,
@@ -33,8 +39,8 @@ import { ViewQuestionsComponent } from './containers/view-questions/view-questio
     ButtonsModule.forRoot(),
     CarouselModule.forRoot(),
     FontAwesomeModule,
-    HttpClientModule, 
-    AngularEditorModule
-  ]
+    HttpClientModule,
+    AngularEditorModule,
+  ],
 })
-export class AuditModule { }
+export class AuditModule {}
