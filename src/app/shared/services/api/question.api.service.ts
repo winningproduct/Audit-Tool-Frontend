@@ -13,7 +13,6 @@ export class QuestionApiService {
     const result = await this.httpClient
       .get(questionRoute + '/' + knowledgeAreaId + '/questions')
       .toPromise();
-    console.log(result);
     return result as Question[];
   }
 }
