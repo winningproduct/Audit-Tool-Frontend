@@ -7,7 +7,7 @@ import { Question } from '@shared/models/question';
   styleUrls: ['./evidence-box.component.scss'],
 })
 export class EvidenceBoxComponent implements OnInit {
-  @Input() question: Question[];
+  @Input() question: Question;
 
   constructor() {}
 
