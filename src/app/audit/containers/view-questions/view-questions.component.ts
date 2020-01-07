@@ -6,6 +6,7 @@ import { ProductApiService } from '@shared/services/api/product.api.service';
 import { Product } from '@shared/models/product';
 import { Question } from '@shared/models/question';
 import { QuestionApiService } from '@shared/services/api/question.api.service';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-view-questions',
@@ -28,6 +29,7 @@ export class ViewQuestionsComponent implements OnInit {
   items: KnowledgeArea[] = [];
   product: Product[];
   questions: Question[];
+  faSpinner = faSpinner;
 
   async ngOnInit() {
     this.sub = this.route.params.subscribe(async params => {
