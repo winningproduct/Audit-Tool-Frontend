@@ -8,10 +8,9 @@ import { KnowledgeArea } from '@shared/models/knowledge-area';
 })
 export class KnowledgeAreaSlideComponent implements OnInit {
   @Input() knowledgeArea: KnowledgeArea;
-
+  @Input() productId: number;
+  @Input() phaseId: number;
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.knowledgeArea);
-  }
+  ngOnInit() {}
 }
