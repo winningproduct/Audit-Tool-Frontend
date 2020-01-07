@@ -10,7 +10,7 @@
         <div class="col-12 bg-light py-3 rounded-lg">
             <carousel [itemsPerSlide]="5" [singleSlideOffset]="false" [indicatorsByChunk]="true" [showIndicators]="false" [interval]="0">
                 <slide>
-                    <div class="d-flex align-items-center justify-content-center">
+                    <div class="d-flex align-items-center justify-content-center slideActive">
                         <div>
                             <p class="mb-0">Knowledge Area1</p>
                             <small class="secondary">0/3 completed</small>
@@ -81,9 +81,10 @@
                         <div>
                             <div class="input-group" style="min-width:320px;">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Status</label>
+                                    <label class="input-group-text" for="inputGroupSelect01"><fa-icon [icon]="faSpinner" class="fa-spin text-secondary mr-2"></fa-icon> Status</label>
                                   </div>
                                   <select class="custom-select" id="inputGroupSelect01">
+                                    <option value="" selected>Select Status</option>
                                     <option value="1">Fully Complied</option>
                                     <option value="2">Partialy Complied</option>
                                     <option value="3">Not Complied</option>

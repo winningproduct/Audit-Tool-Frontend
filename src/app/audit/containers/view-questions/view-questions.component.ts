@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-view-questions',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-questions.component.scss']
 })
 export class ViewQuestionsComponent implements OnInit {
-
+  faSpinner = faSpinner;
   constructor() { }
 
   ngOnInit() {
