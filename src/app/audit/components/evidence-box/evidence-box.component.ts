@@ -8,6 +8,7 @@ import { Question } from '@shared/models/question';
 })
 export class EvidenceBoxComponent implements OnInit {
   @Input() question: Question;
+  @Input() index: number;
 
   constructor() {}
 
