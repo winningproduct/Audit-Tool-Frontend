@@ -8,7 +8,25 @@ import {
 } from '@angular/core';
 import { Question } from '@shared/models/question';
 import MediumEditor from '../../../../../node_modules/medium-editor';
+const BUTTONS = [
+  'bold',
+  'italic',
+  'underline',
 
+  'subscript',
+  'superscript',
+  'anchor',
+  'quote',
+  'pre',
+  'orderedlist',
+  'unorderedlist',
+  'indent',
+  'justifyLeft',
+  'justifyCenter',
+  'justifyRight',
+  'justifyFull',
+  'h1',
+];
 @Component({
   selector: 'app-evidence-box',
   templateUrl: './evidence-box.component.html',
@@ -23,6 +41,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   })
   editable: ElementRef;
   editor: any;
+
   constructor() {}
   ngOnInit() {}
 
@@ -58,27 +77,3 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     });
   }
 }
-const BUTTONS = [
-  'bold',
-  'italic',
-  'underline',
-
-  'subscript',
-  'superscript',
-  'anchor',
-  'quote',
-  'pre',
-  'orderedlist',
-  'unorderedlist',
-  'indent',
-  'justifyLeft',
-  'justifyCenter',
-  'justifyRight',
-  'justifyFull',
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-];
