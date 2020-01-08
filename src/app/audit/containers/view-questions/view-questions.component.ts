@@ -17,7 +17,7 @@ export class ViewQuestionsComponent implements OnInit {
   productId: number;
   knowledgeAreaId: number;
   private sub: any;
-  lcourcealLength = 5;
+  lcarouselLength = 5;
   constructor(
     private route: ActivatedRoute,
     private knowledgeAreaApiService: KnowledgeAreaApiService,
@@ -47,7 +47,7 @@ export class ViewQuestionsComponent implements OnInit {
   async getKnowledgeAreasByPhaseId(id: number) {
     this.items = await this.knowledgeAreaApiService.get(id);
     if (this.items.length < 5) {
-      this.lcourcealLength = this.items.length - 1;
+      this.lcarouselLength = this.items.length - 1;
     }
   }
 
