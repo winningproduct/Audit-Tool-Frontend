@@ -9,6 +9,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 /* fontawesome module import */
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -42,6 +43,7 @@ import { EvidenceBoxComponent } from './components/evidence-box/evidence-box.com
     ProgressbarModule.forRoot(),
     ButtonsModule.forRoot(),
     CarouselModule.forRoot(),
+    AlertModule.forRoot(),
     FontAwesomeModule,
     HttpClientModule,
     AngularEditorModule,
