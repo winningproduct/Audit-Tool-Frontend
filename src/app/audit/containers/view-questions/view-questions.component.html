@@ -16,7 +16,7 @@
     <div *ngIf="items.length" class="col-12 bg-light py-3 rounded-lg">
       <carousel
         *ngIf="items != null"
-        [itemsPerSlide]="lcourcealLength"
+        [itemsPerSlide]="lcarouselLength"
         [singleSlideOffset]="true"
         [indicatorsByChunk]="true"
         [showIndicators]="false"
@@ -32,7 +32,8 @@
       <div class="mt-5">
         <app-evidence-box
           [question]="question"
-          *ngFor="let question of questions"
+          [index]="index"
+          *ngFor="let question of questions; let index = index"
         ></app-evidence-box>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { ProductApiService } from '@shared/services/api/product.api.service';
 import { Product } from '@shared/models/product';
 import { Question } from '@shared/models/question';
 import { QuestionApiService } from '@shared/services/api/question.api.service';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-view-questions',
@@ -17,7 +18,7 @@ export class ViewQuestionsComponent implements OnInit {
   productId: number;
   knowledgeAreaId: number;
   private sub: any;
-  lcourcealLength = 5;
+  lcarouselLength = 5;
   constructor(
     private route: ActivatedRoute,
     private knowledgeAreaApiService: KnowledgeAreaApiService,
@@ -28,6 +29,7 @@ export class ViewQuestionsComponent implements OnInit {
   items: KnowledgeArea[] = [];
   product: Product[];
   questions: Question[];
+  faSpinner = faSpinner;
 
   async ngOnInit() {
     this.sub = this.route.params.subscribe(async params => {
@@ -43,7 +45,7 @@ export class ViewQuestionsComponent implements OnInit {
   async getKnowledgeAreasByPhaseId(id: number) {
     this.items = await this.knowledgeAreaApiService.get(id);
     if (this.items.length < 5) {
-      this.lcourcealLength = this.items.length - 1;
+      this.lcarouselLength = this.items.length - 1;
     }
   }
 
