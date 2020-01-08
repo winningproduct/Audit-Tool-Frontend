@@ -34,14 +34,10 @@ export class ViewQuestionsComponent implements OnInit {
   async ngOnInit() {
     this.sub = this.route.params.subscribe(async params => {
       this.productId = +params.productId;
-      await this.getProductDetails(this.productId);
-    });
-    this.sub = this.route.params.subscribe(async params => {
       this.phaseId = +params.productPhaseId;
-      await this.getKnowledgeAreasByPhaseId(this.phaseId);
-    });
-    this.sub = this.route.params.subscribe(async params => {
       this.knowledgeAreaId = +params.knowledgeAreaId;
+      await this.getProductDetails(this.productId);
+      await this.getKnowledgeAreasByPhaseId(this.phaseId);
       await this.getQuestionsByKnowledgeArea(this.knowledgeAreaId);
     });
   }

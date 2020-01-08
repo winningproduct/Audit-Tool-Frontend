@@ -24,6 +24,10 @@ import { ViewQuestionsComponent } from './containers/view-questions/view-questio
 import { KnowledgeAreaSlideComponent } from './components/knowledge-area-slide/knowledge-area-slide.component';
 import { EvidenceBoxComponent } from './components/evidence-box/evidence-box.component';
 
+/* for drop-downs */
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AuditComponent,
@@ -47,6 +51,9 @@ import { EvidenceBoxComponent } from './components/evidence-box/evidence-box.com
     FontAwesomeModule,
     HttpClientModule,
     AngularEditorModule,
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class AuditModule {}
