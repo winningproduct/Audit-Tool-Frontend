@@ -26,12 +26,14 @@
               >Status</label
             >
           </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option value="1">Fully Complied</option>
-            <option value="2">Partialy Complied</option>
-            <option value="3">Not Complied</option>
-            <option value="3">Not Applicable</option>
-          </select>
+          <ng-select
+            class="custom-select"
+            [items]="statusDropDowns"
+            bindLabel="value"
+            bindValue="id"
+            [(ngModel)]="selectedStatus"
+          >
+          </ng-select>
         </div>
       </div>
     </div>
