@@ -1,5 +1,7 @@
 export class Evidence {
-  id: string;
+  id: number;
+  productId: number;
+  userId: number;
   content: string;
   status: string;
   version: string;

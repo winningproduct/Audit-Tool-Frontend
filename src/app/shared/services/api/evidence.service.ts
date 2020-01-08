@@ -1,4 +1,4 @@
-import { evidenceRoute } from './../../constants';
+import { evidenceRoute, questionRoute2 } from './../../constants';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Evidence } from '@shared/models/evidence';
@@ -14,5 +14,12 @@ export class EvidenceApiService {
       .get(evidenceRoute + '/' + id + '/questions/' + qid + '/evidence')
       .toPromise();
     return result as Evidence[];
+  }
+
+  public async post(id: number, data: Evidence) {
+    const result = await this.httpClient
+      .post(questionRoute2 + '/' + id + '/evidence', data)
+      .toPromise();
+    console.log(result);
   }
 }
