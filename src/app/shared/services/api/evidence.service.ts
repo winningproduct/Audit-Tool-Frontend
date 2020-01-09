@@ -1,4 +1,4 @@
-import { evidenceRoute } from './../../constants';
+import { evidenceRoute, evidenceBaseRoute } from './../../constants';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Evidence } from '@shared/models/evidence';
@@ -14,5 +14,11 @@ export class EvidenceApiService {
       .get(evidenceRoute + '/' + id + '/questions/' + qid + '/evidence')
       .toPromise();
     return result as Evidence[];
+  }
+
+  async updateStatus(id: number, status: any, eid: number): Promise<boolean> {
+    const url = evidenceBaseRoute + '/' + id + '/evidence/' + eid;
+    const result = await this.httpClient.put(url, status).toPromise();
+    return result as boolean;
   }
 }

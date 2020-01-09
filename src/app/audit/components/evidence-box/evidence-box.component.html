@@ -36,6 +36,7 @@
             bindLabel="value"
             bindValue="id"
             [(ngModel)]="selectedStatus"
+            (change) = "updateStatus($event)"
           >
           </ng-select>
         </div>

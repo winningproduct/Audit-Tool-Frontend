@@ -103,4 +103,13 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
       },
     });
   }
+
+  async updateStatus(status: any) {
+    const id = this.evidence[0].id;
+    this.evidenceService.updateStatus(
+      this.question.id,
+      status.value,
+      Number(id),
+    );
+  }
 }
