@@ -22,8 +22,8 @@ export class EvidenceApiService {
     const result = await this.httpClient.put(url, status).toPromise();
     return result as boolean;
   }
-  
-  async post(id: number, data: Evidence) {
+
+  async post(id: number, data: Evidence): Promise<boolean> {
     const result = await this.httpClient
       .post(questionRoute2 + '/' + id + '/evidence', data)
       .toPromise();

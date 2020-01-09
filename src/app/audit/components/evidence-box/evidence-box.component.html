@@ -23,7 +23,7 @@
           type="submit"
           class="btn btn-outline-primary"
           (click)="postEvidenceByQuestionId(question.id, selectedStatus)"
-          [disabled]="selectedStatus == null"
+          [disabled]="isAddButtonClicked || !selectedStatus"
         >
           Add
         </button>
@@ -41,7 +41,7 @@
             bindLabel="value"
             bindValue="id"
             [(ngModel)]="selectedStatus"
-            (change) = "updateStatus($event)"
+            (change)="updateStatus($event)"
             placeholder="Select Status"
           >
           </ng-select>
