@@ -18,7 +18,7 @@ addons:
 script:
   - npm install
   - npm run-script build:prod
-  - sonar-scanner
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi' # sonar only on non-PRs
 
 deploy:
   provider: s3
