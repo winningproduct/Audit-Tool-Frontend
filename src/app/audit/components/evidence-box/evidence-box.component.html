@@ -22,9 +22,8 @@
         <button
           type="submit"
           class="btn btn-outline-primary"
-          (click)="
-            postEvidenceByQuestionId(question.id, this.evidence[0].status)
-          "
+          (click)="postEvidenceByQuestionId(question.id, selectedStatus)"
+          [disabled]="selectedStatus == null"
         >
           Add
         </button>
@@ -42,6 +41,7 @@
             bindLabel="value"
             bindValue="id"
             [(ngModel)]="selectedStatus"
+            placeholder="Select Status"
           >
           </ng-select>
         </div>
