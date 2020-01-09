@@ -41,6 +41,7 @@
             bindLabel="value"
             bindValue="id"
             [(ngModel)]="selectedStatus"
+            (change) = "updateStatus($event)"
             placeholder="Select Status"
           >
           </ng-select>
