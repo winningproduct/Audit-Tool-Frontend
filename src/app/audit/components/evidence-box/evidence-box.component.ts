@@ -36,7 +36,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   editor: any;
   evidence: Evidence[];
   productId: number;
-
+  isAddButtonClicked = false;
   selectedStatus = null;
   statusDropDowns = [
     { id: 1, value: 'Fully Complied' },
@@ -70,6 +70,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   }
 
   async postEvidenceByQuestionId(qid: number, status: number) {
+    this.isAddButtonClicked = true;
     const evidence = new Evidence();
     evidence.productId = this.productId;
     evidence.userId = 1;
@@ -77,6 +78,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     evidence.version = '1';
     evidence.status = this.statusDropDowns.find(i => i.id === status).value;
     await this.evidenceService.post(qid, evidence);
+    this.isAddButtonClicked = true;
   }
 
   ngAfterViewInit(): void {
@@ -112,11 +114,13 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   }
 
   async updateStatus(status: any) {
+    this.isAddButtonClicked = true;
     const id = this.evidence[0].id;
-    this.evidenceService.updateStatus(
+    await this.evidenceService.updateStatus(
       this.question.id,
       status.value,
       Number(id),
     );
+    this.isAddButtonClicked = false;
   }
 }

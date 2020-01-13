@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuditComponent } from './audit.component';
 import { ViewProductsComponent } from './containers/view-products/view-products.component';
 import { ViewPhasesComponent } from './containers/view-phases/view-phases.component';
 import { ViewQuestionsComponent } from './containers/view-questions/view-questions.component';
