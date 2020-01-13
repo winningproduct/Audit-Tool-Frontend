@@ -6,22 +6,18 @@ import { ActivatedRoute } from '@angular/router';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import MediumEditor from 'medium-editor';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { tick } from '@angular/core/testing';
 const BUTTONS = [
   'bold',
   'italic',
   'underline',
-
   'subscript',
   'superscript',
   'anchor',
   'quote',
-  'pre',
   'orderedlist',
   'unorderedlist',
-  'indent',
-  'justifyLeft',
-  'justifyCenter',
-  'justifyRight',
   'justifyFull',
   'h1',
 ];
@@ -41,7 +37,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   evidence: Evidence[];
   productId: number;
 
-  selectedStatus = 3;
+  selectedStatus = null;
   statusDropDowns = [
     { id: 1, value: 'Fully Complied' },
     { id: 2, value: 'Partialy Complied' },
@@ -68,8 +64,19 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
       (
         this.statusDropDowns.find(item => {
           return item.value.includes(this.evidence[0].status);
-        }) || { id: 3, value: 'Not Complied' }
+        }) || { id: null, value: '' }
       ).id;
+    this.editor.setContent(this.evidence[0].content);
+  }
+
+  async postEvidenceByQuestionId(qid: number, status: number) {
+    const evidence = new Evidence();
+    evidence.productId = this.productId;
+    evidence.userId = 1;
+    evidence.content = this.editor.getContent();
+    evidence.version = '1';
+    evidence.status = this.statusDropDowns.find(i => i.id === status).value;
+    await this.evidenceService.post(qid, evidence);
   }
 
   ngAfterViewInit(): void {
