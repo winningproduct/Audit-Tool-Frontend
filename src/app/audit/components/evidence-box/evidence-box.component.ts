@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import MediumEditor from 'medium-editor';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const BUTTONS = [
   'bold',
@@ -25,6 +26,9 @@ const BUTTONS = [
   styleUrls: ['./evidence-box.component.scss'],
 })
 export class EvidenceBoxComponent implements OnInit, AfterViewInit {
+
+  faSpinner = faSpinner;
+
   @Input() question: Question;
   @Input() index: number;
   @ViewChild('editable', {
