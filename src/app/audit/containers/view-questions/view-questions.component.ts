@@ -45,7 +45,7 @@ export class ViewQuestionsComponent implements OnInit {
   async getKnowledgeAreasByPhaseId(id: number) {
     this.items = await this.knowledgeAreaApiService.get(id);
     if (this.items.length < 5) {
-      this.lcarouselLength = this.items.length;
+      this.lcarouselLength = this.items.length - 1;
     }
   }
 
