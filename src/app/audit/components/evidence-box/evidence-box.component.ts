@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
 import { Question } from '@shared/models/question';
 import { Evidence } from '@shared/models/evidence';
@@ -6,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import MediumEditor from 'medium-editor';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { tick } from '@angular/core/testing';
+
 const BUTTONS = [
   'bold',
   'italic',
@@ -58,7 +56,11 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   }
 
   async getEvidenceByQuestionId(id: number, qid: number) {
-    this.evidence = await this.evidenceService.get(id, qid);
+    try {
+      this.evidence = await this.evidenceService.get(id, qid);
+    } catch (error) {
+      console.log(error);
+    }
     this.selectedStatus =
       this.evidence.length > 0 &&
       (
@@ -77,8 +79,15 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     evidence.content = this.editor.getContent();
     evidence.version = '1';
     evidence.status = this.statusDropDowns.find(i => i.id === status).value;
-    await this.evidenceService.post(qid, evidence);
-    this.isAddButtonClicked = true;
+    try {
+      await this.evidenceService.post(qid, evidence);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setTimeout(() => {
+        this.isAddButtonClicked = true;
+      }, 1000);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -116,11 +125,16 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   async updateStatus(status: any) {
     this.isAddButtonClicked = true;
     const id = this.evidence[0].id;
-    await this.evidenceService.updateStatus(
-      this.question.id,
-      status.value,
-      Number(id),
-    );
-    this.isAddButtonClicked = false;
+    try {
+      await this.evidenceService.updateStatus(
+        this.question.id,
+        status.value,
+        Number(id),
+      );
+    } catch (error) {
+      console.log(error);
+    } finally {
+      this.isAddButtonClicked = false;
+    }
   }
 }

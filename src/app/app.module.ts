@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { NgxsModule } from '@ngxs/store';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth/token.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +17,7 @@ import { AuthInterceptor } from './shared/auth/token.interceptor';
     AppRoutingModule,
     NgxsModule.forRoot(),
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     {
