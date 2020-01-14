@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  host: 'http://localhost:3000'
+  host: 'https://53ph0bulw2.execute-api.ap-south-1.amazonaws.com/dev'
 };

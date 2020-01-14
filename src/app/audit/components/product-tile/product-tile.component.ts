@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from 'src/app/shared/models/product';
+import { Product } from '@shared/models/product';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

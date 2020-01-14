@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { HttpClient } from '@angular/common/http';
-import { ProductApiService } from 'src/app/shared/services/api/product.api.service';
-import { Product } from 'src/app/shared/models/product';
+import { ProductApiService } from '@shared/services/api/product.api.service';
+import { Product } from '@shared/models/product';
 
 @Component({
   selector: 'app-view-products',
