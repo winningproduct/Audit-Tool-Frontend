@@ -21,6 +21,12 @@ import { ViewPhasesComponent } from './containers/view-phases/view-phases.compon
 import { ProductTileComponent } from './components/product-tile/product-tile.component';
 import { PhaseTileComponent } from './components/phase-tile/phase-tile.component';
 import { ViewQuestionsComponent } from './containers/view-questions/view-questions.component';
+import { KnowledgeAreaSlideComponent } from './components/knowledge-area-slide/knowledge-area-slide.component';
+import { EvidenceBoxComponent } from './components/evidence-box/evidence-box.component';
+
+/* for drop-downs */
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +36,8 @@ import { ViewQuestionsComponent } from './containers/view-questions/view-questio
     ProductTileComponent,
     PhaseTileComponent,
     ViewQuestionsComponent,
+    KnowledgeAreaSlideComponent,
+    EvidenceBoxComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +51,9 @@ import { ViewQuestionsComponent } from './containers/view-questions/view-questio
     FontAwesomeModule,
     HttpClientModule,
     AngularEditorModule,
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class AuditModule {}
