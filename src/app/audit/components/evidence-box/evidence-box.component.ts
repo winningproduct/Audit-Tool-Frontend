@@ -68,7 +68,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
           return item.value.includes(this.evidence[0].status);
         }) || { id: null, value: '' }
       ).id;
-    this.editor.setContent(this.evidence[0].content);
+    this.editor.setContent(this.evidence[0] ? this.evidence[0].content : '');
   }
 
   async postEvidenceByQuestionId(qid: number, status: number) {
