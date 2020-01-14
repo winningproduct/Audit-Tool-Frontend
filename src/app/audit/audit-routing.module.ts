@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'products', component: ViewProductsComponent },
   { path: 'products/:productId/phases', component: ViewPhasesComponent },
   {
-    path: 'products/:productId/phases/:productPhaseId',
+    path:
+      'products/:productId/phases/:productPhaseId/knowledgeAreas/:knowledgeAreaId/question',
     component: ViewQuestionsComponent,
   },
   { path: '**', component: ViewProductsComponent },
