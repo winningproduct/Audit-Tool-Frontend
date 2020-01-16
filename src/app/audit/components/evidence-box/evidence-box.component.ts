@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import MediumEditor from 'medium-editor';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const BUTTONS = [
   'bold',
@@ -25,6 +26,9 @@ const BUTTONS = [
   styleUrls: ['./evidence-box.component.scss'],
 })
 export class EvidenceBoxComponent implements OnInit, AfterViewInit {
+
+  faSpinner = faSpinner;
+
   @Input() question: Question;
   @Input() index: number;
   @ViewChild('editable', {
@@ -36,6 +40,8 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   productId: number;
   isAddButtonClicked = false;
   selectedStatus = null;
+  isStatusUpdated = false;
+
   statusDropDowns = [
     { id: 1, value: 'Fully Complied' },
     { id: 2, value: 'Partialy Complied' },
@@ -68,7 +74,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
           return item.value.includes(this.evidence[0].status);
         }) || { id: null, value: '' }
       ).id;
-    this.editor.setContent(this.evidence[0].content);
+    this.editor.setContent(this.evidence[0] ? this.evidence[0].content : '');
   }
 
   async postEvidenceByQuestionId(qid: number, status: number) {
@@ -124,6 +130,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
 
   async updateStatus(status: any) {
     this.isAddButtonClicked = true;
+    this.isStatusUpdated = true;
     const id = this.evidence[0].id;
     try {
       await this.evidenceService.updateStatus(
@@ -135,6 +142,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
       console.log(error);
     } finally {
       this.isAddButtonClicked = false;
+      this.isStatusUpdated = false;
     }
   }
 }
