@@ -40,7 +40,7 @@ jobs:
   deploy:
     working_directory: ~/project
     docker:
-      - image: circleci/node:6.10-browsers
+      - image: 'node:latest'
     steps:
       - restore_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
