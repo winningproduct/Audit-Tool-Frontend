@@ -41,12 +41,12 @@ jobs:
       - image: circleci/node:6.10-browsers
     steps:
       - restore_cache:
-        key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
       # Install AWS cli
       - run:
-        name: Install aws cli
-        command:
-          sudo apt-get -y -qq install awscli
+          name: Install aws cli
+          command:
+            sudo apt-get -y -qq install awscli
       # Set the signature version for the S3 auth
       - run:
           name: Setting Signature Version 4 for S3 Request Authentication
