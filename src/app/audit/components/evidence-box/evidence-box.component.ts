@@ -131,6 +131,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   async updateStatus(status: any) {
     this.isAddButtonClicked = true;
     this.isStatusUpdated = true;
+    console.log(this.evidence);
     const id = this.evidence[0].id;
     try {
       await this.evidenceService.updateStatus(
