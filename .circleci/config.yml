@@ -10,7 +10,7 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
+            
       - run:
           name: Install dependencies
           command: |
@@ -31,19 +31,21 @@ jobs:
           name: Building
           command: |
             npm run build:prod
-      
-      - save_cache:
-          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - dist
             
   deploy:
     working_directory: ~/project
     docker:
       - image: 'circleci/node:12.13'
     steps:
-      - restore_cache:
+      - run:
+          name: Building
+          command: |
+            npm run build:prod
+      
+      - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - dist
       # Install AWS cli
       - run:
           name: Install aws cli
