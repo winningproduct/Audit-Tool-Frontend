@@ -2,7 +2,7 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: 'node:latest'
+      - image: 'circleci/node:12.13'
     steps:
       - checkout
       - restore_cache:
@@ -40,7 +40,7 @@ jobs:
   deploy:
     working_directory: ~/project
     docker:
-      - image: 'node:latest'
+      - image: 'circleci/node:12.13'
     steps:
       - restore_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
