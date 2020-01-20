@@ -28,7 +28,7 @@ jobs:
 
   deploy:
     docker:
-      - image: 'node:latest'
+      - image: 'circleci/python:2.7'
     steps:
       - checkout
       - aws-s3/sync:
@@ -69,4 +69,4 @@ workflows:
           filters:
             branches:
               only:
-                master
+                development
