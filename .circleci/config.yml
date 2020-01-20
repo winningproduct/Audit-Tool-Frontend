@@ -1,5 +1,6 @@
 jobs:
   build:
+    working_directory: ~/project
     docker:
       - image: 'node:latest'
     steps:
@@ -37,6 +38,7 @@ jobs:
             - dist
             
   deploy:
+    working_directory: ~/project
     docker:
       - image: circleci/node:6.10-browsers
     steps:
