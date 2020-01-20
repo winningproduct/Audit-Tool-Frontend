@@ -40,6 +40,8 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   productId: number;
   isAddButtonClicked = false;
   selectedStatus = null;
+  isStatusUpdated = false;
+
   statusDropDowns = [
     { id: 1, value: 'Fully Complied' },
     { id: 2, value: 'Partialy Complied' },
@@ -128,6 +130,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
 
   async updateStatus(status: any) {
     this.isAddButtonClicked = true;
+    this.isStatusUpdated = true;
     const id = this.evidence[0].id;
     try {
       await this.evidenceService.updateStatus(
@@ -139,6 +142,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
       console.log(error);
     } finally {
       this.isAddButtonClicked = false;
+      this.isStatusUpdated = false;
     }
   }
 }
