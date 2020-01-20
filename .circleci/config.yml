@@ -38,10 +38,10 @@ jobs:
             --acl public-read \
             --cache-control "max-age=86400"
           overwrite: true
-        # - aws-s3/copy:
-        #     from: dist/angular-boiler-plate
-        #     to: 's3://audit-tool-frontend'
-        #     arguments: '--dryrun'
+      - aws-s3/copy:
+          from: dist/angular-boiler-plate
+          to: 's3://audit-tool-frontend'
+          arguments: '--dryrun'
 
   sonar:
     docker:
