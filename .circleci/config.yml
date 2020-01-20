@@ -35,7 +35,7 @@ jobs:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - dist
-
+            
     deploy:
       docker:
         - image: circleci/node:6.10-browsers
@@ -56,7 +56,6 @@ jobs:
             name: Deploy to S3
             command: |
               aws --region ap-south-1 s3 sync dist s3://audit-tool-frontend/ --delete
-                
 
   sonar:
     docker:
