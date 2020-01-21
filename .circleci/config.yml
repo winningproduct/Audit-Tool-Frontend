@@ -8,6 +8,8 @@ jobs:
       - run:
           name: Install dependencies
           command: |
+            echo 'export NG_CLI_ANALYTICS="ci"' >> $BASH_ENV
+            echo 'export NG_CLI_ANALYTICS=false' >> $BASH_ENV
             sudo npm install
 
       - save_cache:
