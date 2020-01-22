@@ -81,9 +81,10 @@ jobs:
                     elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
                         aws --region ap-south-1 s3 sync dist/auditTool s3://audit-tool-frontend-stage/ --delete --acl public-read
                     elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                        aws --region ap-south-1 s3 sync dist/auditTool s3://audit-tool-frontend-prod/ --delete --acl public-read
+                        aws --region ap-south-1 s3 sync dist/auditTool s3://winningproduct/ --delete --acl public-read
                     fi
 
+    #sonar clould validation
     sonar:
         working_directory: ~/project
         docker:
@@ -97,7 +98,7 @@ orbs:
 
 workflows:
     version: 2
-    sonar:
+    main:
         jobs:
             - sonar:
                 context: SonarClouldFrontend
