@@ -6,10 +6,16 @@ jobs:
     steps:
       - checkout
       - run:
+          name: 'Set env'
+          command: |
+            echo 'export NG_CLI_ANALYTICS=ci' >> $BASH_ENV
+            echo 'export NG_CLI_ANALYTICS=false' >> $BASH_ENV
+
+      - run:
+          environment:
+            NG_CLI_ANALYTICS: "ci"
           name: Install dependencies
           command: |
-            echo 'export NG_CLI_ANALYTICS="ci"' >> $BASH_ENV
-            echo 'export NG_CLI_ANALYTICS=false' >> $BASH_ENV
             sudo npm install
 
       - save_cache:
