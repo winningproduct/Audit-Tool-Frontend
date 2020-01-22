@@ -16,15 +16,15 @@ jobs:
             # Restore local dependencies from cache
             - restore_cache:
                 keys:
-                - v2-dependencies-{{ checksum "package.json" }}
-                - v2-dependencies-
+                - v3-dependencies-{{ checksum "package.json" }}
+                - v3-dependencies-
             # Install project dependencies
             - run:
                 name: Install local dependencies
                 command: npm install
             # Cache local dependencies if they don't exist
             - save_cache:
-                key: v2-dependencies-{{ checksum "package.json" }}
+                key: v3-dependencies-{{ checksum "package.json" }}
                 paths:
                     - node_modules
             # Test the source code
@@ -45,7 +45,7 @@ jobs:
                     fi
             # Cache the dist folder for the deploy job
             - save_cache:
-                key: v2-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+                key: v3-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
                 paths:
                     - dist
 
@@ -62,7 +62,7 @@ jobs:
             # Restore cache from the build job which contains the
             # dist folder that needs to be deployed
             - restore_cache:
-                key: v2-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+                key: v3-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
             # Install AWS cli
             - run:
                 name: Install aws cli
