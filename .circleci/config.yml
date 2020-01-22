@@ -2,7 +2,7 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: 'circleci/node:12.14'
+      - image: 'node:latest'
     steps:
       - checkout
       - run:
@@ -36,7 +36,7 @@ jobs:
   deploy:
     working_directory: ~/project
     docker:
-      - image: 'circleci/node:12.14'
+      - image: 'node:latest'
     steps:
       - run:
           name: Building
@@ -64,7 +64,7 @@ jobs:
 
   sonar:
     docker:
-      - image: 'circleci/node:12.14'
+      - image: 'node:latest'
     steps:
       - checkout
       - sonarcloud/scan
