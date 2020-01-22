@@ -10,7 +10,6 @@ export class AuthService {
     try {
       const session = await Auth.currentSession();
       this.token = session.getAccessToken().getJwtToken();
-      debugger;
       if (!this.jwtHelper.isTokenExpired(this.token)) {
        return true;
      } else {
@@ -18,7 +17,6 @@ export class AuthService {
      }
     } catch ( err ) {
       console.log(err);
-      debugger
       return false;
     }
   }

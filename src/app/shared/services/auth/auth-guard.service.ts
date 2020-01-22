@@ -13,7 +13,6 @@ isAuth: boolean;
   }
   async canActivate(): Promise<boolean> {
       const isAuthenticated = await this.auth.isAuthenticated();
-      debugger;
       if (
       !isAuthenticated
     ) {
