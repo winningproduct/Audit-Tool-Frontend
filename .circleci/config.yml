@@ -84,13 +84,13 @@ jobs:
                         aws --region ap-south-1 s3 sync dist s3://audit-tool-frontend-prod/ --delete
                     fi
 
-    sonar:
-        working_directory: ~/project
-        docker:
-            - image: 'circleci/node:latest'
-        steps:
-            - checkout
-            - sonarcloud/scan
+  sonar:
+    working_directory: ~/project
+    docker:
+      - image: 'circleci/node:latest'
+    steps:
+      - checkout
+      - sonarcloud/scan
 
 orbs:
     sonarcloud: sonarsource/sonarcloud@1.0.1
