@@ -16,7 +16,7 @@ jobs:
             NG_CLI_ANALYTICS: "ci"
           name: Install dependencies
           command: |
-            sudo npm install -g @angular/cli > /dev/null
+            npm install -g @angular/cli > /dev/null
             sudo npm install
 
       - save_cache:
