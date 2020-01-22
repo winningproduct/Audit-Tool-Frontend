@@ -37,11 +37,11 @@ jobs:
                 name: Building
                 command: |
                     if [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                        npm run build-qa
+                        npm run build:qa
                     elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                        npm run build-prod
+                        npm run build:prod
                     else
-                        npm run build-dev
+                        npm run build
                     fi
             # Cache the dist folder for the deploy job
             - save_cache:
@@ -83,7 +83,9 @@ jobs:
                     elif [ "${CIRCLE_BRANCH}" == "master" ]; then
                         aws --region ap-south-1 s3 sync dist s3://audit-tool-frontend-prod/ --delete
                     fi
+
     sonar:
+        working_directory: ~/project
         docker:
             - image: 'circleci/node:latest'
         steps:
@@ -91,7 +93,7 @@ jobs:
             - sonarcloud/scan
 
 orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.1
+    sonarcloud: sonarsource/sonarcloud@1.0.1
 
 workflows:
     version: 2
