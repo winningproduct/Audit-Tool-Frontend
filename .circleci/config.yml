@@ -27,14 +27,10 @@ jobs:
                 key: v2-dependencies-{{ checksum "package.json" }}
                 paths:
                     - node_modules
-            # Lint the source code
-            - run:
-                name: Linting
-                command: npm run lint
             # Test the source code
-            - run:
-                name: Testing
-                command: npm run test
+            # - run:
+            #     name: Testing
+            #     command: npm run test
             # Build project with different configuration based on
             # the current branch
             - run:
@@ -80,15 +76,29 @@ jobs:
             - run:
                 name: Deploy to S3
                 command: |
-                    if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+                    if [ "${CIRCLE_BRANCH}" == "development" ]; then
                         aws --region ap-south-1 s3 sync dist s3://audit-tool-frontend/ --delete
                     elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
                         aws --region ap-south-1 s3 sync dist s3://audit-tool-frontend-stage/ --delete
                     elif [ "${CIRCLE_BRANCH}" == "master" ]; then
                         aws --region ap-south-1 s3 sync dist s3://audit-tool-frontend-prod/ --delete
                     fi
+    sonar:
+        docker:
+            - image: 'circleci/node:latest'
+        steps:
+            - checkout
+            - sonarcloud/scan
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
+
 workflows:
     version: 2
+    sonar:
+        jobs:
+            - sonar:
+                context: SonarClouldFrontend
     # The build and deploy workflow
     build_and_deploy:
         jobs:
@@ -101,6 +111,6 @@ workflows:
                 filters:
                     branches:
                         only:
-                            - develop
+                            - development
                             - staging
                             - master
