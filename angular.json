@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-boiler-plate": {
+    "auditTool": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-boiler-plate",
+            "outputPath": "dist/auditTool",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -70,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-boiler-plate:build"
+            "browserTarget": "auditTool:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-boiler-plate:build:production"
+              "browserTarget": "auditTool:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-boiler-plate:build"
+            "browserTarget": "auditTool:build"
           }
         },
         "test": {
@@ -111,16 +111,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-boiler-plate:serve"
+            "devServerTarget": "auditTool:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-boiler-plate:serve:production"
+              "devServerTarget": "auditTool:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular-boiler-plate"
+  "defaultProject": "auditTool"
 }
