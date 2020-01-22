@@ -1,5 +1,4 @@
 version: 2
-
 jobs:
     # The build job
     build:
@@ -97,12 +96,13 @@ orbs:
     sonarcloud: sonarsource/sonarcloud@1.0.1
 
 workflows:
-    version: 2
+    version: 2.1
     main:
         jobs:
             - sonar:
                 context: SonarClouldFrontend
     # The build and deploy workflow
+    version: 2
     build_and_deploy:
         jobs:
             - build
