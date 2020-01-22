@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthGuardService } from '@shared/services/auth/auth-guard.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular-Boiler-Plate';
+
 }

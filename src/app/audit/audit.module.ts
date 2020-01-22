@@ -24,7 +24,7 @@ import { ViewQuestionsComponent } from './containers/view-questions/view-questio
 import { KnowledgeAreaSlideComponent } from './components/knowledge-area-slide/knowledge-area-slide.component';
 import { EvidenceBoxComponent } from './components/evidence-box/evidence-box.component';
 import { AvatarModule } from 'ngx-avatar';
-
+import { AuthService } from '@shared/services/auth/auth.service';
 /* for drop-downs */
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,7 +38,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PhaseTileComponent,
     ViewQuestionsComponent,
     KnowledgeAreaSlideComponent,
-    EvidenceBoxComponent,
+    EvidenceBoxComponent, 
   ],
   imports: [
     CommonModule,
@@ -55,7 +55,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    AvatarModule
+    AvatarModule,
   ],
+  providers:[AuthService]
 })
 export class AuditModule {}
