@@ -77,11 +77,11 @@ jobs:
                 name: Deploy to S3
                 command: |
                     if [ "${CIRCLE_BRANCH}" == "development" ]; then
-                        aws --region ap-south-1 s3 sync dist s3://audit-tool-frontend/ --delete
+                        aws --region ap-south-1 s3 sync dist/angular-boiler-plate s3://audit-tool-frontend/ --delete
                     elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                        aws --region ap-south-1 s3 sync dist s3://audit-tool-frontend-stage/ --delete
+                        aws --region ap-south-1 s3 sync dist/angular-boiler-plate s3://audit-tool-frontend-stage/ --delete
                     elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                        aws --region ap-south-1 s3 sync dist s3://audit-tool-frontend-prod/ --delete
+                        aws --region ap-south-1 s3 sync dist/angular-boiler-plate s3://audit-tool-frontend-prod/ --delete
                     fi
 
     sonar:
