@@ -32,7 +32,6 @@ import { AuthService } from '@shared/services/auth/auth.service';
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     AuthGuardService,
     AuthService
-    
   ],
   bootstrap: [AppComponent],
 })

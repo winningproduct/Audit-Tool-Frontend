@@ -6,24 +6,27 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
   constructor(public jwtHelper: JwtHelperService) {}
   token: any;
-  public  async isAuthenticated() {
+  public async isAuthenticated() {
     try {
-      const session = await Auth.currentSession()
+      const session = await Auth.currentSession();
       this.token = session.getAccessToken().getJwtToken();
-     if(this.jwtHelper.isTokenExpired(this.token)){
+      debugger;
+      if (!this.jwtHelper.isTokenExpired(this.token)) {
        return true;
-     }else{
+     } else {
        return false;
-     };
+     }
     } catch ( err ) {
+      console.log(err);
+      debugger
       return false;
     }
   }
 
 
-  public getCurrentUser(){
+  public getCurrentUser() {
     Auth.currentAuthenticatedUser({
-      bypassCache: false 
+      bypassCache: false
   }).then(user => console.log(user))
   .catch(err => console.log(err));
   }

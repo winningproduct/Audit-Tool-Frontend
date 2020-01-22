@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthGuardService } from '@shared/services/auth/auth-guard.service';
 
 @Component({
   selector: 'app-root',

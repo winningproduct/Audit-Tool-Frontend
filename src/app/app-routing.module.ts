@@ -1,35 +1,30 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { 
-  AuthGuardService as AuthGuard 
+import {
+  AuthGuardService as AuthGuard
 } from './shared/services/auth/auth-guard.service';
 import { AppComponent } from './app.component';
 const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
-    canActivate:[AuthGuard]
+    component: AppComponent
   },
   {
     path: 'audit',
     loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
-    canActivate:[AuthGuard]
   },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    canActivate:[AuthGuard]
   },
   {
     path: 'shared',
     loadChildren: () =>
-      import('./shared/shared.module').then(m => m.SharedModule),    
-      canActivate:[AuthGuard]
+      import('./shared/shared.module').then(m => m.SharedModule),
   },
   {
     path: '**',
     loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
-    canActivate:[AuthGuard]
   },
 ];
 

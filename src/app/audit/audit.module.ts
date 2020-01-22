@@ -38,7 +38,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PhaseTileComponent,
     ViewQuestionsComponent,
     KnowledgeAreaSlideComponent,
-    EvidenceBoxComponent, 
+    EvidenceBoxComponent,
   ],
   imports: [
     CommonModule,
@@ -57,6 +57,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AvatarModule,
   ],
-  providers:[AuthService]
+  providers: [AuthService]
 })
 export class AuditModule {}

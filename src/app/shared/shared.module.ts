@@ -13,7 +13,7 @@ import { AuthService } from './services/auth/auth.service';
     CommonModule,
     SharedRoutingModule,
   ],
-  providers:[
+  providers: [
     AuthService,
   ]
 })
