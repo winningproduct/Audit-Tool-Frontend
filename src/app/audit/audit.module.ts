@@ -56,7 +56,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    AvatarModule
+    AvatarModule,
 
   ],
   providers: [AuthService]
