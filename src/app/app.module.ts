@@ -9,6 +9,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth/token.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { JwtHelperService, JWT_OPTIONS  , JwtModule } from '@auth0/angular-jwt';
+import { AuthGuardService } from '@shared/services/auth/auth-guard.service';
+import { AuthService } from '@shared/services/auth/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +28,10 @@ import { environment } from '../environments/environment';
       useClass: AuthInterceptor,
       multi: true,
     },
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    AuthGuardService,
+    AuthService
   ],
   bootstrap: [AppComponent],
 })

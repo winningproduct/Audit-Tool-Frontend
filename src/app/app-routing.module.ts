@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import {
+  AuthGuardService as AuthGuard
+} from './shared/services/auth/auth-guard.service';
+import { AppComponent } from './app.component';
 const routes: Routes = [
+  {
+    path: '',
+    component: AppComponent
+  },
   {
     path: 'audit',
     loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
