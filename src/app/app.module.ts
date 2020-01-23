@@ -30,8 +30,7 @@ import { AuthService } from '@shared/services/auth/auth.service';
     },
     JwtHelperService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    AuthGuardService,
-    AuthService
+    AuthGuardService
   ],
   bootstrap: [AppComponent],
 })

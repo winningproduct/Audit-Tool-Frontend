@@ -2,30 +2,36 @@ import { Injectable } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
-  constructor(public jwtHelper: JwtHelperService) {}
+  constructor(public jwtHelper: JwtHelperService) {
+    this.setToken();
+  }
   token: any;
-  public async isAuthenticated() {
+  public isAuthenticated() {
     try {
-      const session = await Auth.currentSession();
-      this.token = session.getAccessToken().getJwtToken();
+      this.token = this.token;
       if (!this.jwtHelper.isTokenExpired(this.token)) {
-       return true;
-     } else {
-       return false;
-     }
-    } catch ( err ) {
-      console.log(err);
+        return true;
+      } else {
+        return false;
+      }
+    } catch (err) {
       return false;
     }
   }
 
+  public async getCurrentUser() {
+    return await Auth.currentAuthenticatedUser({
+      bypassCache: false,
+    });
+  }
 
-  public getCurrentUser() {
-    Auth.currentAuthenticatedUser({
-      bypassCache: false
-  }).then(user => console.log(user))
-  .catch(err => console.log(err));
+  async setToken() {
+    const userSession = await Auth.currentSession();
+    this.token = userSession.getIdToken().getJwtToken();
+    localStorage.setItem ('token', this.token);
   }
 }
