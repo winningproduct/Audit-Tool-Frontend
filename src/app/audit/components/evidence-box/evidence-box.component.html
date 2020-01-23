@@ -30,8 +30,14 @@
       <div>
         <div class="input-group" style="min-width:320px;">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">
-              <fa-icon [icon]="faSpinner" class="text-secondary fa-spin mr-2"></fa-icon>Status</label>
+            <label class="input-group-text" for="inputGroupSelect01"
+            ><fa-icon
+              *ngIf="isStatusUpdated"
+              [icon]="faSpinner"
+              class="text-secondary fa-spin mr-2"
+            ></fa-icon>
+            Status</label
+          >
           </div>
           <ng-select
             class="custom-select"
