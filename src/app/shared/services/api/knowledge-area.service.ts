@@ -13,6 +13,6 @@ export class KnowledgeAreaApiService {
     const result = await this.httpClient
       .get(knowledgeAreaRoute + '/' + id + '/knowledgeAreas')
       .toPromise();
-    return result as KnowledgeArea[];
+    return JSON.parse(result['body']) as KnowledgeArea[];
   }
 }

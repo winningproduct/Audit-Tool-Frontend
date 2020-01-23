@@ -12,11 +12,11 @@ export class ProductApiService {
 
     public async get(): Promise<Product[]> {
         const result = await this.httpClient.get(productRoute).toPromise();
-        return result as Product[];
+        return JSON.parse(result['body']) as Product[];
     }
 
     public async getById(id: number): Promise<Product[]> {
         const result = await this.httpClient.get(productRoute + '/' + id).toPromise();
-        return result as Product[];
+        return JSON.parse(result['body']) as Product[];
     }
 }

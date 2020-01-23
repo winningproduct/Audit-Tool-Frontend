@@ -1,7 +1,7 @@
 <div class="card border-0 shadow-sm">
   <a [routerLink]="['/audit/products/', product.id, 'phases']">
     <div class="card-header d-flex flex-row justify-content-between align-items-start bg-white border-0">
-      <p class="avatarLetters" data-letters="MN"></p>
+      <ngx-avatar bgColor=#8e44ad name="{{product.name}}"></ngx-avatar>
       <fa-icon [icon]="faEllipsisV" class="text-secondary"></fa-icon>
     </div>
     <div class="card-body pt-0">
@@ -23,9 +23,9 @@
                 alt="" />
         </div>
       </div>
-      <div class="progressBar pt-5 pb-1">
+      <!--div class="progressBar pt-5 pb-1">
         <progressbar style="height: 8px;" [value]="55" type="success"></progressbar>
-      </div>
+      </div-->
     </div>
   </a>
 </div>

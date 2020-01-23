@@ -91,7 +91,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
       console.log(error);
     } finally {
       setTimeout(() => {
-        this.isAddButtonClicked = true;
+        this.isAddButtonClicked = false;
       }, 1000);
     }
   }
