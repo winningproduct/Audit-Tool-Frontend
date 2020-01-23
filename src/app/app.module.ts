@@ -14,6 +14,7 @@ import { AuthGuardService } from '@shared/services/auth/auth-guard.service';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { AmplifyService, AmplifyAngularModule } from 'aws-amplify-angular';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -35,6 +36,7 @@ import { AmplifyService, AmplifyAngularModule } from 'aws-amplify-angular';
     AuthGuardService,
     AuthService,
     AmplifyService
+
   ],
   bootstrap: [AppComponent],
 })
