@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AmplifyService } from 'aws-amplify-angular';
-import Amplify, { Auth, Hub} from 'aws-amplify';
+import { AuthService } from '@shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,26 +8,18 @@ import Amplify, { Auth, Hub} from 'aws-amplify';
 })
 export class AppComponent {
   title = 'auditTool';
-
-  constructor(public amplify: AmplifyService) {
+  currentUser: any;
+  userName: string;
+  constructor(public authService: AuthService) {
   // Subscribe to IsSignIn and then update the user in NgRxStore
   // Also update the interceptor
+    this.getUser();
   }
 
-  OnInit() {
-    console.log(this.amplify.authStateChange$);
-
-    Hub.listen('auth', ({  payload: { event, data } }) => {
-      console.log(event);
-      switch (event) {
-        case 'signIn':
-          console.log('signIn');
-          break;
-        case 'signOut':
-          console.log('signOut');
-          break;
-      }
-    });
+  async getUser() {
+    this.currentUser = await this.authService.getCurrentUser();
+    this.userName = this.currentUser[0].firstName + ' ' + this.currentUser[0].lastName;
+    console.log(this.userName);
   }
 }
 

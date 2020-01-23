@@ -13,6 +13,7 @@ import { JwtHelperService, JWT_OPTIONS  , JwtModule } from '@auth0/angular-jwt';
 import { AuthGuardService } from '@shared/services/auth/auth-guard.service';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { AmplifyService, AmplifyAngularModule } from 'aws-amplify-angular';
+import { AvatarModule } from 'ngx-avatar';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { AmplifyService, AmplifyAngularModule } from 'aws-amplify-angular';
     NgxsModule.forRoot(),
     HttpClientModule,
     AmplifyAngularModule,
+    AvatarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [

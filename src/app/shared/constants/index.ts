@@ -7,3 +7,4 @@ export const questionRoute: string = environment.host + '/knowledgeAreas';
 export const evidenceRoute: string = environment.host + '/product';
 export const evidenceBaseRoute: string = environment.host + '/question';
 export const questionRoute2: string = environment.host + '/question';
+export const userRoute: string = environment.host + '/user';
