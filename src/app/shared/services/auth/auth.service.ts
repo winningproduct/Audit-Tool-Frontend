@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AmplifyService } from 'aws-amplify-angular';
+
+
 
 @Injectable()
 export class AuthService {
@@ -20,7 +23,6 @@ export class AuthService {
       return false;
     }
   }
-
 
   public getCurrentUser() {
     Auth.currentAuthenticatedUser({
