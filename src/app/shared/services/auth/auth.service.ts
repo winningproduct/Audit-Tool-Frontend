@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AmplifyService } from 'aws-amplify-angular';
-import { UserApiService } from '../api/user.api.service'
+import { UserApiService } from '../api/user.api.service';
 
 
 @Injectable()
@@ -15,7 +15,7 @@ export class AuthService {
       const session = await Auth.currentSession();
       this.token = session.getAccessToken().getJwtToken();
       if (!this.jwtHelper.isTokenExpired(this.token)) {
-       //this.getCurrentUser();
+       // this.getCurrentUser();
        return true;
      } else {
        return false;
