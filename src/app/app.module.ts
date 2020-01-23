@@ -9,6 +9,11 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth/token.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { JwtHelperService, JWT_OPTIONS  , JwtModule } from '@auth0/angular-jwt';
+import { AuthGuardService } from '@shared/services/auth/auth-guard.service';
+import { AuthService } from '@shared/services/auth/auth.service';
+import { AmplifyService, AmplifyAngularModule } from 'aws-amplify-angular';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +22,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     NgxsModule.forRoot(),
     HttpClientModule,
+    AmplifyAngularModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
@@ -25,6 +31,12 @@ import { environment } from '../environments/environment';
       useClass: AuthInterceptor,
       multi: true,
     },
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    AuthGuardService,
+    AuthService,
+    AmplifyService
+
   ],
   bootstrap: [AppComponent],
 })
