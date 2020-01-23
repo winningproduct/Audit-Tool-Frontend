@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Hub } from 'aws-amplify';
@@ -6,17 +6,16 @@ import { Hub } from 'aws-amplify';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
   logged: boolean;
-  constructor(private authService: AuthService,
-              private router: Router,
-              private ngZone: NgZone) {
-  }
-
-  ngOnInit() {
-    Hub.listen('auth', ({  payload: { event, data } }) => {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private ngZone: NgZone,
+  ) {
+    Hub.listen('auth', ({ payload: { event, data } }) => {
       switch (event) {
         case 'signIn':
           console.log('signIn');
@@ -36,5 +35,4 @@ export class AuthComponent implements OnInit {
       this.ngZone.run(() => this.router.navigate(['audit/products'])).then();
     }
   }
-
 }

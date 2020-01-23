@@ -5,17 +5,16 @@ import { AmplifyService } from 'aws-amplify-angular';
 
 
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AuthService {
   constructor(public jwtHelper: JwtHelperService) {
     this.setToken();
   }
   token: any;
-  public isAuthenticated() {
+  public async isAuthenticated() {
     try {
-      this.token = this.token;
+      const session = await Auth.currentSession();
+      this.token = session.getAccessToken().getJwtToken();
       if (!this.jwtHelper.isTokenExpired(this.token)) {
         return true;
       } else {
@@ -26,15 +25,15 @@ export class AuthService {
     }
   }
 
-  public async getCurrentUser() {
-    return await Auth.currentAuthenticatedUser({
+  public getCurrentUser() {
+    Auth.currentAuthenticatedUser({
       bypassCache: false,
     });
   }
 
   async setToken() {
     const userSession = await Auth.currentSession();
-    this.token = userSession.getIdToken().getJwtToken();
-    localStorage.setItem ('token', this.token);
+    const token = userSession.getIdToken().getJwtToken();
+    localStorage.setItem ('token', token);
   }
 }

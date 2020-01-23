@@ -14,19 +14,19 @@ export class EvidenceApiService {
     const result = await this.httpClient
       .get(evidenceRoute + '/' + id + '/questions/' + qid + '/evidence')
       .toPromise();
-    return result as Evidence[];
+    return JSON.parse(result['body']) as Evidence[];
   }
 
   async updateStatus(id: number, status: any, eid: number): Promise<boolean> {
     const url = evidenceBaseRoute + '/' + id + '/evidence/' + eid;
     const result = await this.httpClient.put(url, status).toPromise();
-    return result as boolean;
+    return JSON.parse(result['body']) as boolean;
   }
 
   async post(id: number, data: Evidence): Promise<boolean> {
     const result = await this.httpClient
       .post(questionRoute2 + '/' + id + '/evidence', data)
       .toPromise();
-    return result as boolean;
+    return JSON.parse(result['body']) as boolean;
   }
 }
