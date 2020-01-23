@@ -12,6 +12,7 @@ const routes: Routes = [
   {
     path: 'audit',
     loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
+    canActivate : [AuthGuard]
   },
   {
     path: 'auth',
@@ -21,10 +22,12 @@ const routes: Routes = [
     path: 'shared',
     loadChildren: () =>
       import('./shared/shared.module').then(m => m.SharedModule),
+      canActivate : [AuthGuard]
   },
   {
     path: '**',
     loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
+    canActivate : [AuthGuard]
   },
 ];
 
