@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Hub } from 'aws-amplify';
 
 @Component({
@@ -17,7 +16,7 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    Hub.listen('auth', ({  payload: { event, data } }) => { 
+    Hub.listen('auth', ({  payload: { event, data } }) => {
       switch (event) {
         case 'signIn':
           console.log('signIn');
@@ -30,7 +29,7 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  async isUserLogged(){
+  async isUserLogged() {
     this.logged = await this.authService.isAuthenticated();
     console.log(this.logged);
     if (this.logged) {

@@ -13,16 +13,22 @@ export class AppComponent {
   constructor(public amplify: AmplifyService) {
   // Subscribe to IsSignIn and then update the user in NgRxStore
   // Also update the interceptor
-  Hub.listen('auth', ({  payload: { event, data } }) => {
-    switch (event) {
-      case 'signIn':
-        console.log('signIn');
-        break;
-      case 'signOut':
-        console.log('signOut');
-        break;
-    }
-  });
+  }
 
-}}
+  OnInit() {
+    console.log(this.amplify.authStateChange$);
+
+    Hub.listen('auth', ({  payload: { event, data } }) => {
+      console.log(event);
+      switch (event) {
+        case 'signIn':
+          console.log('signIn');
+          break;
+        case 'signOut':
+          console.log('signOut');
+          break;
+      }
+    });
+  }
+}
 
