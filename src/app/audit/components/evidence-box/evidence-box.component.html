@@ -16,8 +16,7 @@
   </div>
   <div class="card-footer bg-white border-0">
     <div
-      class="footer-actions d-flex flex-column flex-md-row align-items-md-center justify-content-md-between"
-    >
+      class="footer-actions d-flex flex-column flex-md-row align-items-md-center justify-content-md-between">
       <div class="mb-md-0 mb-2">
         <button
           type="submit"
@@ -31,14 +30,8 @@
       <div>
         <div class="input-group" style="min-width:320px;">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01"
-              ><fa-icon
-                *ngIf="isStatusUpdated"
-                [icon]="faSpinner"
-                class="text-secondary fa-spin mr-2"
-              ></fa-icon>
-              Status</label
-            >
+            <label class="input-group-text" for="inputGroupSelect01">
+              <fa-icon [icon]="faSpinner" class="text-secondary fa-spin mr-2"></fa-icon>Status</label>
           </div>
           <ng-select
             class="custom-select"
