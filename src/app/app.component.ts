@@ -18,8 +18,11 @@ export class AppComponent {
 
   async getUser() {
     this.currentUser = await this.authService.getCurrentUser();
-    this.userName = this.currentUser[0].firstName + ' ' + this.currentUser[0].lastName;
-    console.log(this.userName);
+    if ( this.currentUser.length > 0 ) {
+      this.userName = this.currentUser[0].firstName + ' ' + this.currentUser[0].lastName;
+    } else {
+      this.userName = 'User';
+    }
   }
 
   OnInit() {
