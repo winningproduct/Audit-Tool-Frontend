@@ -8,14 +8,15 @@ import { Hub } from 'aws-amplify';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
   logged: boolean;
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private ngZone: NgZone,
-  ) {
-    Hub.listen('auth', ({ payload: { event, data } }) => {
+  constructor(private authService: AuthService,
+              private router: Router,
+              private ngZone: NgZone) {
+  }
+
+  ngOnInit() {
+    Hub.listen('auth', ({  payload: { event, data } }) => {
       switch (event) {
         case 'signIn':
           console.log('signIn');
