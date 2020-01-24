@@ -12,6 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
     request = request.clone({
       withCredentials : false,
       setHeaders: {
+          'Content-Type':  'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`
       }
   });
