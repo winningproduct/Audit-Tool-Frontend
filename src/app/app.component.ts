@@ -21,5 +21,8 @@ export class AppComponent {
     this.userName = this.currentUser[0].firstName + ' ' + this.currentUser[0].lastName;
     console.log(this.userName);
   }
+
+  OnInit() {
+  }
 }
 

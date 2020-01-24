@@ -13,6 +13,7 @@ export class QuestionApiService {
     const result = await this.httpClient
       .get(questionRoute + '/' + knowledgeAreaId + '/questions')
       .toPromise();
-    return result as Question[];
+    // tslint:disable-next-line: no-string-literal
+    return JSON.parse(result['body']) as Question[];
   }
 }

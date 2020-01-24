@@ -8,7 +8,9 @@ import { UserApiService } from '../api/user.api.service';
 @Injectable()
 export class AuthService {
   constructor(public jwtHelper: JwtHelperService,
-              public userApiService: UserApiService) {}
+              public userApiService: UserApiService) {
+    this.setToken();
+  }
   token: any;
   public async isAuthenticated() {
     try {
@@ -35,5 +37,11 @@ export class AuthService {
     } catch (err) {
       console.log(err);
     }
+  }
+  
+  async setToken() {
+    const userSession = await Auth.currentSession();
+    const token = userSession.getIdToken().getJwtToken();
+    localStorage.setItem ('token', token);
   }
 }
