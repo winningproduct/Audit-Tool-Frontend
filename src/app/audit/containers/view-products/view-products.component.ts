@@ -14,8 +14,7 @@ export class ViewProductsComponent implements OnInit {
 
   products: Product[];
 
-  constructor(private productApi: ProductApiService,
-              private authService: AuthService) { }
+  constructor(private productApi: ProductApiService) { }
 
   async ngOnInit() {
     this.products = await this.productApi.get();
