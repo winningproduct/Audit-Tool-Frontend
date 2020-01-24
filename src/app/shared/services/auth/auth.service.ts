@@ -38,7 +38,7 @@ export class AuthService {
       console.log(err);
     }
   }
-  
+
   async setToken() {
     const userSession = await Auth.currentSession();
     const token = userSession.getIdToken().getJwtToken();
