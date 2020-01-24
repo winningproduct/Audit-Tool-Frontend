@@ -18,9 +18,10 @@ export class EvidenceApiService {
   }
 
   async updateStatus(id: number, status: any, eid: number): Promise<boolean> {
+    const headers = new HttpHeaders().set('content-type', 'application/json');
     const state = {status};
     const url = evidenceBaseRoute + '/' + id + '/evidence/' + eid;
-    const result = await this.httpClient.put(url, state).toPromise();
+    const result = await this.httpClient.put(url, state , {headers}).toPromise();
     return JSON.parse(result['body']) as boolean;
   }
 
