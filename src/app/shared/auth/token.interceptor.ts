@@ -5,7 +5,6 @@ import {
   HttpEvent,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from '@shared/services/auth/auth.service';
 
 export class AuthInterceptor implements HttpInterceptor {
   sessionToken: string;
@@ -13,6 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
     request = request.clone({
       withCredentials : false,
       setHeaders: {
+          'Content-Type':  'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`
       }
   });
