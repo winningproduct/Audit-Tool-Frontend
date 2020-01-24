@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { AmplifyService } from 'aws-amplify-angular';
 import { UserApiService } from '../api/user.api.service';
 
 
@@ -9,7 +8,6 @@ import { UserApiService } from '../api/user.api.service';
 export class AuthService {
   constructor(public jwtHelper: JwtHelperService,
               public userApiService: UserApiService) {
-    this.setToken();
   }
   token: any;
   public async isAuthenticated() {
@@ -17,13 +15,11 @@ export class AuthService {
       const session = await Auth.currentSession();
       this.token = session.getAccessToken().getJwtToken();
       if (!this.jwtHelper.isTokenExpired(this.token)) {
-       // this.getCurrentUser();
        return true;
      } else {
        return false;
      }
     } catch ( err ) {
-      console.log(err);
       return false;
     }
   }
@@ -32,16 +28,8 @@ export class AuthService {
     try {
       const user = await Auth.currentAuthenticatedUser({bypassCache: false});
       const result = await this.userApiService.get(user.attributes.email);
-      console.log(result);
       return result;
     } catch (err) {
-      console.log(err);
     }
-  }
-
-  async setToken() {
-    const userSession = await Auth.currentSession();
-    const token = userSession.getIdToken().getJwtToken();
-    localStorage.setItem ('token', token);
   }
 }
