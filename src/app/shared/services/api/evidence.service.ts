@@ -1,7 +1,7 @@
 import { evidenceBaseRoute } from './../../constants';
 import { evidenceRoute, questionRoute2 } from './../../constants';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Evidence } from '@shared/models/evidence';
 
 @Injectable({
