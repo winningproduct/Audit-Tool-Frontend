@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  host: 'http://localhost:3000',
-   // host: 'https://53ph0bulw2.execute-api.ap-south-1.amazonaws.com/dev',
+  //host: 'http://localhost:3000', 
+   host: 'https://53ph0bulw2.execute-api.ap-south-1.amazonaws.com/dev',
   loginUrl: 'https://auth.winningproduct.com/'
   + 'login?response_type=code&client_id=6r1eenlevnui1fe4epbp5vjfrn&redirect_uri=http://localhost:4200/auth',
   redirectSignIn: 'http://localhost:4200/auth',
