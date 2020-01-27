@@ -34,7 +34,7 @@ export class AuthComponent {
     setTimeout(() => {
       if (this.logged) {
       this.ngZone.run(() => this.router.navigate(['audit/products'])).then();
-    }}, 5000);
+    }}, 0);
 
   }
 }
