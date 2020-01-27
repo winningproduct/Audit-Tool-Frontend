@@ -85,7 +85,9 @@ jobs:
             - run:
                 name: "Invalidate CloudFront Cache"
                 command: |
-                    aws cloudfront create-invalidation --distribution-id E1COGN6E52FC04 --paths /*
+                    if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                        aws cloudfront create-invalidation --distribution-id E1COGN6E52FC04 --paths /*
+                    fi
 
     #sonar clould validation
     sonar:
