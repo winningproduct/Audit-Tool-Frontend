@@ -19,12 +19,14 @@ export class AuthService {
       const session = await Auth.currentSession();
       const accessToken = session.getIdToken().getJwtToken();
       this.idToken = session.getIdToken().getJwtToken();
+      console.log('++++++++++' , this.idToken);
       if (!this.jwtHelper.isTokenExpired(accessToken)) {
         return true;
      } else {
        return false;
      }
     } catch ( err ) {
+      console.log(err);
       return false;
     }
   }
