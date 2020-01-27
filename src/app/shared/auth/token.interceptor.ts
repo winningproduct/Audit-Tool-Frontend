@@ -5,6 +5,7 @@ import {
   HttpEvent,
   HttpHeaders,
 } from '@angular/common/http';
+import { get } from 'lodash';
 import { Observable } from 'rxjs';
 import { AuthService } from '@shared/services/auth/auth.service';
 export class AuthInterceptor implements HttpInterceptor {
