@@ -16,7 +16,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <ngx-avatar size="40"  bgColor=#8e44ad name="{{userName}}"></ngx-avatar>
+            <ngx-avatar *ngIf="userName != null" size="40"  bgColor=#8e44ad name="{{userName}}"></ngx-avatar>
+            <ngx-avatar *ngIf="userName == null" size="40"  bgColor=#8e44ad name="{{userName}}"></ngx-avatar>
           </li>
         </ul>
     </nav>
