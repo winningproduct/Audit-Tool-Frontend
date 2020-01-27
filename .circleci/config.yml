@@ -82,6 +82,21 @@ jobs:
                     elif [ "${CIRCLE_BRANCH}" == "master" ]; then
                         aws --region ap-south-1 s3 sync dist/auditTool s3://winningproduct/ --delete --acl public-read
                     fi
+            # ACTIVATE CLOUD FRONT CLI
+            - run:
+                name: activate cloud front
+                command: |
+                    if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                        aws configure set preview.cloudfront true
+                        aws configure set preview.create-invalidation true
+                    fi
+            #Invalidate Cloudfront
+            - run:
+                name: "Invalidate CloudFront Cache"
+                command: |
+                    if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                        aws cloudfront create-invalidation --distribution-id E1COGN6E52FC04 --paths /*
+                    fi
 
     #sonar clould validation
     sonar:

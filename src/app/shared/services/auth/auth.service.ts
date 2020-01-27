@@ -17,13 +17,18 @@ export class AuthService {
   public async isAuthenticated() {
     try {
       const session = await Auth.currentSession();
+      setTimeout(() => {}, 5000);
+      console.log(session);
+      const accessToken = session.getIdToken().getJwtToken();
       this.idToken = session.getIdToken().getJwtToken();
-      if (!this.jwtHelper.isTokenExpired(this.idToken)) {
+      console.log('++++++++++' , this.idToken);
+      if (!this.jwtHelper.isTokenExpired(accessToken)) {
         return true;
      } else {
        return false;
      }
     } catch ( err ) {
+      console.log(err);
       return false;
     }
   }
