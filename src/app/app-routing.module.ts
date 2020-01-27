@@ -5,11 +5,6 @@ import {
 } from './shared/services/auth/auth-guard.service';
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
-    canActivate : [AuthGuard]
-  },
-  {
     path: 'audit',
     loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
     canActivate : [AuthGuard]

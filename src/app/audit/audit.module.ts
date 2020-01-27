@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /* ngx bootstrap modules import */
@@ -29,6 +29,7 @@ import { AuthService } from '@shared/services/auth/auth.service';
 /* for drop-downs */
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -57,8 +58,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     AvatarModule,
-
+    SharedModule
   ],
-  providers: [AuthService]
+  providers: [AuthService],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+
 })
 export class AuditModule {}

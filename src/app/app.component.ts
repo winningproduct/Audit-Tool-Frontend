@@ -8,21 +8,10 @@ import { AuthService } from '@shared/services/auth/auth.service';
 })
 export class AppComponent {
   title = 'auditTool';
-  currentUser: any;
-  userName: string;
-  constructor(public authService: AuthService) {
+
+  constructor() {
   // Subscribe to IsSignIn and then update the user in NgRxStore
   // Also update the interceptor
-    this.getUser();
-  }
-
-  async getUser() {
-    this.currentUser = await this.authService.getCurrentUser();
-    if ( this.currentUser ) {
-      this.userName = this.currentUser[0].firstName + ' ' + this.currentUser[0].lastName;
-    } else {
-      this.userName = 'User';
-    }
   }
 
   OnInit() {
