@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   AuthGuardService as AuthGuard
 } from './shared/services/auth/auth-guard.service';
-import { AppComponent } from './app.component';
 const routes: Routes = [
   {
     path: 'audit',
