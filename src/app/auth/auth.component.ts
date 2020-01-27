@@ -31,10 +31,10 @@ export class AuthComponent {
     this.logged = await this.authService.isAuthenticated();
     console.log(')))))))))))))))))' , this.logged);
 
-    setTimeout(() => { 
+    setTimeout(() => {
       if (this.logged) {
       this.ngZone.run(() => this.router.navigate(['audit/products'])).then();
     }}, 5000);
-   
+
   }
 }
