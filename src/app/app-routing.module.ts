@@ -23,11 +23,6 @@ const routes: Routes = [
     path: '**',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     canActivate : [AuthGuard]
-  },
-  {
-    path: '**',
-    loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
-    canActivate : [AuthGuard]
   }
 ];
 
