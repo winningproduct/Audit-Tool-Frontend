@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserApiService } from '../api/user.api.service';
 import { AmplifyService } from 'aws-amplify-angular';
 import { get } from 'lodash';
+import { log } from 'util';
 
 @Injectable()
 export class AuthService {
@@ -17,13 +18,20 @@ export class AuthService {
   public async isAuthenticated() {
     try {
       const session = await Auth.currentSession();
+      console.log(session);
+      const accessToken = session.getIdToken().getJwtToken();
+      console.log('accessToken', accessToken);
+
       this.idToken = session.getIdToken().getJwtToken();
-      if (!this.jwtHelper.isTokenExpired(this.idToken)) {
+      console.log('++++++++++' , this.idToken);
+      if (!this.jwtHelper.isTokenExpired(accessToken)) {
         return true;
      } else {
+       console.log('false');
        return false;
      }
     } catch ( err ) {
+      console.log(err);
       return false;
     }
   }
