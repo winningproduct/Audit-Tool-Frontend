@@ -29,12 +29,9 @@ export class AuthComponent {
 
   async isUserLogged() {
     this.logged = await this.authService.isAuthenticated();
-    console.log(')))))))))))))))))' , this.logged);
-
-    setTimeout(() => {
-      if (this.logged) {
+    console.log('"is logged"' , this.logged);
+    if (this.logged) {
       this.ngZone.run(() => this.router.navigate(['audit/products'])).then();
-    }}, 0);
-
+    }
   }
 }
