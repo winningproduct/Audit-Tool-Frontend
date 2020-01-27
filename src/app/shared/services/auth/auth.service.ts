@@ -17,8 +17,9 @@ export class AuthService {
   public async isAuthenticated() {
     try {
       const session = await Auth.currentSession();
+      const accessToken = session.getIdToken().getJwtToken();
       this.idToken = session.getIdToken().getJwtToken();
-      if (!this.jwtHelper.isTokenExpired(this.idToken)) {
+      if (!this.jwtHelper.isTokenExpired(accessToken)) {
         return true;
      } else {
        return false;
