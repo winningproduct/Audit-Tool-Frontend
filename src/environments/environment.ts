@@ -4,12 +4,18 @@
 
 export const environment = {
   production: false,
-  // host: 'http://localhost:3000',
+  // // host: 'http://localhost:3000',
+  // host: 'https://53ph0bulw2.execute-api.ap-south-1.amazonaws.com/dev',
+  // loginUrl: 'https://auth.winningproduct.com/'
+  // + 'login?response_type=code&client_id=6r1eenlevnui1fe4epbp5vjfrn&redirect_uri=http://localhost:4200/auth',
+  // redirectSignIn: 'http://localhost:4200/auth',
+  // redirectSignOut: 'http://localhost:4200/auth',
+
   host: 'https://53ph0bulw2.execute-api.ap-south-1.amazonaws.com/dev',
-  loginUrl: 'https://auth.winningproduct.com/'
-  + 'login?response_type=code&client_id=6r1eenlevnui1fe4epbp5vjfrn&redirect_uri=http://localhost:4200/auth',
-  redirectSignIn: 'http://localhost:4200/auth',
-  redirectSignOut: 'http://localhost:4200/auth',
+  loginUrl: 'https://auth.winningproduct.com/' +
+  'login?response_type=code&client_id=6r1eenlevnui1fe4epbp5vjfrn&redirect_uri=https://audit.winningproduct.com/auth',
+  redirectSignIn: 'https://audit.winningproduct.com/auth',
+  redirectSignOut: 'https://audit.winningproduct.com/auth'
 
 };
 
