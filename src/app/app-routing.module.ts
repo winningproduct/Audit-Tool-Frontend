@@ -3,8 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   AuthGuardService as AuthGuard
 } from './shared/services/auth/auth-guard.service';
-import { AppComponent } from './app.component';
 const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
+    canActivate : [AuthGuard]
+  },
   {
     path: 'audit',
     loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
@@ -22,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    loadChildren: () => import('./audit/audit.module').then(m => m.AuditModule),
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     canActivate : [AuthGuard]
   },
 ];
