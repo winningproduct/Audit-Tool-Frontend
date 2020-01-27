@@ -17,7 +17,7 @@ export class AuthService {
   public async isAuthenticated() {
     try {
       const session = await Auth.currentSession();
-      setTimeout(() => {}, 5000);
+
       console.log(session);
       const accessToken = session.getIdToken().getJwtToken();
       this.idToken = session.getIdToken().getJwtToken();
