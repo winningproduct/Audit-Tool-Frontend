@@ -49,4 +49,9 @@ export class AuthService {
     this.idToken = token;
     return this.idToken;
   }
+
+  public async logOut() {
+    const result = await Auth.signOut();
+    console.log(result);
+  }
 }
