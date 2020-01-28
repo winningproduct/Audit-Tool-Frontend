@@ -18,7 +18,6 @@ export class AuthComponent {
     Hub.listen('auth', ({ payload: { event, data } }) => {
       switch (event) {
         case 'signIn':
-          console.log('(((((((((((((((SIGNIN');
           this.isUserLogged();
           break;
         case 'signOut':
@@ -29,7 +28,6 @@ export class AuthComponent {
 
   async isUserLogged() {
     this.logged = await this.authService.isAuthenticated();
-    console.log('"is logged"' , this.logged);
     if (this.logged) {
       this.ngZone.run(() => this.router.navigate(['audit/products'])).then();
     }

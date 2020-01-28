@@ -18,17 +18,11 @@ export class AuthService {
   public async isAuthenticated() {
     try {
       const session = await Auth.currentSession();
-      setTimeout(() => {}, 5000);
-      console.log(session);
       const accessToken = session.getIdToken().getJwtToken();
-      console.log('accessToken', accessToken);
-
       this.idToken = session.getIdToken().getJwtToken();
-      console.log('++++++++++' , this.idToken);
       if (!this.jwtHelper.isTokenExpired(accessToken)) {
         return true;
      } else {
-       console.log('false');
        return false;
      }
     } catch ( err ) {
@@ -54,5 +48,10 @@ export class AuthService {
     }
     this.idToken = token;
     return this.idToken;
+  }
+
+  public async logOut() {
+    const result = await Auth.signOut();
+    console.log(result);
   }
 }
