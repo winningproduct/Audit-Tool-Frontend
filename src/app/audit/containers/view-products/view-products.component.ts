@@ -13,10 +13,15 @@ export class ViewProductsComponent implements OnInit {
   faEllipsisV = faEllipsisV;
 
   products: Product[];
+  userId: string;
 
-  constructor(private productApi: ProductApiService) { }
+  constructor(private productApi: ProductApiService , private auth: AuthService) { }
 
   async ngOnInit() {
-    this.products = await this.productApi.get();
+    const user = await this.auth.getCurrentUser();
+    if ( user ) {
+      this.userId = user.userId;
+    }
+    this.products = await this.productApi.get(this.userId);
   }
 }
