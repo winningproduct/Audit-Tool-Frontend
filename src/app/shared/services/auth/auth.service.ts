@@ -33,9 +33,9 @@ export class AuthService {
 
   public async getCurrentUser() {
     try {
-      const user = await Auth.currentAuthenticatedUser({bypassCache: false});
-      const result = await this.userApiService.get(user.attributes.email);
-      return result;
+      const session = await Auth.currentSession();
+      const idToken = session.getIdToken().decodePayload();
+      return idToken;
     } catch (err) {
     }
   }
