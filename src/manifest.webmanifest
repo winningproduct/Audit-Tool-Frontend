@@ -1,6 +1,6 @@
 {
-  "name": "auditTool",
-  "short_name": "auditTool",
+  "name": "WinningProduct-AuditTool",
+  "short_name": "WP | AuditTool",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
