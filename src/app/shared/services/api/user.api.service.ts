@@ -15,4 +15,12 @@ export class UserApiService {
       .toPromise();
     return result as User[];
   }
+
+  public async getusersByProduct(id: number) {
+    const result = await this.httpClient
+      .get(userRoute + '/product/' + id)
+      .toPromise();
+    return result['body'];
+  }
+
 }
