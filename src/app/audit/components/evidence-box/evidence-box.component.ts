@@ -38,9 +38,10 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   editor: any;
   evidence: Evidence[];
   productId: number;
-  isAddButtonClicked = false;
+  disableSaveButton = true;
   selectedStatus = null;
   isStatusUpdated = false;
+  submitEvidence = false;
 
   statusDropDowns = [
     { id: 1, value: 'Fully Complied' },
@@ -56,7 +57,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     this.route.params.subscribe(async params => {
-      this.productId = +params.productId;
+      this.productId = +params['product-id'];
     });
     await this.getEvidenceByQuestionId(this.productId, this.question.id);
   }
@@ -78,7 +79,8 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   }
 
   async postEvidenceByQuestionId(qid: number, status: number) {
-    this.isAddButtonClicked = true;
+    this.submitEvidence = true;
+    this.disableSaveButton = true;
     const evidence = new Evidence();
     evidence.productId = this.productId;
     evidence.userId = 1;
@@ -91,7 +93,8 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
       console.log(error);
     } finally {
       setTimeout(() => {
-        this.isAddButtonClicked = false;
+        this.disableSaveButton = false;
+        this.submitEvidence = false;
       }, 1000);
     }
   }
@@ -129,9 +132,8 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   }
 
   async updateStatus(status: any) {
-    this.isAddButtonClicked = true;
+    this.disableSaveButton = true;
     this.isStatusUpdated = true;
-    console.log(this.evidence);
     const id = this.evidence[0].id;
     try {
       await this.evidenceService.updateStatus(
@@ -142,8 +144,12 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     } catch (error) {
       console.log(error);
     } finally {
-      this.isAddButtonClicked = false;
+      this.disableSaveButton = false;
       this.isStatusUpdated = false;
     }
+  }
+
+  toggleButton() {
+    this.disableSaveButton = false;
   }
 }

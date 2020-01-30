@@ -1,8 +1,55 @@
+@import "../../../../assets/scss/theme";
+
 .custom-select {
   padding: 0;
 }
 
-
 ::ng-deep.ng-select .ng-select-container {
   border: none !important;
+}
+
+.input-group-text{
+  border-right: none;
+}
+
+.input-success{
+  .input-group-text{
+    background-color: $success;
+    color:$white;
+    border-color:$success;
+  }
+  .ng-select{
+    border-color:$success;
+  }
+  .fa-spin{
+    color:$white !important;
+  }
+}
+
+.input-warning{
+  .input-group-text{
+    background-color: $warning;
+    color:$white;
+    border-color:$warning;
+  }
+  .ng-select{
+    border-color:$warning;
+  }
+  .fa-spin{
+    color:$white !important;
+  }
+}
+
+.input-danger{
+  .input-group-text{
+    background-color: $danger;
+    color:$white;
+    border-color:$danger;
+  }
+  .ng-select{
+    border-color:$danger;
+  }
+  .fa-spin{
+    color:$white !important;
+  }
 }
