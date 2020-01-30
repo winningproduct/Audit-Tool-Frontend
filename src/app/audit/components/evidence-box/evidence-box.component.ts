@@ -46,9 +46,9 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
 
   statusColorValues = [
     { id: 0 , value: ''},
-    { id: 1, value: 'input-success'},
-    { id: 2, value: 'input-warning'},
-    { id: 3, value: 'input-danger'},
+    { id: 1, value: 'input-teal'},
+    { id: 2, value: 'input-blue'},
+    { id: 3, value: 'input-warning'},
     { id: 4, value: 'input-grey'},
   ];
 
