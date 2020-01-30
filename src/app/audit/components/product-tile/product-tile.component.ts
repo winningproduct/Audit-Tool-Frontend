@@ -27,7 +27,6 @@ export class ProductTileComponent implements OnInit {
 
   ngOnInit() {
     this.getusers();
-    console.log(this.colors)
   }
 
   async getusers() {
