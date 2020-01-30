@@ -12,14 +12,28 @@
   border-right: none;
 }
 
-.input-success{
+.input-teal{
   .input-group-text{
-    background-color: $success;
+    background-color: $teal;
     color:$white;
-    border-color:$success;
+    border-color:$teal;
   }
   .ng-select{
-    border-color:$success;
+    border-color:$teal;
+  }
+  .fa-spin{
+    color:$white !important;
+  }
+}
+
+.input-blue{
+  .input-group-text{
+    background-color: $blue;
+    color:$white;
+    border-color:$blue;
+  }
+  .ng-select{
+    border-color:$blue;
   }
   .fa-spin{
     color:$white !important;
@@ -34,20 +48,6 @@
   }
   .ng-select{
     border-color:$warning;
-  }
-  .fa-spin{
-    color:$white !important;
-  }
-}
-
-.input-danger{
-  .input-group-text{
-    background-color: $danger;
-    color:$white;
-    border-color:$danger;
-  }
-  .ng-select{
-    border-color:$danger;
   }
   .fa-spin{
     color:$white !important;

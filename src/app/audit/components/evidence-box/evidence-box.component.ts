@@ -42,6 +42,15 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   selectedStatus = null;
   isStatusUpdated = false;
   submitEvidence = false;
+  statusColor = '';
+
+  statusColorValues = [
+    { id: 0 , value: ''},
+    { id: 1, value: 'input-teal'},
+    { id: 2, value: 'input-blue'},
+    { id: 3, value: 'input-warning'},
+    { id: 4, value: 'input-grey'},
+  ];
 
   statusDropDowns = [
     { id: 1, value: 'Fully Complied' },
@@ -76,6 +85,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
         }) || { id: null, value: '' }
       ).id;
     this.editor.setContent(this.evidence[0] ? this.evidence[0].content : '');
+    this.statusColor = this.statusColorValues[this.selectedStatus ? this.selectedStatus : 4].value;
   }
 
   async postEvidenceByQuestionId(qid: number, status: number) {
@@ -135,7 +145,11 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     this.disableSaveButton = true;
     this.isStatusUpdated = true;
     const id = this.evidence[0].id;
+    this.statusColor = this.statusColorValues[status ? status.id : 4].value;
     try {
+      if ( !status ) {
+        return ;
+      }
       await this.evidenceService.updateStatus(
         this.question.id,
         status.value,

@@ -56,7 +56,7 @@ $colors: map-merge(
     "cyan":       $cyan,
     "white":      $white,
     "gray":       $gray-600,
-    "gray-dark":  $gray-800
+    "gray-dark":  $gray-800,
   ),
   $colors
 );
@@ -69,5 +69,7 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
+$blue:          $blue !default;
+$teal:          $teal !default;
 
 @import '../../../node_modules/bootstrap/scss/bootstrap';
