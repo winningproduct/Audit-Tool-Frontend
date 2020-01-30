@@ -14,13 +14,13 @@ const routes: Routes = [
     component: ViewProductsComponent,
   },
   {
-    path: 'products/:productId/phases',
+    path: 'products/:product-id/phases',
     component: ViewPhasesComponent,
     canActivate : [AuthGuard]
   },
   {
     path:
-      'products/:productId/phases/:productPhaseId/knowledgeAreas/:knowledgeAreaId/question',
+      'products/:product-id/phases/:product-phase-id/knowledge-areas/:knowledge-area-id/question',
     component: ViewQuestionsComponent,
     canActivate : [AuthGuard]
   },
