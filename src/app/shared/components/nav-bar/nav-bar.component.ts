@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
   async getUser() {
     this.currentUser = await this.authService.getCurrentUser();
     if ( this.currentUser ) {
-      this.userName = this.currentUser.firstName + ' ' + this.currentUser.lastName;
+      this.userName = this.currentUser.given_name + ' ' + this.currentUser.family_name;
     } else {
       this.userName = 'User';
     }

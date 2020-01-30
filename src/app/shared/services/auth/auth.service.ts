@@ -5,6 +5,7 @@ import { UserApiService } from '../api/user.api.service';
 import { AmplifyService } from 'aws-amplify-angular';
 import { get } from 'lodash';
 import { log } from 'util';
+import { environment } from '@environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -51,7 +52,7 @@ export class AuthService {
   }
 
   public async logOut() {
-    const result = await Auth.signOut();
-    console.log(result);
+    await Auth.signOut();
+    window.location.href = environment.loginUrl;
   }
 }
