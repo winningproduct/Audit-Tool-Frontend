@@ -9,11 +9,11 @@
       <p class="mt-3 text-dark">{{ product.description }}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta felis tellus.</p>
       <div class="facePile d-flex flex-row justify-content-center align-items-center py-3">
         <div *ngFor="let user of firstUsers , let i = index" class="facePile-more d-flex align-items-center justify-content-center" tooltip="{{user.firstName}}">      
-          <ngx-avatar size="35" bgColor="{{colors[i]}}" name="{{user.FirstName}} {{user.LastName}}" ></ngx-avatar>
+          <ngx-avatar size="35" bgColor="{{colors[i]}}" name="{{user.FirstName}} {{user.LastName}}" tooltip="{{user.FirstName}} {{user.LastName}}" ></ngx-avatar>
         </div>
       
         <div *ngIf="userCount" class="facePile-more d-flex align-items-center justify-content-center">
-          <ngx-avatar size="35" bgColor=#E3D0EB name="{{userCount}} +"></ngx-avatar>
+          <ngx-avatar size="35" bgColor=#E3D0EB name="+ {{userCount}}" tooltip="+{{userCount}} more"></ngx-avatar>
         </div>
       </div>
       <!--div class="progressBar pt-5 pb-1">
