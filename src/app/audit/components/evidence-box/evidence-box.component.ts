@@ -38,11 +38,13 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   editor: any;
   evidence: Evidence[];
   productId: number;
-  disableSaveButton = true;
+  hideSaveButton = true;
   selectedStatus = null;
   isStatusUpdated = false;
   submitEvidence = false;
   statusColor = '';
+
+  content: '';
 
   statusColorValues = [
     { id: 0 , value: ''},
@@ -90,7 +92,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
 
   async postEvidenceByQuestionId(qid: number, status: number) {
     this.submitEvidence = true;
-    this.disableSaveButton = true;
+    this.hideSaveButton = false;
     const evidence = new Evidence();
     evidence.productId = this.productId;
     evidence.userId = 1;
@@ -99,11 +101,12 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     evidence.status = this.statusDropDowns.find(i => i.id === status).value;
     try {
       await this.evidenceService.post(qid, evidence);
+      this.content = this.editor.getContent();
     } catch (error) {
       console.log(error);
     } finally {
       setTimeout(() => {
-        this.disableSaveButton = false;
+        this.hideSaveButton = true;
         this.submitEvidence = false;
       }, 1000);
     }
@@ -142,7 +145,6 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   }
 
   async updateStatus(status: any) {
-    this.disableSaveButton = true;
     this.isStatusUpdated = true;
     const id = this.evidence[0].id;
     this.statusColor = this.statusColorValues[status ? status.id : 4].value;
@@ -158,12 +160,17 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     } catch (error) {
       console.log(error);
     } finally {
-      this.disableSaveButton = false;
       this.isStatusUpdated = false;
     }
   }
 
   toggleButton() {
-    this.disableSaveButton = false;
+    this.content = this.editor.getContent();
+    this.hideSaveButton = false;
+  }
+
+  cancelButton() {
+    this.editor.setContent(this.content);
+    this.hideSaveButton = true;
   }
 }
