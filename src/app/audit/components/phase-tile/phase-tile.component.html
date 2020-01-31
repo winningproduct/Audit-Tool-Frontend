@@ -15,15 +15,7 @@
           type="button"
           class="btn btn-primary"
           style="white-space: nowrap;"
-          [routerLink]="[
-            '/audit/products/',
-            productId,
-            'phases',
-            phase.productPhaseId,
-            'knowledge-areas',
-            1,
-            'question'
-          ]"
+          (click)="navigate()"
         >
           Take the audit
         </button>
