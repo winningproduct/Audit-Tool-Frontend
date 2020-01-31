@@ -17,9 +17,9 @@ export class ProductTileComponent implements OnInit {
   userCount: number;
 
   colors = [
-    '#3498db' ,
-    '#1abc9c',
-    '#e73c82',
+    '#8E44AD' ,
+    '#AA73C2',
+    '#C7A2D6',
   ];
   constructor(private userApiService: UserApiService) {
 
