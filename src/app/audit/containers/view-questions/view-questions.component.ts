@@ -38,7 +38,6 @@ export class ViewQuestionsComponent implements OnInit {
       this.knowledgeAreaId = +params['knowledge-area-id'];
       await this.getProductDetails(this.productId);
       await this.getKnowledgeAreasByPhaseId(this.phaseId);
-      await this.getQuestionsByKnowledgeArea(this.knowledgeAreaId);
     });
   }
 
@@ -46,6 +45,11 @@ export class ViewQuestionsComponent implements OnInit {
     this.items = await this.knowledgeAreaApiService.get(id);
     if (this.items.length < 5) {
       this.lcarouselLength = this.items.length;
+    }
+    if (this.knowledgeAreaId === 1 ) {
+      await this.getQuestionsByKnowledgeArea(this.items[0].id);
+    } else {
+      await this.getQuestionsByKnowledgeArea(this.knowledgeAreaId);
     }
   }
 
