@@ -23,14 +23,14 @@ export class PhaseTileComponent implements OnInit {
     this.knowledgeA = await this.knowledgeAreaApiService.get(this.phase.phaseId);
   }
 
-  navigate(){
+  navigate() {
     this.router.navigateByUrl('/audit/products/'
     + this.productId
     + '/phases/'
     + this.phase.productPhaseId
     + '/knowledge-areas/'
     + this.knowledgeA[0].id
-    + '/question')
+    + '/question');
   }
 
 }
