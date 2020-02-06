@@ -11,6 +11,13 @@
         >
           {{ product[0].name }}
         </li>
+        <li
+          class="breadcrumb-item active"
+          aria-current="page"
+          *ngIf="product != null"
+        >
+          {{ phase[0].name }}
+        </li>
       </ol>
     </nav>
     <div *ngIf="items.length" class="col-12 py-3">
