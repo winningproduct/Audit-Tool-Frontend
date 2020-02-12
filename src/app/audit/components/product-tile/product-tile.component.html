@@ -9,7 +9,7 @@
       <p class="mt-3 text-dark text-justify">{{ product.description }}</p>
       <div class="facePile d-flex flex-row justify-content-center align-items-center py-3">
         <div *ngFor="let user of firstUsers , let i = index" class="facePile-more d-flex align-items-center justify-content-center" tooltip="{{user.firstName}}">      
-          <ngx-avatar size="35" bgColor="{{colors[i]}}" name="{{user.FirstName}} {{user.LastName}}" tooltip="{{user.FirstName}} {{user.LastName}}" ></ngx-avatar>
+          <ngx-avatar size="35" bgColor="{{colors[i]}}" name="{{user.firstName}} {{user.lastName}}" tooltip="{{user.firstName}} {{user.lastName}}" ></ngx-avatar>
         </div>
       
         <div *ngIf="userCount" class="facePile-more d-flex align-items-center justify-content-center">
