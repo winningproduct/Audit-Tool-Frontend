@@ -6,6 +6,7 @@ import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import MediumEditor from 'medium-editor';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '@shared/services/auth/auth.service';
 
 const BUTTONS = [
   'bold',
@@ -64,6 +65,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
     private evidenceService: EvidenceApiService,
+    private userService: AuthService,
   ) {}
 
   async ngOnInit() {
@@ -95,7 +97,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     this.hideSaveButton = false;
     const evidence = new Evidence();
     evidence.productId = this.productId;
-    evidence.userId = 1;
+    evidence.userId = await this.userService.getCurrentUserId();
     evidence.content = this.editor.getContent();
     evidence.version = '1';
     evidence.status = this.statusDropDowns.find(i => i.id === status).value;

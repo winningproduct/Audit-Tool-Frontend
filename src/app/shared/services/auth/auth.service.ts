@@ -41,6 +41,15 @@ export class AuthService {
     }
   }
 
+  public async getCurrentUserId() {
+    try {
+      const user = await this.getCurrentUser();
+      console.log(user);
+      return user['userId'];
+    } catch (err) {
+    }
+  }
+
   getToken() {
     const session = this.auth.auth();
     const token = get(session, 'user.signInUserSession.idToken.jwtToken');
