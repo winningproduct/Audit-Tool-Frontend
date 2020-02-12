@@ -100,7 +100,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     evidence.userId = await this.userService.getCurrentUserId();
     evidence.content = this.editor.getContent();
     evidence.version = '1';
-    evidence.status = this.statusDropDowns.find(i => i.id === status).value;
+    evidence.status = (this.statusDropDowns.find(i => i.id === status) || { id: null , value: ''} ).value;
     try {
       await this.evidenceService.post(qid, evidence);
       this.content = this.editor.getContent();

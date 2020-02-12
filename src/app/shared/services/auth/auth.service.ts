@@ -44,7 +44,6 @@ export class AuthService {
   public async getCurrentUserId() {
     try {
       const user = await this.getCurrentUser();
-      console.log(user);
       return user['userId'];
     } catch (err) {
     }
