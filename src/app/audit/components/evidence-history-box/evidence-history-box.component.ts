@@ -19,7 +19,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
     private authService: AuthService,
     private evidenceService: EvidenceApiService
   ) { }
-  
+
   ngOnInit() {
     console.log(this.productId);
   }
