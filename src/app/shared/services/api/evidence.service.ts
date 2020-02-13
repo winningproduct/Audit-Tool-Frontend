@@ -30,4 +30,11 @@ export class EvidenceApiService {
       .toPromise();
     return JSON.parse(result['body']) as boolean;
   }
+
+  public async getEvidenceVersions(productId: number, questionId: number): Promise<Evidence[]> {
+    const result = await this.httpClient
+      .get(evidenceRoute + '/' + productId + '/question/' + questionId )
+      .toPromise();
+    return JSON.parse(result['body']);
+  }
 }

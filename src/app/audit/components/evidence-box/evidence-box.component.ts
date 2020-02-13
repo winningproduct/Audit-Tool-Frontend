@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Question } from '@shared/models/question';
 import { Evidence } from '@shared/models/evidence';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import MediumEditor from 'medium-editor';
@@ -66,6 +66,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private evidenceService: EvidenceApiService,
     private userService: AuthService,
+    private router: Router
   ) {}
 
   async ngOnInit() {
@@ -175,4 +176,13 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     this.editor.setContent(this.content);
     this.hideSaveButton = true;
   }
+
+  navigate() {
+    this.router.navigateByUrl('/audit/products/'
+    + this.productId
+    + '/phases/knowledge-areas/question/'
+    + this.question.id
+    + '/evidence/versions');
+  }
+
 }

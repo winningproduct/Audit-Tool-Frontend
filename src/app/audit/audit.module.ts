@@ -31,6 +31,8 @@ import { AuthService } from '@shared/services/auth/auth.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
+import { ViewEvidenceHistoryComponent } from './containers/view-evidence-history/view-evidence-history.component';
+import { EvidenceHistoryBoxComponent } from './components/evidence-history-box/evidence-history-box.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { SharedModule } from '@shared/shared.module';
     ViewQuestionsComponent,
     KnowledgeAreaSlideComponent,
     EvidenceBoxComponent,
+    ViewEvidenceHistoryComponent,
+    EvidenceHistoryBoxComponent,
   ],
   imports: [
     CommonModule,
