@@ -37,4 +37,18 @@ export class EvidenceApiService {
       .toPromise();
     return JSON.parse(result['body']);
   }
+
+  public async getEvidenceVersionsByDate(productId: number, questionId: number, date: string): Promise<Evidence[]> {
+    const result = await this.httpClient
+      .get(evidenceRoute + '/' + productId + '/question/' + questionId + '/evidence/date/' + date )
+      .toPromise();
+    return JSON.parse(result['body']);
+  }
+
+  async getEvidenceById(evidenceId: number): Promise<Evidence[]> {
+    const result = await this.httpClient
+      .get('evidence/' + evidenceId)
+      .toPromise();
+    return JSON.parse(result['body']);
+  }
 }
