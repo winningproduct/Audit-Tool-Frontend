@@ -31,6 +31,14 @@ import { AuthService } from '@shared/services/auth/auth.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
+import { ViewEvidenceHistoryComponent } from './containers/view-evidence-history/view-evidence-history.component';
+import { EvidenceHistoryBoxComponent } from './components/evidence-history-box/evidence-history-box.component';
+
+
+import { MomentModule } from 'ngx-moment';
+import { VersionsDateTileComponent } from './components/versions-date-tile/versions-date-tile.component';
+import { VersionsDateGroupTileComponent } from './components/versions-date-group-tile/versions-date-group-tile.component';
+import { VersionsTabComponent } from './components/versions-tab/versions-tab.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +50,11 @@ import { SharedModule } from '@shared/shared.module';
     ViewQuestionsComponent,
     KnowledgeAreaSlideComponent,
     EvidenceBoxComponent,
+    ViewEvidenceHistoryComponent,
+    EvidenceHistoryBoxComponent,
+    VersionsDateTileComponent,
+    VersionsDateGroupTileComponent,
+    VersionsTabComponent,
   ],
   imports: [
     CommonModule,
@@ -61,6 +74,7 @@ import { SharedModule } from '@shared/shared.module';
     AvatarModule,
     SharedModule,
     TooltipModule.forRoot(),
+    MomentModule
   ],
   providers: [AuthService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

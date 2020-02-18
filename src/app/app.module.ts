@@ -15,6 +15,7 @@ import { AuthGuardService } from '@shared/services/auth/auth-guard.service';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { AmplifyService, AmplifyAngularModule } from 'aws-amplify-angular';
 import { AvatarModule } from 'ngx-avatar';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,8 @@ import { AvatarModule } from 'ngx-avatar';
     AmplifyAngularModule,
     AvatarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MomentModule
   ],
   providers: [
     {
