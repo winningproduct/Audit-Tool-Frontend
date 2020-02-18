@@ -3,6 +3,7 @@ import { AuthService } from '@shared/services/auth/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { Evidence } from '@shared/models/evidence';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-evidence-history-box',
@@ -12,8 +13,10 @@ import { EvidenceApiService } from '@shared/services/api/evidence.service';
 export class EvidenceHistoryBoxComponent implements OnInit {
   @Input() evidence: any;
   sub: any;
+  names: any[];
   @Input() productId: number;
   @Input() questionId: number;
+  pipe = new DatePipe('en-US');
 
   constructor(
     private authService: AuthService,
@@ -21,8 +24,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.productId);
-  }
+    }
 
   async save() {
     const evidence = new Evidence();
@@ -32,11 +34,15 @@ export class EvidenceHistoryBoxComponent implements OnInit {
     evidence.version = this.evidence.version;
     evidence.status = this.evidence.status;
     try {
-      console.log(evidence);
       this.evidenceService.post(this.questionId, evidence);
     } catch (error) {
-      console.log(error);
     }
+  }
+
+  getEvidenceByDate(date: string) {
+    const format = 'yyyy-MM-dd';
+    const myFormattedDate = this.pipe.transform(this.evidence.createdDate, format, 'short');
+    console.log(myFormattedDate);
   }
 
 }
