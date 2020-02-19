@@ -9,7 +9,7 @@ export const environment = {
   redirectSignIn: 'http://localhost:4200/auth',
   redirectSignOut: 'http://localhost:4200/auth',
   host: window.location.origin + '/dev',
-  //host: 'https://53ph0bulw2.execute-api.ap-south-1.amazonaws.com/dev',
+  // host: 'https://53ph0bulw2.execute-api.ap-south-1.amazonaws.com/dev',
 };
 
 /*
