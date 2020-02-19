@@ -4,7 +4,7 @@
     <fa-icon [icon]="faCaretDown"></fa-icon>
 </a>
 <div id="collapseBasic" [collapse]="isCollapsed">
-    <app-versions-date-tile *ngFor = " let innerDate of innerDates" [innerDate] = "innerDate" [productId]="productId" [questionId]="questionId"></app-versions-date-tile>
+    <app-versions-date-tile *ngFor="let innerDate of innerDates" [innerDate] = "innerDate" [productId]="productId" [questionId]="questionId"></app-versions-date-tile>
 </div>
 
 
