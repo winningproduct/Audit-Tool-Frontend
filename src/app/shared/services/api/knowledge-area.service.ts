@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { KnowledgeArea } from '../../models/knowledge-area';
-import { knowledgeAreaRoute } from '../../constants';
+import { productPhaseRoute } from '../../constants';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class KnowledgeAreaApiService {
 
   public async get(id: number): Promise<KnowledgeArea[]> {
     const result = await this.httpClient
-      .get(knowledgeAreaRoute + '/' + id + '/knowledgeAreas')
+      .get(productPhaseRoute + '/' + id + '/knowledgeAreas')
       .toPromise();
     return JSON.parse(result['body']) as KnowledgeArea[];
   }

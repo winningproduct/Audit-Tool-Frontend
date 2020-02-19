@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-versions-date-group-tile',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VersionsDateGroupTileComponent implements OnInit {
 
+  @Input() date: any;
+  @Input() productId: number;
+  @Input() questionId: number;
+
+  innerDates = [];
   constructor() { }
 
   ngOnInit() {
+    this.innerDates = this.date.value;
   }
 
 }
