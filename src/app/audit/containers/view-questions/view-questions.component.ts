@@ -9,6 +9,7 @@ import { QuestionApiService } from '@shared/services/api/question.api.service';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { PhaseApiService } from '@shared/services/api/phase.api.service';
 import { Phase } from '@shared/models/phase';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-view-questions',
@@ -27,7 +28,8 @@ export class ViewQuestionsComponent implements OnInit {
     private knowledgeAreaApiService: KnowledgeAreaApiService,
     private productApiService: ProductApiService,
     private questionApiService: QuestionApiService,
-    private phaseApiService: PhaseApiService
+    private phaseApiService: PhaseApiService,
+    private spinner: NgxSpinnerService,
   ) {}
 
   items: KnowledgeArea[] = [];
@@ -36,6 +38,7 @@ export class ViewQuestionsComponent implements OnInit {
   faSpinner = faSpinner;
 
   async ngOnInit() {
+    this.spinner.show();
     this.sub = this.route.params.subscribe(async params => {
       this.productId = +params['product-id'];
       this.phaseId = +params['product-phase-id'];

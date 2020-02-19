@@ -19,15 +19,11 @@ export class ViewProductsComponent implements OnInit {
   constructor(private productApi: ProductApiService , private auth: AuthService , private spinner: NgxSpinnerService) { }
 
   async ngOnInit() {
-    // this.spinner.show();
-    console.log(1);
+    this.spinner.show();
     const user = await this.auth.getCurrentUser();
     if ( user ) {
       this.userId = user.userId;
     }
     this.products = await this.productApi.get(this.userId);
-    console.log(2);
-
-    // this.spinner.hide();
   }
 }

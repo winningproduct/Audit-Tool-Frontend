@@ -7,6 +7,7 @@ import { ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import MediumEditor from 'medium-editor';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '@shared/services/auth/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 const BUTTONS = [
   'bold',
@@ -66,14 +67,18 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private evidenceService: EvidenceApiService,
     private userService: AuthService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {}
 
   async ngOnInit() {
+    this.spinner.show();
     this.route.params.subscribe(async params => {
       this.productId = +params['product-id'];
     });
     await this.getEvidenceByQuestionId(this.productId, this.question.id);
+    console.log(2);
+    this.spinner.hide();
   }
 
   async getEvidenceByQuestionId(id: number, qid: number) {
