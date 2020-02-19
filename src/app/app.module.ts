@@ -16,6 +16,7 @@ import { AuthService } from '@shared/services/auth/auth.service';
 import { AmplifyService, AmplifyAngularModule } from 'aws-amplify-angular';
 import { AvatarModule } from 'ngx-avatar';
 import { MomentModule } from 'ngx-moment';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,8 @@ import { MomentModule } from 'ngx-moment';
     AvatarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
-    MomentModule
+    MomentModule,
+    NgxSpinnerModule,
   ],
   providers: [
     {

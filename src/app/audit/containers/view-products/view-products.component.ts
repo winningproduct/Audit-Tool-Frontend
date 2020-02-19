@@ -3,6 +3,7 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { ProductApiService } from '@shared/services/api/product.api.service';
 import { Product } from '@shared/models/product';
 import { AuthService } from '@shared/services/auth/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-view-products',
@@ -15,13 +16,18 @@ export class ViewProductsComponent implements OnInit {
   products: Product[];
   userId: string;
 
-  constructor(private productApi: ProductApiService , private auth: AuthService) { }
+  constructor(private productApi: ProductApiService , private auth: AuthService , private spinner: NgxSpinnerService) { }
 
   async ngOnInit() {
+    // this.spinner.show();
+    console.log(1);
     const user = await this.auth.getCurrentUser();
     if ( user ) {
       this.userId = user.userId;
     }
     this.products = await this.productApi.get(this.userId);
+    console.log(2);
+
+    // this.spinner.hide();
   }
 }
