@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
+import { faRedo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-versions-date-tile',
@@ -8,6 +9,7 @@ import { EvidenceApiService } from '@shared/services/api/evidence.service';
   styleUrls: ['./versions-date-tile.component.scss']
 })
 export class VersionsDateTileComponent implements OnInit {
+  faRedo = faRedo;
 
   @Input() innerDate: any;
   @Input() productId: number;

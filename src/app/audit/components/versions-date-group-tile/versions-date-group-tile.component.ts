@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-versions-date-group-tile',
@@ -6,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./versions-date-group-tile.component.scss']
 })
 export class VersionsDateGroupTileComponent implements OnInit {
+  faCaretDown = faCaretDown;
+  isCollapsed = true;
 
   @Input() date: any;
   @Input() productId: number;
