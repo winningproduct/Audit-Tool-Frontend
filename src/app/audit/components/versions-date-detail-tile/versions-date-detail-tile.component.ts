@@ -9,7 +9,7 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./versions-date-detail-tile.component.scss']
 })
 export class VersionsDateDetailTileComponent implements OnInit {
-  
+
   faRedo = faRedo;
   faCaretDown = faCaretDown;
 

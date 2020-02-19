@@ -29,7 +29,7 @@ export class VersionsDateTileComponent implements OnInit {
 
   async getEvidenceByDate(date: string) {
 
-    if(this.isCollapsed){
+    if (this.isCollapsed) {
     const format = 'yyyy-MM-dd';
     const myFormattedDate = this.pipe.transform(date, format, 'short');
     this.versionDetails = await this.evidenceService.getEvidenceVersionsByDate(this.productId, this.questionId, myFormattedDate);

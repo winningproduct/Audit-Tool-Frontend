@@ -52,7 +52,7 @@ export class VersionsTabComponent implements OnInit {
     });
     return true;
   }
-  
+
 }
 
 // async ngOnInit() {
