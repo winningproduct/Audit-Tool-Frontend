@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewEvidenceHistoryComponent implements OnInit {
 
+  isCollapsed = false;
+
   constructor(
     private evidenceApiService: EvidenceApiService,
     private route: ActivatedRoute,

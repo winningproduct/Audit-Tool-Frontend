@@ -22,3 +22,49 @@
         </tabset>
     </div>
 </div>
+
+
+<div class="row mt-4">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+        <button type="button" class="btn btn-primary">Restore This Version</button>
+        <div>
+            <p>add content here</p>
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 border border-bottom-0 border-light px-0">
+        <div class="date-block">
+            <div class="px-3 py-2 bg-light">
+                <p class="mb-0"><b>December 2019</b></p>
+            </div>
+            <a (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" class="px-3 py-3 d-flex flex-column border-top border-bottom border-light">
+                <p class="mb-0">December 11, 2019</p>
+                <p class="mb-0">Current version</p>
+                <p class="mb-0">User name</p>
+            </a>
+            <a id="collapseBasic" [collapse]="isCollapsed" class="border-bottom border-light">
+                <div class="px-5 py-3">
+                    <p class="mb-0">December 11, 2019</p>
+                    <p class="mb-0">Current version</p>
+                    <p class="mb-0">User name</p>
+                </div>
+            </a>
+        </div>
+        <div class="date-block">
+            <div class="px-3 py-2 bg-light">
+                <p class="mb-0"><b>December 2019</b></p>
+            </div>
+            <a (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" class="px-3 py-3 d-flex flex-column border-top border-bottom border-light">
+                <p class="mb-0">December 11, 2019</p>
+                <p class="mb-0">Current version</p>
+                <p class="mb-0">User name</p>
+            </a>
+            <a id="collapseBasic" [collapse]="isCollapsed" class="border-bottom border-light">
+                <div class="px-5 py-3">
+                    <p class="mb-0">December 11, 2019</p>
+                    <p class="mb-0">Current version</p>
+                    <p class="mb-0">User name</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 /* fontawesome module import */
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -65,6 +66,7 @@ import { VersionsTabComponent } from './components/versions-tab/versions-tab.com
     ButtonsModule.forRoot(),
     CarouselModule.forRoot(),
     AlertModule.forRoot(),
+    CollapseModule.forRoot(),
     FontAwesomeModule,
     HttpClientModule,
     AngularEditorModule,

@@ -16,6 +16,8 @@ import { AuthService } from '@shared/services/auth/auth.service';
 import { AmplifyService, AmplifyAngularModule } from 'aws-amplify-angular';
 import { AvatarModule } from 'ngx-avatar';
 import { MomentModule } from 'ngx-moment';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +30,9 @@ import { MomentModule } from 'ngx-moment';
     AvatarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
-    MomentModule
+    MomentModule,
+    AccordionModule.forRoot(),
+    CollapseModule.forRoot()
   ],
   providers: [
     {
