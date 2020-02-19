@@ -10,7 +10,9 @@ import { AuthService } from '@shared/services/auth/auth.service';
   styleUrls: ['./view-products.component.scss']
 })
 export class ViewProductsComponent implements OnInit {
+
   faEllipsisV = faEllipsisV;
+  isCollapsed = false;
 
   products: Product[];
   userId: string;

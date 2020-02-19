@@ -1,6 +1,19 @@
-<p>>> {{ innerDate | date:'dd MMM y' }}</p>
+<!-- <p>>> {{ innerDate | date:'dd MMM y' }}</p>
 <div *ngFor = "let editDetail of editDetails">
     <p>>>>> Date : {{ editDetail.createdDate | date:'dd MMM y - hh:mm:ss a' }}</p>
     <p>>>>> User : {{editDetail.firstName}} {{editDetail.lastName}}</p>
     <button (click)="revert(editDetail.id)">Revert</button>
+</div> -->
+
+
+<div  *ngFor = "let editDetail of editDetails">
+    <div class="px-3 py-3 border-bottom border-light d-flex flex-row justify-content-between">
+        <div>
+            <p class="mb-0">{{ editDetail.createdDate | date:'dd MMM y - hh:mm:ss a' }}</p>
+            <p class="mb-0">{{editDetail.firstName}} {{editDetail.lastName}}</p>
+        </div>
+        <div>
+            <a (click)="revert(editDetail.id)"><fa-icon [icon]="faRedo" class="text-primary"></fa-icon></a>
+        </div>
+    </div>
 </div>
