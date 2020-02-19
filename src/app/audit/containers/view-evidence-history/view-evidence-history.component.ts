@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EvidenceApiService } from '@shared/services/api/evidence.service';
-import { Evidence } from '@shared/models/evidence';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,11 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewEvidenceHistoryComponent implements OnInit {
 
   constructor(
-    private evidenceApiService: EvidenceApiService,
+    // private evidenceApiService: EvidenceApiService,
     private route: ActivatedRoute,
     ) { }
 
-  evidences: any[];
+  // evidences: any[];
   sub: any;
   productId: number;
   questionId: number;
@@ -25,7 +23,7 @@ export class ViewEvidenceHistoryComponent implements OnInit {
       this.productId = +params['product-id'];
       this.questionId = +params['question-id'];
     });
-    this.evidences = await this.evidenceApiService.getEvidenceVersions(this.productId, this.questionId);
+    // this.evidences = await this.evidenceApiService.getEvidenceVersions(this.productId, this.questionId);
   }
 
 }

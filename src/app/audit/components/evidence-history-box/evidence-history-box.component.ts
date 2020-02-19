@@ -11,38 +11,42 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./evidence-history-box.component.scss']
 })
 export class EvidenceHistoryBoxComponent implements OnInit {
-  @Input() evidence: any;
-  sub: any;
-  names: any[];
   @Input() productId: number;
   @Input() questionId: number;
+  evidenceId: number;
+  evidence: Evidence[] = null;
   pipe = new DatePipe('en-US');
 
   constructor(
     private authService: AuthService,
     private evidenceService: EvidenceApiService
-  ) { }
-
-  ngOnInit() {
-    }
-
-  async save() {
-    const evidence = new Evidence();
-    evidence.productId = this.productId;
-    evidence.userId = await this.authService.getCurrentUserId();
-    evidence.content = this.evidence.content;
-    evidence.version = this.evidence.version;
-    evidence.status = this.evidence.status;
-    try {
-      this.evidenceService.post(this.questionId, evidence);
-    } catch (error) {
-    }
+  ) {
+    this.evidenceService.evidenceId.subscribe(id => {
+      this.evidenceId = id;
+      if(this.evidenceId){
+        this.getEvidence(this.evidenceId);
+      }
+    });
   }
 
-  getEvidenceByDate(date: string) {
-    const format = 'yyyy-MM-dd';
-    const myFormattedDate = this.pipe.transform(this.evidence.createdDate, format, 'short');
-    console.log(myFormattedDate);
+  ngOnInit() {
+  }
+
+  // async save() {
+  //   const evidence = new Evidence();
+  //   evidence.productId = this.productId;
+  //   evidence.userId = await this.authService.getCurrentUserId();
+  //   evidence.content = this.evidence.content;
+  //   evidence.version = this.evidence.version;
+  //   evidence.status = this.evidence.status;
+  //   try {
+  //     this.evidenceService.post(this.questionId, evidence);
+  //   } catch (error) {
+  //   }
+  // }
+
+  async getEvidence(id: number){
+    this.evidence = await this.evidenceService.getEvidenceById(id);
   }
 
 }
