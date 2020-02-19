@@ -40,6 +40,7 @@ import { MomentModule } from 'ngx-moment';
 import { VersionsDateTileComponent } from './components/versions-date-tile/versions-date-tile.component';
 import { VersionsDateGroupTileComponent } from './components/versions-date-group-tile/versions-date-group-tile.component';
 import { VersionsTabComponent } from './components/versions-tab/versions-tab.component';
+import { VersionsDateDetailTileComponent } from './components/versions-date-detail-tile/versions-date-detail-tile.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { VersionsTabComponent } from './components/versions-tab/versions-tab.com
     VersionsDateTileComponent,
     VersionsDateGroupTileComponent,
     VersionsTabComponent,
+    VersionsDateDetailTileComponent,
   ],
   imports: [
     CommonModule,

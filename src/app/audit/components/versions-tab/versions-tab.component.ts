@@ -19,7 +19,6 @@ export class VersionsTabComponent implements OnInit {
   dates = [];
 
   async ngOnInit() {
-
     this.versionDates = await this.evidenceApiService.getEvidenceVersions(this.productId, this.questionId);
     this.versionDates.map(date => {
       const newDate = moment(date.createdDate)
@@ -35,24 +34,25 @@ export class VersionsTabComponent implements OnInit {
             return '[' + x + ']';
           },
         });
-
-      const obj = this.dates.map((dateObj, index) => {
-        if (dateObj.name === newDate) {
-          return index;
+      let obj = null;
+      for (let i = 0; i < this.dates.length; i++) {
+        if (this.dates[i].name === newDate) {
+          obj = i;
+          break;
         }
-      });
-
-      if (obj.length === 0 || obj[0] === undefined) {
+      }
+      if (obj === null) {
         this.dates.push({
           name: newDate,
           value: [date.createdDate],
         });
       } else {
-        this.dates[obj[0]].value.push(date.createdDate);
+        this.dates[obj].value.push(date.createdDate);
       }
     });
     return true;
   }
+  
 }
 
 // async ngOnInit() {

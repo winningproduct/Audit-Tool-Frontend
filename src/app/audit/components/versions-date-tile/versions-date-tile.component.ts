@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-versions-date-tile',
@@ -10,29 +11,30 @@ import { faRedo } from '@fortawesome/free-solid-svg-icons';
 })
 export class VersionsDateTileComponent implements OnInit {
   faRedo = faRedo;
+  faCaretDown = faCaretDown;
 
   @Input() innerDate: any;
   @Input() productId: number;
   @Input() questionId: number;
   evidenceId: number;
-  editDetails: any;
+  versionDetails: any;
+  isCollapsed = true;
   pipe = new DatePipe('en-US');
 
   constructor(
     private evidenceService: EvidenceApiService
   ) { }
 
-  ngOnInit() {
-    this.getEvidenceByDate(this.productId, this.questionId, this.innerDate);
-  }
+  ngOnInit() {}
 
-  async getEvidenceByDate(productId: number, questionId: number, date: string) {
+  async getEvidenceByDate(date: string) {
+
+    if(this.isCollapsed){
     const format = 'yyyy-MM-dd';
     const myFormattedDate = this.pipe.transform(date, format, 'short');
-    this.editDetails = await this.evidenceService.getEvidenceVersionsByDate(productId, questionId, myFormattedDate);
+    this.versionDetails = await this.evidenceService.getEvidenceVersionsByDate(this.productId, this.questionId, myFormattedDate);
+    }
+    this.isCollapsed = !this.isCollapsed;
   }
 
-  revert(evidenceId: number) {
-    this.evidenceService.setEvidenceId(evidenceId);
-  }
 }
