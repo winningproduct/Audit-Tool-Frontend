@@ -10,6 +10,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 /* fontawesome module import */
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -30,6 +31,14 @@ import { AuthService } from '@shared/services/auth/auth.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
+import { ViewEvidenceHistoryComponent } from './containers/view-evidence-history/view-evidence-history.component';
+import { EvidenceHistoryBoxComponent } from './components/evidence-history-box/evidence-history-box.component';
+
+
+import { MomentModule } from 'ngx-moment';
+import { VersionsDateTileComponent } from './components/versions-date-tile/versions-date-tile.component';
+import { VersionsDateGroupTileComponent } from './components/versions-date-group-tile/versions-date-group-tile.component';
+import { VersionsTabComponent } from './components/versions-tab/versions-tab.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +50,11 @@ import { SharedModule } from '@shared/shared.module';
     ViewQuestionsComponent,
     KnowledgeAreaSlideComponent,
     EvidenceBoxComponent,
+    ViewEvidenceHistoryComponent,
+    EvidenceHistoryBoxComponent,
+    VersionsDateTileComponent,
+    VersionsDateGroupTileComponent,
+    VersionsTabComponent,
   ],
   imports: [
     CommonModule,
@@ -58,7 +72,9 @@ import { SharedModule } from '@shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     AvatarModule,
-    SharedModule
+    SharedModule,
+    TooltipModule.forRoot(),
+    MomentModule
   ],
   providers: [AuthService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

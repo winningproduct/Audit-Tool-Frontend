@@ -5,6 +5,7 @@ import { UserApiService } from '../api/user.api.service';
 import { AmplifyService } from 'aws-amplify-angular';
 import { get } from 'lodash';
 import { log } from 'util';
+import { environment } from '@environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -18,17 +19,11 @@ export class AuthService {
   public async isAuthenticated() {
     try {
       const session = await Auth.currentSession();
-      setTimeout(() => {}, 5000);
-      console.log(session);
       const accessToken = session.getIdToken().getJwtToken();
-      console.log('accessToken', accessToken);
-
       this.idToken = session.getIdToken().getJwtToken();
-      console.log('++++++++++' , this.idToken);
       if (!this.jwtHelper.isTokenExpired(accessToken)) {
         return true;
      } else {
-       console.log('false');
        return false;
      }
     } catch ( err ) {
@@ -39,9 +34,17 @@ export class AuthService {
 
   public async getCurrentUser() {
     try {
-      const user = await Auth.currentAuthenticatedUser({bypassCache: false});
-      const result = await this.userApiService.get(user.attributes.email);
-      return result;
+      const session = await Auth.currentSession();
+      const idToken = session.getIdToken().decodePayload();
+      return idToken;
+    } catch (err) {
+    }
+  }
+
+  public async getCurrentUserId() {
+    try {
+      const user = await this.getCurrentUser();
+      return user['userId'];
     } catch (err) {
     }
   }
@@ -54,5 +57,10 @@ export class AuthService {
     }
     this.idToken = token;
     return this.idToken;
+  }
+
+  public async logOut() {
+    await Auth.signOut();
+    window.location.href = environment.loginUrl;
   }
 }

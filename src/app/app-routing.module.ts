@@ -10,14 +10,14 @@ const routes: Routes = [
     canActivate : [AuthGuard]
   },
   {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-  },
-  {
     path: 'shared',
     loadChildren: () =>
       import('./shared/shared.module').then(m => m.SharedModule),
       canActivate : [AuthGuard]
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: '**',
