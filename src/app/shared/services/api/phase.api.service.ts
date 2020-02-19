@@ -14,4 +14,10 @@ export class PhaseApiService {
         const result = await this.httpClient.get(phaseRoute + '/' + id + '/phases').toPromise();
         return JSON.parse(result['body']) as Phase[];
     }
+
+    public async getPhaseByProductPhaseId(id: number): Promise<Phase> {
+        const result = await this.httpClient.get(phaseRoute + '/' + id + '/productPhase').toPromise();
+        return JSON.parse(result['body']) as Phase;
+    }
+
 }

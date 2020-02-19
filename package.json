@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve --aot",
+    "start": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve --aot --proxy-config proxy.conf.json ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -39,8 +39,10 @@
     "bootstrap": "^4.4.1",
     "jwt-decode": "^2.2.0",
     "medium-editor": "^5.23.3",
+    "moment": "^2.24.0",
     "ngx-avatar": "^3.7.0",
     "ngx-bootstrap": "^5.3.2",
+    "ngx-moment": "^3.5.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
