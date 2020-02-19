@@ -1,4 +1,5 @@
 <div *ngIf="evidence != null">
-    <p>Content : {{evidence.content}}</p>
-    <p>{{evidence.status}}</p>
+    <p>Content : {{evidence[0].content}}</p>
+    <p>{{evidence[0].status}}</p>
+    <button class="btn btn-primary" (click)="save()">save</button>
 </div>

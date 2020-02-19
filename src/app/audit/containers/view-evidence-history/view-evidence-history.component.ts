@@ -9,11 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewEvidenceHistoryComponent implements OnInit {
 
   constructor(
-    // private evidenceApiService: EvidenceApiService,
     private route: ActivatedRoute,
     ) { }
 
-  // evidences: any[];
   sub: any;
   productId: number;
   questionId: number;
@@ -23,7 +21,6 @@ export class ViewEvidenceHistoryComponent implements OnInit {
       this.productId = +params['product-id'];
       this.questionId = +params['question-id'];
     });
-    // this.evidences = await this.evidenceApiService.getEvidenceVersions(this.productId, this.questionId);
   }
 
 }
