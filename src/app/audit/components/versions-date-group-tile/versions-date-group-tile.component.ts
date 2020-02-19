@@ -11,7 +11,7 @@ export class VersionsDateGroupTileComponent implements OnInit {
   @Input() productId: number;
   @Input() questionId: number;
 
-  innerDates =[];
+  innerDates = [];
   constructor() { }
 
   ngOnInit() {

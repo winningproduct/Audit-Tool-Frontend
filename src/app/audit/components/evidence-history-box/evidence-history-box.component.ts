@@ -23,7 +23,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   ) {
     this.evidenceService.evidenceId.subscribe(id => {
       this.evidenceId = id;
-      if(this.evidenceId){
+      if (this.evidenceId) {
         this.getEvidence(this.evidenceId);
       }
     });
@@ -45,7 +45,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   //   }
   // }
 
-  async getEvidence(id: number){
+  async getEvidence(id: number) {
     this.evidence = await this.evidenceService.getEvidenceById(id);
   }
 

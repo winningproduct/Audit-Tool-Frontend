@@ -30,7 +30,7 @@ export class VersionsDateTileComponent implements OnInit {
     this.editDetails = await this.evidenceService.getEvidenceVersionsByDate(productId, questionId, myFormattedDate);
   }
 
-  revert(evidenceId: number){
+  revert(evidenceId: number) {
     this.evidenceService.setEvidenceId(evidenceId);
   }
 }
