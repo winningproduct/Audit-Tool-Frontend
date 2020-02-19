@@ -1,1 +1,6 @@
-<p>versions-date-tile works!</p>
+<p>>> {{ innerDate | date:'dd MMM y' }}</p>
+<div *ngFor = "let editDetail of editDetails">
+    <p>>>>> Date : {{ editDetail.createdDate | date:'dd MMM y - hh:mm:ss a' }}</p>
+    <p>>>>> User : {{editDetail.firstName}} {{editDetail.lastName}}</p>
+    <button (click)="revert(editDetail.id)">Revert</button>
+</div>
