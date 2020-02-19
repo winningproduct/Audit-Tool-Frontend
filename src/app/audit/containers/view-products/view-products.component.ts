@@ -11,7 +11,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./view-products.component.scss']
 })
 export class ViewProductsComponent implements OnInit {
+
   faEllipsisV = faEllipsisV;
+  isCollapsed = false;
 
   products: Product[];
   userId: string;
