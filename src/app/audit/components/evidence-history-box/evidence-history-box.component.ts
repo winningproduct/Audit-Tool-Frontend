@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '@shared/services/auth/auth.service';
-import { ActivatedRoute } from '@angular/router';
 import { Evidence } from '@shared/models/evidence';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { DatePipe } from '@angular/common';
@@ -29,21 +28,22 @@ export class EvidenceHistoryBoxComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.evidence = await this.evidenceService.get(this.productId , this.questionId);
   }
 
-  // async save() {
-  //   const evidence = new Evidence();
-  //   evidence.productId = this.productId;
-  //   evidence.userId = await this.authService.getCurrentUserId();
-  //   evidence.content = this.evidence.content;
-  //   evidence.version = this.evidence.version;
-  //   evidence.status = this.evidence.status;
-  //   try {
-  //     this.evidenceService.post(this.questionId, evidence);
-  //   } catch (error) {
-  //   }
-  // }
+  async save() {
+    const evidence = new Evidence();
+    evidence.productId = this.productId;
+    evidence.userId = await this.authService.getCurrentUserId();
+    evidence.content = this.evidence[0].content;
+    evidence.version = this.evidence[0].version;
+    evidence.status = this.evidence[0].status;
+    try {
+      this.evidenceService.post(this.questionId, evidence);
+    } catch (error) {
+    }
+  }
 
   async getEvidence(id: number) {
     this.evidence = await this.evidenceService.getEvidenceById(id);

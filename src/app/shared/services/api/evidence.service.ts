@@ -1,7 +1,6 @@
-import { evidenceBaseRoute } from './../../constants';
-import { productRoute, questionRoute2, evidenceRoute } from './../../constants';
+import { productRoute, questionRoute, evidenceRoute } from './../../constants';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Evidence } from '@shared/models/evidence';
 import { BehaviorSubject } from 'rxjs';
 
@@ -27,21 +26,21 @@ export class EvidenceApiService {
 
   async updateStatus(id: number, status: any, eid: number): Promise<boolean> {
     const state = {status};
-    const url = evidenceBaseRoute + '/' + id + '/evidence/' + eid;
+    const url = questionRoute + '/' + id + '/evidence/' + eid;
     const result = await this.httpClient.put(url, state).toPromise();
     return JSON.parse(result['body']) as boolean;
   }
 
   async post(id: number, data: Evidence): Promise<boolean> {
     const result = await this.httpClient
-      .post(questionRoute2 + '/' + id + '/evidence', data)
+      .post(questionRoute + '/' + id + '/evidence', data)
       .toPromise();
     return JSON.parse(result['body']) as boolean;
   }
 
   public async getEvidenceVersions(productId: number, questionId: number): Promise<Evidence[]> {
     const result = await this.httpClient
-      .get(productRoute + '/' + productId + '/question/' + questionId )
+      .get(productRoute + '/' + productId + '/question/' + questionId + '/page/0' )
       .toPromise();
     return JSON.parse(result['body']);
   }

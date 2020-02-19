@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Question } from '../../models/question';
-import { questionRoute } from '../../constants';
+import { knowledgeAreaRoute } from '../../constants';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class QuestionApiService {
 
   public async get(knowledgeAreaId: number): Promise<Question[]> {
     const result = await this.httpClient
-      .get(questionRoute + '/' + knowledgeAreaId + '/questions')
+      .get(knowledgeAreaRoute + '/' + knowledgeAreaId + '/questions')
       .toPromise();
     // tslint:disable-next-line: no-string-literal
     return JSON.parse(result['body']) as Question[];
