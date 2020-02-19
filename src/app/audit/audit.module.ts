@@ -40,6 +40,9 @@ import { VersionsDateTileComponent } from './components/versions-date-tile/versi
 import { VersionsDateGroupTileComponent } from './components/versions-date-group-tile/versions-date-group-tile.component';
 import { VersionsTabComponent } from './components/versions-tab/versions-tab.component';
 
+/* ngx spinner */
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [
     AuditComponent,
@@ -74,7 +77,8 @@ import { VersionsTabComponent } from './components/versions-tab/versions-tab.com
     AvatarModule,
     SharedModule,
     TooltipModule.forRoot(),
-    MomentModule
+    MomentModule,
+    NgxSpinnerModule
   ],
   providers: [AuthService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

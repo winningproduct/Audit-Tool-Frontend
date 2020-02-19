@@ -28,7 +28,7 @@ import { MomentModule } from 'ngx-moment';
     AvatarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
-    MomentModule
+    MomentModule,
   ],
   providers: [
     {
