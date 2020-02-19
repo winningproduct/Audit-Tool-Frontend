@@ -10,8 +10,8 @@ import { productRoute } from '../../constants';
 export class ProductApiService {
     constructor(private httpClient: HttpClient) { }
 
-    public async get(): Promise<Product[]> {
-        const result = await this.httpClient.get(productRoute).toPromise();
+    public async get(id: string): Promise<Product[]> {
+        const result = await this.httpClient.get(productRoute + '/user/' + id).toPromise();
         return JSON.parse(result['body']) as Product[];
     }
 

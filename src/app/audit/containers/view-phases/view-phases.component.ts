@@ -26,7 +26,7 @@ export class ViewPhasesComponent implements OnInit {
   products: Product[];
   ngOnInit() {
     this.sub = this.route.params.subscribe(async params => {
-      this.id = +params.productId;
+      this.id = +params['product-id'];
       this.getProductDetails(this.id);
       this.getAllPhases(this.id);
     });

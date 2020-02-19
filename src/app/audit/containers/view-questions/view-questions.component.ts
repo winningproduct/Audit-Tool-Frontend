@@ -7,6 +7,8 @@ import { Product } from '@shared/models/product';
 import { Question } from '@shared/models/question';
 import { QuestionApiService } from '@shared/services/api/question.api.service';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { PhaseApiService } from '@shared/services/api/phase.api.service';
+import { Phase } from '@shared/models/phase';
 
 @Component({
   selector: 'app-view-questions',
@@ -16,6 +18,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 export class ViewQuestionsComponent implements OnInit {
   phaseId: number;
   productId: number;
+  phase: Phase;
   knowledgeAreaId: number;
   private sub: any;
   lcarouselLength = 5;
@@ -24,6 +27,7 @@ export class ViewQuestionsComponent implements OnInit {
     private knowledgeAreaApiService: KnowledgeAreaApiService,
     private productApiService: ProductApiService,
     private questionApiService: QuestionApiService,
+    private phaseApiService: PhaseApiService
   ) {}
 
   items: KnowledgeArea[] = [];
@@ -33,10 +37,11 @@ export class ViewQuestionsComponent implements OnInit {
 
   async ngOnInit() {
     this.sub = this.route.params.subscribe(async params => {
-      this.productId = +params.productId;
-      this.phaseId = +params.productPhaseId;
-      this.knowledgeAreaId = +params.knowledgeAreaId;
+      this.productId = +params['product-id'];
+      this.phaseId = +params['product-phase-id'];
+      this.knowledgeAreaId = +params['knowledge-area-id'];
       await this.getProductDetails(this.productId);
+      await this.getPhaseDetailsByProductPhaseId(this.phaseId);
       await this.getKnowledgeAreasByPhaseId(this.phaseId);
       await this.getQuestionsByKnowledgeArea(this.knowledgeAreaId);
     });
@@ -51,6 +56,10 @@ export class ViewQuestionsComponent implements OnInit {
 
   async getProductDetails(id: number) {
     this.product = await this.productApiService.getById(id);
+  }
+
+  async getPhaseDetailsByProductPhaseId(id: number) {
+    this.phase = await this.phaseApiService.getPhaseByProductPhaseId(id);
   }
 
   async getQuestionsByKnowledgeArea(id: number) {
