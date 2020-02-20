@@ -1,19 +1,16 @@
-<!-- <p>>> {{ innerDate | date:'dd MMM y' }}</p>
-<div *ngFor = "let editDetail of editDetails">
-    <p>>>>> Date : {{ editDetail.createdDate | date:'dd MMM y - hh:mm:ss a' }}</p>
-    <p>>>>> User : {{editDetail.firstName}} {{editDetail.lastName}}</p>
-    <button (click)="revert(editDetail.id)">Revert</button>
-</div> -->
-
-
-<div  *ngFor = "let editDetail of editDetails">
-    <div class="px-3 py-3 border-bottom border-light d-flex flex-row justify-content-between">
-        <div>
-            <p class="mb-0">{{ editDetail.createdDate | date:'dd MMM y - hh:mm:ss a' }}</p>
-            <p class="mb-0">{{editDetail.firstName}} {{editDetail.lastName}}</p>
-        </div>
-        <div>
-            <a (click)="revert(editDetail.id)"><fa-icon [icon]="faRedo" class="text-primary"></fa-icon></a>
-        </div>
+<div>
+    <a class="px-3 py-2 bg-light d-flex flex-row justify-content-between border-bottom border-white" (click)="getEvidenceByDate(innerDate)"
+    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+        <p class="mb-0">{{innerDate}}</p>
+        <fa-icon [icon]="faCaretDown"></fa-icon>
+    </a>
+    <div id="collapseBasic" [collapse]="isCollapsed">
+        <app-versions-date-detail-tile  *ngFor = "let versionDetail of versionDetails" [versionDetail] = "versionDetail" [productId]="productId" [questionId]="questionId"></app-versions-date-detail-tile>
     </div>
 </div>
+
+
+
+
+
+
