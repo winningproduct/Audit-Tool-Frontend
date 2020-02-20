@@ -80,7 +80,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SharedModule,
     TooltipModule.forRoot(),
     MomentModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ],
   providers: [AuthService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
