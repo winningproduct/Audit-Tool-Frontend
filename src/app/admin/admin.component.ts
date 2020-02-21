@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
     if (this.selectedProduct != null && this.selectedUser != null) {
       const result = await this.adminService.addProductUser(this.selectedProduct.id, this.selectedUser.id);
       console.log(result);
-    } else{
+    } else {
       console.log('Please select a User and Product');
     }
   }
