@@ -49,6 +49,14 @@ export class AuthService {
     }
   }
 
+  public async isAdmin() {
+    try {
+      const user = await this.getCurrentUser();
+      return user['admin'];
+    } catch (err) {
+    }
+  }
+
   getToken() {
     const session = this.auth.auth();
     const token = get(session, 'user.signInUserSession.idToken.jwtToken');

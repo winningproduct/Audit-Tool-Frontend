@@ -38,6 +38,8 @@ export class AdminComponent implements OnInit {
     await this.getAllProducts();
     await this.getAllUsers();
     await this.getAllOrganizations();
+    const uId = await this.authService.isAdmin();
+    console.log(uId);
     this.spinner.hide();
 
   }
@@ -72,7 +74,6 @@ export class AdminComponent implements OnInit {
     const uId = await this.authService.getCurrentUserId();
     product.userId = Number(uId);
     const result = await this.adminService.addProduct(product);
-    console.log(result);
   }
 
   setProductId(product: any) {
