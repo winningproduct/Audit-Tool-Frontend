@@ -23,8 +23,4 @@ export class UserApiService {
     return result['body'];
   }
 
-  async getAllUsers(): Promise<User[]> {
-    const result = await this.httpClient.get(userRoute + '/user/').toPromise();
-    return result['body'];
-  }
 }
