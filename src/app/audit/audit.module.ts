@@ -44,6 +44,7 @@ import { VersionsDateDetailTileComponent } from './components/versions-date-deta
 
 /* ngx spinner */
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     TooltipModule.forRoot(),
     MomentModule,
     NgxSpinnerModule,
+    InfiniteScrollModule
   ],
   providers: [AuthService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

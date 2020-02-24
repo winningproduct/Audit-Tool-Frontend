@@ -17,9 +17,13 @@ export class VersionsTabComponent implements OnInit {
   @Input() productId: number;
   @Input() questionId: number;
   dates = [];
-
+  pageId = 0;
   async ngOnInit() {
-    this.versionDates = await this.evidenceApiService.getEvidenceVersions(this.productId, this.questionId);
+    this.getEvidenceSummary();
+  }
+
+  async getEvidenceSummary() {
+    this.versionDates = await this.evidenceApiService.getEvidenceVersions(this.productId, this.questionId, this.pageId);
     this.versionDates.map(date => {
       const newDate = moment(date.createdDate)
         .locale('en')
@@ -53,27 +57,10 @@ export class VersionsTabComponent implements OnInit {
     return true;
   }
 
+  onScroll() {
+    this.pageId = this.pageId + 2;
+    this.getEvidenceSummary();
+  }
+
 }
 
-// async ngOnInit() {
-//   this.sub = this.route.params.subscribe(async params => {
-//     this.productId = +params['product-id'];
-//     this.questionId = +params['question-id'];
-//   });
-//   this.versionDates = await this.evidenceApiService.getEvidenceVersions(this.productId, this.questionId);
-//   const previousDay = this.versionDates.map( date => {
-//     return moment(date.createdDate).calendar(new Date() , {
-//       sameDay: '[Today]',
-//       nextDay: '[Tomorrow]',
-//       nextWeek: 'dddd',
-//       lastDay: '[Yesterday]',
-//       lastWeek: '[Last] dddd',
-//       sameElse:   () => {
-//         const x =  moment(date.createdDate).fromNow();
-//         console.log(x);
-//         return x;
-//       }
-//   });
-//   });
-//   console.log(previousDay);
-// }

@@ -19,6 +19,7 @@ import { AvatarModule } from 'ngx-avatar';
 import { MomentModule } from 'ngx-moment';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,9 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     BrowserAnimationsModule,
     MomentModule,
     AccordionModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    InfiniteScrollModule,
+    
   ],
   providers: [
     {
