@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserApiService } from '@shared/services/api/user.api.service';
-import { ProductApiService } from '@shared/services/api/product.api.service';
+import { AdminApiService } from './admin.api.service';
+import { User } from '@shared/models/user';
+import { Product } from '@shared/models/product';
+import { Organization } from '@shared/models/organization';
+import { AuthService } from '@shared/services/auth/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin',
@@ -8,25 +13,79 @@ import { ProductApiService } from '@shared/services/api/product.api.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  users = [];
+  products = [];
+  organizations = [];
+  selectedUser: User = null;
+  selectedProduct: Product = null;
+  selectedOrganization: Organization = null;
+  selectedStatus1 = null;
+  selectedStatus2 = null;
+  selectedStatus3 = null;
+  productName = '';
+  productDes = '';
+  faSpinner = faSpinner;
 
-  constructor(private userService: UserApiService , private productService: ProductApiService) { }
+  constructor(
+    private adminService: AdminApiService,
+    private authService: AuthService,
+    private spinner: NgxSpinnerService,
 
-  ngOnInit() {
+    ) { }
+
+  async ngOnInit() {
+    this.spinner.show();
+    await this.getAllProducts();
+    await this.getAllUsers();
+    await this.getAllOrganizations();
+    const uId = await this.authService.isAdmin();
+    console.log(uId);
+    this.spinner.hide();
+
   }
 
-  getAllUsers() {
-    this.userService.getAllUsers();
+  async getAllUsers() {
+    this.users = await this.adminService.getAllUsers();
   }
 
-  getAllProjects() {
-    this.productService.getAllProducts();
+  async getAllProducts() {
+    this.products = await this.adminService.getAllProducts();
   }
 
-  addUserToProject() {
-    this.productService.addUser();
+  async getAllOrganizations() {
+    this.organizations = await this.adminService.getAllOrganizations();
+    console.log(this.organizations);
   }
 
-  createProduct() {
-    this.productService.create();
+  async addUserToProject() {
+    if (this.selectedProduct != null && this.selectedUser != null) {
+      const result = await this.adminService.addProductUser(this.selectedProduct.id, this.selectedUser.id);
+      console.log(result);
+    } else {
+      console.log('Please select a User and Product');
+    }
   }
+
+  async addProduct() {
+    const product = new Product();
+    product.name = this.productName;
+    product.description = this.productDes;
+    product.organizationId = this.selectedOrganization.id;
+    const uId = await this.authService.getCurrentUserId();
+    product.userId = Number(uId);
+    const result = await this.adminService.addProduct(product);
+  }
+
+  setProductId(product: any) {
+    this.selectedProduct = product;
+  }
+
+  setSelectedUser(user: any) {
+    this.selectedUser = user;
+  }
+
+  setSelectedOrganization(org: any) {
+    this.selectedOrganization = org;
+  }
+
 }

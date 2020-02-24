@@ -24,14 +24,4 @@ export class ProductApiService {
         const result = await this.httpClient.get(productRoute + '/').toPromise();
         return JSON.parse(result['body']) as Product[];
     }
-
-    public async addUser(): Promise<Product[]> {
-        const result = await this.httpClient.post(productRoute + '/user' , {}).toPromise();
-        return JSON.parse(result['body']) as Product[];
-    }
-
-    public async create(): Promise<Product[]> {
-        const result = await this.httpClient.post(productRoute , {}).toPromise();
-        return JSON.parse(result['body']) as Product[];
-    }
 }

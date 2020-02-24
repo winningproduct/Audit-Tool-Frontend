@@ -38,9 +38,9 @@ export class EvidenceApiService {
     return JSON.parse(result['body']) as boolean;
   }
 
-  public async getEvidenceVersions(productId: number, questionId: number): Promise<Evidence[]> {
+  public async getEvidenceVersions(productId: number, questionId: number, pageId: number): Promise<Evidence[]> {
     const result = await this.httpClient
-      .get(productRoute + '/' + productId + '/question/' + questionId + '/page/0' )
+      .get(productRoute + '/' + productId + '/question/' + questionId + '/page/' + pageId )
       .toPromise();
     return JSON.parse(result['body']);
   }

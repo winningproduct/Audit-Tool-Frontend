@@ -3,6 +3,8 @@ import { AuthService } from '@shared/services/auth/auth.service';
 import { Evidence } from '@shared/models/evidence';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { DatePipe } from '@angular/common';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-evidence-history-box',
@@ -15,10 +17,14 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   evidenceId: number;
   evidence: Evidence[] = null;
   pipe = new DatePipe('en-US');
-
+  submitEvidence = false;
+  faSpinner = faSpinner;
+  evidenceReceived = true;
   constructor(
     private authService: AuthService,
-    private evidenceService: EvidenceApiService
+    private evidenceService: EvidenceApiService,
+    private spinner: NgxSpinnerService,
+
   ) {
     this.evidenceService.evidenceId.subscribe(id => {
       this.evidenceId = id;
@@ -30,9 +36,11 @@ export class EvidenceHistoryBoxComponent implements OnInit {
 
   async ngOnInit() {
     this.evidence = await this.evidenceService.get(this.productId , this.questionId);
+    this.spinner.hide();
   }
 
   async save() {
+    this.submitEvidence = true;
     const evidence = new Evidence();
     evidence.productId = this.productId;
     evidence.userId = await this.authService.getCurrentUserId();
@@ -42,11 +50,18 @@ export class EvidenceHistoryBoxComponent implements OnInit {
     try {
       this.evidenceService.post(this.questionId, evidence);
     } catch (error) {
+    } finally {
+      setTimeout(() => {
+        this.submitEvidence = false;
+      }, 1000);
     }
   }
 
   async getEvidence(id: number) {
+    this.evidenceReceived = false;
     this.evidence = await this.evidenceService.getEvidenceById(id);
+    this.evidenceReceived = true;
+
   }
 
 }
