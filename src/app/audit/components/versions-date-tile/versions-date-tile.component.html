@@ -1,5 +1,5 @@
 
-<div>
+<div *ngIf="!isDay">
     <a class="px-3 py-2 bg-light d-flex flex-row justify-content-between border-bottom border-white" (click)="getEvidenceByDate(innerDate)"
     [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
         <p class="mb-0">  {{innerDate}}</p>
@@ -10,7 +10,9 @@
         <app-versions-date-detail-tile  *ngFor = "let versionDetail of versionDetails" [versionDetail] = "versionDetail" [productId]="productId" [questionId]="questionId"></app-versions-date-detail-tile>
     </div>
 </div>
-
+<div *ngIf="isDay">
+    <app-versions-date-detail-tile  *ngFor = "let versionDetail of versionDetails" [versionDetail] = "versionDetail" [productId]="productId" [questionId]="questionId"></app-versions-date-detail-tile>
+</div>
 
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-versions-date-group-tile',
   templateUrl: './versions-date-group-tile.component.html',
@@ -8,8 +8,10 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 })
 export class VersionsDateGroupTileComponent implements OnInit {
   faCaretDown = faCaretDown;
+  faSpinner = faSpinner;
   isCollapsed = true;
-
+  isDay = false;
+  dataReceived = false;
   @Input() date: any;
   @Input() productId: number;
   @Input() questionId: number;
@@ -18,7 +20,15 @@ export class VersionsDateGroupTileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (this.date.name === 'Today' || this.date.name === 'Yesterday') {
+      this.date.name = this.date.value;
+      this.isDay = true;
+    }
     this.innerDates = this.date.value;
+  }
+
+  receiveData($event: boolean) {
+    this.dataReceived = $event;
   }
 
 }
