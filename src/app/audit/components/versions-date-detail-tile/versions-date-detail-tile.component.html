@@ -1,9 +1,8 @@
 <div class="px-3 py-3 border-bottom border-light d-flex flex-row justify-content-between">
+  <a (click)="revert(versionDetail.id)">
     <div>
-        <p class="mb-0">{{ versionDetail.createdDate | date:'dd MMM y - hh:mm:ss a' }}</p>
-        <p class="mb-0">{{versionDetail.firstName}} {{versionDetail.lastName}}</p>
+      <p class="mb-0">{{ versionDetail.createdDate | date: 'dd MMM y - hh:mm:ss a' }}</p>
+      <p class="mb-0">{{ versionDetail.firstName }} {{ versionDetail.lastName }}</p>
     </div>
-    <div>
-        <a (click)="revert(versionDetail.id)"><fa-icon [icon]="faRedo" class="text-primary"></fa-icon></a>
-    </div>
+  </a>
 </div>

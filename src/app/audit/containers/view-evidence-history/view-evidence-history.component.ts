@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-view-evidence-history',
@@ -12,6 +13,8 @@ export class ViewEvidenceHistoryComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
+
     ) { }
 
   sub: any;
@@ -19,6 +22,7 @@ export class ViewEvidenceHistoryComponent implements OnInit {
   questionId: number;
 
   async ngOnInit() {
+    this.spinner.show();
     this.sub = this.route.params.subscribe(async params => {
       this.productId = +params['product-id'];
       this.questionId = +params['question-id'];
