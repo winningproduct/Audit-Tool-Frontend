@@ -19,7 +19,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   pipe = new DatePipe('en-US');
   submitEvidence = false;
   faSpinner = faSpinner;
-
+  evidenceReceived = true;
   constructor(
     private authService: AuthService,
     private evidenceService: EvidenceApiService,
@@ -58,7 +58,10 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   }
 
   async getEvidence(id: number) {
+    this.evidenceReceived = false;
     this.evidence = await this.evidenceService.getEvidenceById(id);
+    this.evidenceReceived = true;
+
   }
 
 }
