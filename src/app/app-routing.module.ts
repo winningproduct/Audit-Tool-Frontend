@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   AuthGuardService as AuthGuard
 } from './shared/services/auth/auth-guard.service';
+import {
+  RoleGuardService as RoleGuard
+} from './shared/services/auth/role-guard.service';
 const routes: Routes = [
   {
     path: 'audit',
@@ -18,6 +21,11 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canActivate : [AuthGuard, RoleGuard]
   },
   {
     path: '**',

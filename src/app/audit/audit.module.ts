@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 /* fontawesome module import */
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -39,9 +40,11 @@ import { MomentModule } from 'ngx-moment';
 import { VersionsDateTileComponent } from './components/versions-date-tile/versions-date-tile.component';
 import { VersionsDateGroupTileComponent } from './components/versions-date-group-tile/versions-date-group-tile.component';
 import { VersionsTabComponent } from './components/versions-tab/versions-tab.component';
+import { VersionsDateDetailTileComponent } from './components/versions-date-detail-tile/versions-date-detail-tile.component';
 
 /* ngx spinner */
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     VersionsDateTileComponent,
     VersionsDateGroupTileComponent,
     VersionsTabComponent,
+    VersionsDateDetailTileComponent,
   ],
   imports: [
     CommonModule,
@@ -68,6 +72,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ButtonsModule.forRoot(),
     CarouselModule.forRoot(),
     AlertModule.forRoot(),
+    CollapseModule.forRoot(),
     FontAwesomeModule,
     HttpClientModule,
     AngularEditorModule,
@@ -78,7 +83,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SharedModule,
     TooltipModule.forRoot(),
     MomentModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    InfiniteScrollModule
   ],
   providers: [AuthService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
