@@ -36,7 +36,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     AccordionModule.forRoot(),
     CollapseModule.forRoot(),
     InfiniteScrollModule,
-    
+
   ],
   providers: [
     {
