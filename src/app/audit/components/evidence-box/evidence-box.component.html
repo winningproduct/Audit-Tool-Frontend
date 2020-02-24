@@ -1,7 +1,16 @@
+<ngx-spinner
+bdOpacity = 1
+bdColor = "#fff"
+size = "medium"
+color = "#cf46ff"
+type = "fire"
+[fullScreen] = "true"
+>
+</ngx-spinner>
 <div class="card border-0 mb-4">
   <div class="card-body">
     <p class="h6">{{ index + 1 }}. {{ question.title }}</p>
-    <button (click)="navigate()">Versions</button>
+    <!-- <button (click)="navigate()">Versions</button> -->
     <div class="d-flex mb-1">
       <div [innerHtml]="question.description" class="text-secondary mb-0">
       </div>
