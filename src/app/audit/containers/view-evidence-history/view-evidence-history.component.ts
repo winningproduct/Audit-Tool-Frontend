@@ -5,7 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-view-evidence-history',
   templateUrl: './view-evidence-history.component.html',
-  styleUrls: ['./view-evidence-history.component.scss']
+  styleUrls: []
 })
 export class ViewEvidenceHistoryComponent implements OnInit {
 

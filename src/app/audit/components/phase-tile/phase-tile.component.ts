@@ -8,7 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-phase-tile',
   templateUrl: './phase-tile.component.html',
-  styleUrls: ['./phase-tile.component.scss'],
+  styleUrls: [],
 })
 export class PhaseTileComponent implements OnInit {
   @Input() phase: Phase;

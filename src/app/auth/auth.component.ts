@@ -6,7 +6,7 @@ import { Hub } from 'aws-amplify';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss'],
+  styleUrls: [],
 })
 export class AuthComponent {
   logged: boolean;
