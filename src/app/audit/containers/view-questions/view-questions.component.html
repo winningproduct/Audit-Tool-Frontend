@@ -8,9 +8,9 @@ type = "fire"
 >
 </ngx-spinner>
 <app-nav-bar></app-nav-bar>
-<div class="row mt-2">
-  <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1 phaseDiv">
-    <nav aria-label="breadcrumb" class="mt-4">
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 phaseDiv">
+    <nav aria-label="breadcrumb" class="mt-4 mb-4">
       <ol class="breadcrumb bg-white px-0">
         <li class="breadcrumb-item"><a [routerLink]="['/audit/products/']">Product</a></li>
         <li *ngIf="product != null" class="breadcrumb-item"><a [routerLink]="['/audit/products/', product[0].id, 'phases']">{{ product[0].name }}</a></li>
@@ -23,28 +23,41 @@ type = "fire"
         </li>
       </ol>
     </nav>
-    <div *ngIf="items.length" class="col-12 py-3">
-      <carousel
-        *ngIf="items != null"
-        [itemsPerSlide]="5"
-        [singleSlideOffset]="true"
-        [indicatorsByChunk]="true"
-        [showIndicators]="false"
-        [interval]="0"
-      >
-        <app-knowledge-area-slide
-          [knowledgeArea]="item"
-          [productId]="productId"
-          [phaseId]="phaseId"
-          *ngFor="let item of items; let index = index"
-        ></app-knowledge-area-slide>
-      </carousel>
-      <div class="mt-5" >
-        <app-evidence-box
-          [question]="question"
-          [index]="index"
-          *ngFor="let question of questions; let index = index"
-        ></app-evidence-box>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+        </div>
+      </div>
+      <div *ngIf="items.length" class="col-12 col-sm-12 col-md-8 col-lg-8 offset-lg-1">
+        <div class="alert alert-info mb-5" role="alert">
+          Click the link to get more information about this <a href="#" class="alert-link">More Info</a>
+        </div>
+        <!-- <carousel
+          *ngIf="items != null"
+          [itemsPerSlide]="5"
+          [singleSlideOffset]="true"
+          [indicatorsByChunk]="true"
+          [showIndicators]="false"
+          [interval]="0"
+        >
+          <app-knowledge-area-slide
+            [knowledgeArea]="item"
+            [productId]="productId"
+            [phaseId]="phaseId"
+            *ngFor="let item of items; let index = index"
+          ></app-knowledge-area-slide>
+        </carousel> -->
+        <div class="">
+          <app-evidence-box
+            [question]="question"
+            [index]="index"
+            *ngFor="let question of questions; let index = index"
+          ></app-evidence-box>
+        </div>
       </div>
     </div>
   </div>

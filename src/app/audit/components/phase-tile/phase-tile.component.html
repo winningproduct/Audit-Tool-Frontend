@@ -7,28 +7,13 @@ type = "fire"
 [fullScreen] = "true"
 >
 </ngx-spinner>
-<div class="card mb-3">
-  <div class="card-body">
-    <p class="h6">
-      {{ phase.name
-      }}
-    </p>
-    <div
-      class="d-flex flex-column flex-sm-column flex-md-column flex-lg-column align-items-lg-start justify-content-lg-between"
-    >
-      <div class="pr-lg-2">
-        <p class="mb-2">{{ phase.description }}</p>
-      </div>
-      <div class="flex-grow-1 mt-3 mt-sm-3 mt-lg-0">
-        <button
-          type="button"
-          class="btn btn-primary"
-          style="white-space: nowrap;"
-          (click)="navigate()"
-        >
-          Take the audit
-        </button>
-      </div>
+  <div class="card h-100 mx-0 my-0">
+    <div class="card-body">
+      <h5 class="card-title mb-2">{{ phase.name}}</h5>
+      <p class="card-text">{{ phase.description }}</p>
+      <a (click)="navigate()" class="card-link">Take the audit</a>
     </div>
   </div>
-</div>
+
+
+
