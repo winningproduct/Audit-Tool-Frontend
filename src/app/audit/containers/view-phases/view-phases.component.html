@@ -9,7 +9,7 @@ type = "fire"
 </ngx-spinner>
 <app-nav-bar></app-nav-bar>
 <div class="row mt-4">
-  <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1 phaseDiv">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 phaseDiv">
     <div class="card border-0 bg-light" *ngIf="products != null">
       <div class="card-body">
         <div class="d-flex flex-row align-items-start">
@@ -30,6 +30,13 @@ type = "fire"
       </ol>
     </nav>
     <h5 class="mb-4">Phases</h5>
-    <app-phase-tile [productId]="id" [phase]="phase" *ngFor="let phase of phases"></app-phase-tile>
+    <div class="row">
+      <div class="col-12 col-sm-12">
+        <div class="card-deck">
+          <app-phase-tile [productId]="id" [phase]="phase" *ngFor="let phase of phases" class="col col-sm-12 col-md-4 mb-3"></app-phase-tile>
+        </div>
+      </div>
+      
+    </div>
   </div>
 </div>
