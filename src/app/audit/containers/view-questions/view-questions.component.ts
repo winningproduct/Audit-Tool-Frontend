@@ -36,10 +36,12 @@ export class ViewQuestionsComponent implements OnInit {
   product: Product[];
   questions: Question[];
   faSpinner = faSpinner;
+  name: null;
+  url: null;
 
   async ngOnInit() {
-    this.spinner.show();
     this.sub = this.route.params.subscribe(async params => {
+      this.spinner.show();
       this.productId = +params['product-id'];
       this.phaseId = +params['product-phase-id'];
       this.knowledgeAreaId = +params['knowledge-area-id'];
@@ -47,14 +49,12 @@ export class ViewQuestionsComponent implements OnInit {
       await this.getPhaseDetailsByProductPhaseId(this.phaseId);
       await this.getKnowledgeAreasByPhaseId(this.phaseId);
       await this.getQuestionsByKnowledgeArea(this.knowledgeAreaId);
+      this.spinner.hide();
     });
   }
 
   async getKnowledgeAreasByPhaseId(id: number) {
     this.items = await this.knowledgeAreaApiService.get(id);
-    if (this.items.length < 5) {
-      this.lcarouselLength = this.items.length;
-    }
   }
 
   async getProductDetails(id: number) {
@@ -67,5 +67,13 @@ export class ViewQuestionsComponent implements OnInit {
 
   async getQuestionsByKnowledgeArea(id: number) {
     this.questions = await this.questionApiService.get(id);
+  }
+
+  receiveName($event) {
+    this.name = $event;
+  }
+
+  receiveUrl($event) {
+    this.url = $event;
   }
 }

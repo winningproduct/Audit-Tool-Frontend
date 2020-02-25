@@ -45,6 +45,7 @@ import { VersionsDateDetailTileComponent } from './components/versions-date-deta
 /* ngx spinner */
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { KnowledgeAreaSideBarComponent } from './components/knowledge-area-side-bar/knowledge-area-side-bar.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     VersionsDateGroupTileComponent,
     VersionsTabComponent,
     VersionsDateDetailTileComponent,
+    KnowledgeAreaSideBarComponent,
   ],
   imports: [
     CommonModule,
