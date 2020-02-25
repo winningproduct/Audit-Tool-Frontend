@@ -30,16 +30,11 @@ type = "fire"
       [knowledgeAreas]="items"
       [productId]="productId"
       [phaseId]="phaseId"
-      (knowledgeAreaName)="receiveName($event)"
-      (knowledgeAreaUrl)="receiveUrl($event)"
       ></app-knowledge-area-side-bar>
       </div>
       <div *ngIf="items.length" class="col-12 col-sm-12 col-md-8 col-lg-8 offset-lg-1">
-        <div *ngIf="name != null" class="alert alert-info mb-5" role="alert">
-          Click <a href="{{url}}" class="alert-link" target="blank">here</a> to get more information about <strong>{{name}}</strong>
-        </div>
-        <div *ngIf="name == null" class="alert alert-info mb-5" role="alert">
-          Click <a href="{{items[0].url}}" class="alert-link" target="blank">here</a> to get more information about <strong>{{items[0].name}}</strong>
+        <div *ngIf="knowledgeArea" class="alert alert-info mb-5" role="alert">
+          Click <a href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">here</a> to get more information about <strong>{{knowledgeArea[0].name}}</strong>
         </div>
         <div class="">
           <app-evidence-box

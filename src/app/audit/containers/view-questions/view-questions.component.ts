@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { KnowledgeAreaApiService } from '@shared/services/api/knowledge-area.service';
 import { KnowledgeArea } from '@shared/models/knowledge-area';
 import { ProductApiService } from '@shared/services/api/product.api.service';
@@ -30,14 +30,17 @@ export class ViewQuestionsComponent implements OnInit {
     private questionApiService: QuestionApiService,
     private phaseApiService: PhaseApiService,
     private spinner: NgxSpinnerService,
+    private router: Router,
+
   ) {}
 
   items: KnowledgeArea[] = [];
   product: Product[];
   questions: Question[];
+  knowledgeArea: KnowledgeArea[];
   faSpinner = faSpinner;
-  name: null;
-  url: null;
+  name: string;
+  url: string;
 
   async ngOnInit() {
     this.sub = this.route.params.subscribe(async params => {
@@ -49,12 +52,17 @@ export class ViewQuestionsComponent implements OnInit {
       await this.getPhaseDetailsByProductPhaseId(this.phaseId);
       await this.getKnowledgeAreasByPhaseId(this.phaseId);
       await this.getQuestionsByKnowledgeArea(this.knowledgeAreaId);
+      await this.getKnowledgeAreaById(this.knowledgeAreaId);
       this.spinner.hide();
     });
   }
 
   async getKnowledgeAreasByPhaseId(id: number) {
     this.items = await this.knowledgeAreaApiService.get(id);
+  }
+
+  async getKnowledgeAreaById(id: number) {
+    this.knowledgeArea = await this.knowledgeAreaApiService.getById(id);
   }
 
   async getProductDetails(id: number) {
@@ -69,11 +77,4 @@ export class ViewQuestionsComponent implements OnInit {
     this.questions = await this.questionApiService.get(id);
   }
 
-  receiveName($event) {
-    this.name = $event;
-  }
-
-  receiveUrl($event) {
-    this.url = $event;
-  }
 }

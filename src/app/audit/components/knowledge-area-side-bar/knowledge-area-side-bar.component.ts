@@ -10,8 +10,6 @@ export class KnowledgeAreaSideBarComponent implements OnInit {
   @Input() knowledgeAreas: any;
   @Input() productId: number;
   @Input() phaseId: number;
-  @Output() knowledgeAreaName = new EventEmitter<string>();
-  @Output() knowledgeAreaUrl = new EventEmitter<string>();
 
   constructor(
     private spinner: NgxSpinnerService
@@ -19,11 +17,6 @@ export class KnowledgeAreaSideBarComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.hide();
-  }
-
-  sendData(name: string, url: string) {
-    this.knowledgeAreaName.emit(name);
-    this.knowledgeAreaUrl.emit(url);
   }
 
 }
