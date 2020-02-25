@@ -23,7 +23,6 @@ import { ViewPhasesComponent } from './containers/view-phases/view-phases.compon
 import { ProductTileComponent } from './components/product-tile/product-tile.component';
 import { PhaseTileComponent } from './components/phase-tile/phase-tile.component';
 import { ViewQuestionsComponent } from './containers/view-questions/view-questions.component';
-import { KnowledgeAreaSlideComponent } from './components/knowledge-area-slide/knowledge-area-slide.component';
 import { EvidenceBoxComponent } from './components/evidence-box/evidence-box.component';
 import { AvatarModule } from 'ngx-avatar';
 import { AuthService } from '@shared/services/auth/auth.service';
@@ -55,7 +54,6 @@ import { KnowledgeAreaSideBarComponent } from './components/knowledge-area-side-
     ProductTileComponent,
     PhaseTileComponent,
     ViewQuestionsComponent,
-    KnowledgeAreaSlideComponent,
     EvidenceBoxComponent,
     ViewEvidenceHistoryComponent,
     EvidenceHistoryBoxComponent,
