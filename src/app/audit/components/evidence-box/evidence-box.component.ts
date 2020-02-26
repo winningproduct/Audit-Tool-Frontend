@@ -6,6 +6,7 @@ import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import MediumEditor from 'medium-editor';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { KnowledgeAreaApiService } from '@shared/services/api/knowledge-area.service';
@@ -31,6 +32,7 @@ const BUTTONS = [
 export class EvidenceBoxComponent implements OnInit, AfterViewInit {
 
   faSpinner = faSpinner;
+  faSave = faSave;
 
   @Input() question: Question;
   @Input() index: number;

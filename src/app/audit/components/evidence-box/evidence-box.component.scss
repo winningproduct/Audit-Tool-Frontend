@@ -13,6 +13,9 @@
 }
 
 .input-teal{
+  .card{
+    border-color: $teal;
+  }
   .input-group-text{
     background-color: $teal;
     color:$white;
@@ -27,6 +30,9 @@
 }
 
 .input-blue{
+  .card{
+    border-color: $blue;
+  }
   .input-group-text{
     background-color: $blue;
     color:$white;
@@ -41,6 +47,9 @@
 }
 
 .input-warning{
+  .card{
+    border-color: $warning;
+  }
   .input-group-text{
     background-color: $warning;
     color:$white;
@@ -64,4 +73,15 @@
 
 .btn-mid {
   background-color: #d6dade;
+}
+
+::ng-deep.medium-editor-element{
+    border:2px solid transparent;
+    outline: none;
+
+  &:focus{
+    border:2px solid #99a4ae ;
+    outline: none;
+  }
+
 }
