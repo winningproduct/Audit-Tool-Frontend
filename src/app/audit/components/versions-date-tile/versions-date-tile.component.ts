@@ -8,7 +8,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-versions-date-tile',
   templateUrl: './versions-date-tile.component.html',
-  styleUrls: ['./versions-date-tile.component.scss']
+  styleUrls: []
 })
 export class VersionsDateTileComponent implements OnInit {
   faRedo = faRedo;
