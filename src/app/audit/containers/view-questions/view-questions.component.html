@@ -32,11 +32,25 @@ type = "fire"
       [phaseId]="phaseId"
       ></app-knowledge-area-side-bar>
       </div>
-      <div *ngIf="items.length" class="col-12 col-sm-12 col-md-8 col-lg-8 offset-lg-1">
-        <div *ngIf="knowledgeArea" class="alert alert-info mb-5" role="alert">
-          Click <a href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">here</a> to get more information about <strong>{{knowledgeArea[0].name}}</strong>
+      <div *ngIf="items.length" class="col-12 col-sm-12 col-md-8 col-lg-9">
+
+        <div class="card border-0 bg-light">
+          <div class="card-body">
+            <div class="d-flex flex-row align-items-start">
+              <div>
+                <p class="h6">Title</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel vulputate turpis, nec interdum massa. </p>
+                <a *ngIf="knowledgeArea" href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">More Info</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="">
+
+        <!-- <div *ngIf="knowledgeArea" class="alert alert-info mb-5" role="alert">
+          Click <a href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">here</a> to get more information about <strong>{{knowledgeArea[0].name}}</strong>
+        </div> -->
+
+        <div class="mt-5">
           <app-evidence-box
             [question]="question"
             [index]="index"
