@@ -37,10 +37,15 @@ type = "fire"
         <div class="card border-0 bg-light">
           <div class="card-body">
             <div class="d-flex flex-row align-items-start">
-              <div>
-                <p class="h6">Title</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel vulputate turpis, nec interdum massa. </p>
-                <a *ngIf="knowledgeArea" href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">More Info</a>
+              <div class="d-flex flex-row">
+                <div class="mr-3">
+                  <img src="../assets/img/agenda.png" height="40px;" width="auto"/>
+                </div>
+                <div>
+                  <p class="h6 mb-0">Title</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel vulputate turpis, nec interdum massa. </p>
+                  <a *ngIf="knowledgeArea" href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">More Info</a>
+                </div>
               </div>
             </div>
           </div>
