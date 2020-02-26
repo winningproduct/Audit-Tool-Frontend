@@ -10,6 +10,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { PhaseApiService } from '@shared/services/api/phase.api.service';
 import { Phase } from '@shared/models/phase';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-view-questions',
@@ -21,7 +22,7 @@ export class ViewQuestionsComponent implements OnInit {
   productId: number;
   phase: Phase;
   knowledgeAreaId: number;
-  private sub: any;
+  sub: any;
   lcarouselLength = 5;
   constructor(
     private route: ActivatedRoute,
@@ -30,9 +31,10 @@ export class ViewQuestionsComponent implements OnInit {
     private questionApiService: QuestionApiService,
     private phaseApiService: PhaseApiService,
     private spinner: NgxSpinnerService,
-    private router: Router,
 
-  ) {}
+  ) {
+    this.temp = 0;
+  }
 
   items: KnowledgeArea[] = [];
   product: Product[];
@@ -41,8 +43,12 @@ export class ViewQuestionsComponent implements OnInit {
   faSpinner = faSpinner;
   name: string;
   url: string;
+  QCount: any;
+  ACount: number;
+  temp: number;
 
   async ngOnInit() {
+    this.knowledgeAreaApiService.nextMessage(0);
     this.sub = this.route.params.subscribe(async params => {
       this.spinner.show();
       this.productId = +params['product-id'];
@@ -53,12 +59,22 @@ export class ViewQuestionsComponent implements OnInit {
       await this.getKnowledgeAreasByPhaseId(this.phaseId);
       await this.getQuestionsByKnowledgeArea(this.knowledgeAreaId);
       await this.getKnowledgeAreaById(this.knowledgeAreaId);
+      await this.getQuestionCount(this.knowledgeAreaId);
+      this.knowledgeAreaApiService.sharedACount.subscribe(count => {
+        this.ACount = count;
+      });
       this.spinner.hide();
     });
   }
 
   async getKnowledgeAreasByPhaseId(id: number) {
     this.items = await this.knowledgeAreaApiService.get(id);
+  }
+
+  async getQuestionCount(id: number) {
+    this.QCount = await this.knowledgeAreaApiService.getQuestionCount(id);
+    console.log(this.QCount);
+    this.QCount = this.QCount.length;
   }
 
   async getKnowledgeAreaById(id: number) {

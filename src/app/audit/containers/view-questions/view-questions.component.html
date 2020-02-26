@@ -33,6 +33,7 @@ type = "fire"
       ></app-knowledge-area-side-bar>
       </div>
       <div *ngIf="items.length" class="col-12 col-sm-12 col-md-8 col-lg-8 offset-lg-1">
+        <p *ngIf="QCount">Progress {{ACount}}/{{QCount}}</p>
         <div *ngIf="knowledgeArea" class="alert alert-info mb-5" role="alert">
           Click <a href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">here</a> to get more information about <strong>{{knowledgeArea[0].name}}</strong>
         </div>
