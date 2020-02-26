@@ -73,7 +73,6 @@ export class ViewQuestionsComponent implements OnInit {
 
   async getQuestionCount(id: number) {
     this.QCount = await this.knowledgeAreaApiService.getQuestionCount(id);
-    console.log(this.QCount);
     this.QCount = this.QCount.length;
   }
 
