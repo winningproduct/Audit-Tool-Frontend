@@ -8,7 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-view-products',
   templateUrl: './view-products.component.html',
-  styleUrls: ['./view-products.component.scss']
+  styleUrls: []
 })
 export class ViewProductsComponent implements OnInit {
 

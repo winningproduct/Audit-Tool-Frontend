@@ -4,4 +4,5 @@ export class KnowledgeArea {
   public description: string;
   public score: number;
   public phaseId: number;
+  public url: string;
 }

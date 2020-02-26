@@ -4,7 +4,7 @@ import { AuthService } from '@shared/services/auth/auth.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: []
 })
 export class NavBarComponent implements OnInit {
   currentUser: any;
