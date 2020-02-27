@@ -18,9 +18,12 @@ export class ProductTileComponent implements OnInit {
   userCount: number;
 
   colors = [
-    '#8E44AD' ,
-    '#AA73C2',
-    '#C7A2D6',
+    '#3498db' ,
+    '#e73c82',
+    '#e67e22',
+    '#f1c40f' ,
+    '#2ecc71',
+    '#3cd7e7',
   ];
   constructor(private userApiService: UserApiService , private spinner: NgxSpinnerService) {
 

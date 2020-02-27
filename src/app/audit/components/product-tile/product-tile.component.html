@@ -10,7 +10,7 @@ type = "fire"
 <div class="card product-tile product-tile-h bg-white mx-0">
   <a [routerLink]="['/audit/products/', product.id, 'phases']">
     <div class="card-header d-flex flex-row justify-content-between align-items-start bg-white border-0">
-      <ngx-avatar size="40"  bgColor=#8e44ad name="{{product.name}}"></ngx-avatar>
+      <ngx-avatar size="40"  bgColor=#5c6d7e name="{{product.name}}"></ngx-avatar>
       <fa-icon [icon]="faEllipsisV" class="text-secondary"></fa-icon>
     </div>
     <div class="card-body pt-0">
@@ -22,7 +22,7 @@ type = "fire"
         </div>
       
         <div *ngIf="userCount" class="facePile-more d-flex align-items-center justify-content-center">
-          <ngx-avatar size="35" bgColor=#E3D0EB name="+ {{userCount}}" tooltip="+{{userCount}} more"></ngx-avatar>
+          <ngx-avatar size="35" bgColor=#1abc9c name="+ {{userCount}}" tooltip="+{{userCount}} more"></ngx-avatar>
         </div>
       </div>
     </div>
