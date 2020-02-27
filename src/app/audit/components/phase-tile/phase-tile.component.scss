@@ -1,1 +1,36 @@
 @import "../../../../assets/scss/theme";
+
+.circle {
+    border-radius: 50%;
+    background-color:#fff;
+    color: #fff;
+    max-height: 50px;
+    z-index: 2;
+    box-sizing: content-box;
+  }
+  
+  .how-it-works.row .col-2 {
+    align-self: stretch;
+  }
+  .how-it-works.row .col-2::after {
+    content: "";
+    position: absolute;
+    border-left: 3px solid $teal;
+    z-index: 1;
+  }
+  
+  .how-it-works.row .col-2.full::after {
+    height: 100%;
+    left: calc(50% - 3px);
+  }
+
+.phaseDevider{
+    width:100%; 
+    height:3px; 
+    background-color:#fff; 
+    border-top:0px solid $teal; 
+    border-left:3px solid $teal; 
+    border-right:0px solid $teal; 
+    border-bottom:3px solid $teal;
+}
+ 
