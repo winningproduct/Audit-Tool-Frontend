@@ -33,27 +33,18 @@ type = "fire"
       ></app-knowledge-area-side-bar>
       </div>
       <div *ngIf="items.length" class="col-12 col-sm-12 col-md-8 col-lg-9">
-
-        <div class="card border-0 bg-light">
+        <div *ngIf="knowledgeArea" class="card border-0 bg-light">
           <div class="card-body">
             <div class="d-flex flex-row align-items-start">
-              <div class="d-flex flex-row">
-                <div class="mr-3">
-                  <img src="../assets/img/agenda.png" height="40px;" width="auto"/>
-                </div>
-                <div>
-                  <p class="h6 mb-0">Title</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel vulputate turpis, nec interdum massa. </p>
-                  <a *ngIf="knowledgeArea" href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">More Info</a>
-                </div>
+              <div>
+                <p class="h6">{{knowledgeArea[0].name}}</p>
+                <p>{{knowledgeArea[0].description}}</p>
+                <p *ngIf="QCount">Progress {{ACount}}/{{QCount}}</p>
+                <a *ngIf="knowledgeArea" href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">More Info</a>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- <div *ngIf="knowledgeArea" class="alert alert-info mb-5" role="alert">
-          Click <a href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">here</a> to get more information about <strong>{{knowledgeArea[0].name}}</strong>
-        </div> -->
 
         <div class="mt-5">
           <app-evidence-box

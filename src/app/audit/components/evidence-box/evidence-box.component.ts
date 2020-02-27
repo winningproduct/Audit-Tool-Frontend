@@ -9,6 +9,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { KnowledgeAreaApiService } from '@shared/services/api/knowledge-area.service';
 
 const BUTTONS = [
   'bold',
@@ -47,8 +48,8 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   isStatusUpdated = false;
   submitEvidence = false;
   statusColor = '';
-
   content: '';
+  ACount: number;
 
   statusColorValues = [
     { id: 0 , value: ''},
@@ -70,8 +71,12 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     private evidenceService: EvidenceApiService,
     private userService: AuthService,
     private router: Router,
-    private spinner: NgxSpinnerService
-  ) {}
+    private spinner: NgxSpinnerService,
+    private knowledgeAreaApiService: KnowledgeAreaApiService,
+
+  ) {
+    this.knowledgeAreaApiService.sharedACount.subscribe(count => this.ACount = count);
+  }
 
   async ngOnInit() {
     this.route.params.subscribe(async params => {
@@ -84,6 +89,10 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   async getEvidenceByQuestionId(id: number, qid: number) {
     try {
       this.evidence = await this.evidenceService.get(id, qid);
+      if (this.evidence[0].status !== 'null') {
+        this.ACount++;
+        this.knowledgeAreaApiService.nextMessage(this.ACount);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -106,7 +115,7 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
     evidence.userId = await this.userService.getCurrentUserId();
     evidence.content = this.editor.getContent();
     evidence.version = '1';
-    evidence.status = (this.statusDropDowns.find(i => i.id === status) || { id: null , value: ''} ).value;
+    evidence.status = (this.statusDropDowns.find(i => i.id === status) || { id: null , value: 'null'} ).value;
     try {
       await this.evidenceService.post(qid, evidence);
       this.content = this.editor.getContent();
