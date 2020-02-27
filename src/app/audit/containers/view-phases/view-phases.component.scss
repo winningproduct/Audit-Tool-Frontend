@@ -30,6 +30,9 @@
       position: relative;
       left: -3px;
     }
+    ::ng-deep.col-9{
+      text-align: right;
+    }
   }
 }
 
