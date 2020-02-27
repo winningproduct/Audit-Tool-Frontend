@@ -36,11 +36,16 @@ type = "fire"
         <div *ngIf="knowledgeArea" class="card border-0 bg-light">
           <div class="card-body">
             <div class="d-flex flex-row align-items-start">
-              <div>
-                <p class="h6">{{knowledgeArea[0].name}}</p>
-                <p>{{knowledgeArea[0].description}}</p>
-                <p *ngIf="QCount">Progress {{ACount}}/{{QCount}}</p>
-                <a *ngIf="knowledgeArea" href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">More Info</a>
+              <div class="d-flex flex-row">
+                <div class="mr-4">
+                  <div class="progress-circle progress-75"><span></span></div>
+                </div>
+                <div>
+                  <p class="h6">{{knowledgeArea[0].name}}</p>
+                  <p>{{knowledgeArea[0].description}}</p>
+                  <p *ngIf="QCount">Progress {{ACount}}/{{QCount}}</p>
+                  <a *ngIf="knowledgeArea" href="{{knowledgeArea[0].url}}" class="alert-link" target="blank">More Info</a>
+                </div>
               </div>
             </div>
           </div>
