@@ -10,6 +10,7 @@ type = "fire"
   <div class="card h-100 mx-0 my-0">
     <div class="card-body">
       <h5 class="card-title mb-2">{{ phase.name}}</h5>
+      <p *ngIf="questionCount > 0" class="card-text">Progress : {{answerCount}}/{{questionCount}}</p>
       <p class="card-text">{{ phase.description }}</p>
       <a (click)="navigate()" class="card-link">Take the audit</a>
     </div>

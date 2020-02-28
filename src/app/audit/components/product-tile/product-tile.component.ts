@@ -3,6 +3,8 @@ import { Product } from '@shared/models/product';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { UserApiService } from '@shared/services/api/user.api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ProductApiService } from '@shared/services/api/product.api.service';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-product-tile',
@@ -16,7 +18,8 @@ export class ProductTileComponent implements OnInit {
   allUsers: any;
   firstUsers: [];
   userCount: number;
-
+  progress: any;
+  score: number;
   colors = [
     '#3498db' ,
     '#e73c82',
@@ -25,12 +28,15 @@ export class ProductTileComponent implements OnInit {
     '#2ecc71',
     '#3cd7e7',
   ];
-  constructor(private userApiService: UserApiService , private spinner: NgxSpinnerService) {
+  constructor(
+    private userApiService: UserApiService,
+    private spinner: NgxSpinnerService,
+    private productApiService: ProductApiService
+    ) {}
 
-   }
-
-  ngOnInit() {
-    this.getusers();
+  async ngOnInit() {
+    await this.getusers();
+    await this.getProgress();
   }
 
   async getusers() {
@@ -42,4 +48,8 @@ export class ProductTileComponent implements OnInit {
     this.spinner.hide();
   }
 
+  async getProgress() {
+    this.progress = await this.productApiService.getQuestionCount(this.product.id);
+    this.score = (this.progress[0].answerCount / this.progress[0].questionCount)* 100 ;
+  }
 }
