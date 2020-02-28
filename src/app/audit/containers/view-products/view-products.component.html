@@ -8,7 +8,25 @@ type = "fire"
 >
 </ngx-spinner>
 <app-nav-bar></app-nav-bar>
-<div class="row mt-4">
+<div class="row">
+  <div class="col-12 col-sm-12 mt-5 mb-5">
+    <div class="card border-0 bg-light">
+      <div class="card-body">
+        <div class="d-flex flex-row align-items-start">
+          <div class="d-flex flex-row">
+            <div class="mr-4">
+              <img src="../assets/img/agenda.png" height="64px" width="auto"/>
+            </div>
+            <div>
+              <p class="h6">Welcome {{userName}}</p>
+              <p>Make your winning product today! you can start adding eveidence to knowledge areas or learn and contribute to ever growing WPO knowledge base.</p>
+              <a class="alert-link" target="blank">More Info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
     <tabset>
       <tab heading="Active Products" id="tab1">
@@ -18,7 +36,7 @@ type = "fire"
               <app-product-tile
                 [product]="product"
                 *ngFor="let product of products"
-                class="col col-12 col-sm-12 col-md-4 col-lg-4 mb-3"
+                class="col col-12 col-sm-12 mb-3"
               ></app-product-tile>
               <alert type="info w-100" *ngIf="products == null">
                 <strong>No Products Found</strong> Please contact Administrator
@@ -29,9 +47,24 @@ type = "fire"
       </tab>
       <tab heading="Archived Products">
         <div class="row d-flex mt-4">
-          <alert type="info w-100">
-            <strong>No Archived Products</strong> No archived products found
-          </alert>
+          <div class="col-12 col-sm-12">
+            <div class="card border-0 bg-light">
+              <div class="card-body">
+                <div class="d-flex flex-row align-items-start">
+                  <div class="d-flex flex-row">
+                    <div class="mr-4">
+                      <img src="../assets/img/box.png" height="64px" width="auto"/>
+                    </div>
+                    <div>
+                      <p class="h6">It's Empty In here</p>
+                      <p>You dont have any archived products yet, once you archive an product it will appear in here.Feel like some thing is missing? drop us a message</p>
+                      <a class="alert-link" target="blank">Report Issue</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </tab>
     </tabset>

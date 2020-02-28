@@ -35,11 +35,19 @@
 }
 
 .product-tile{
+  border-width: 2px;
+  border-color: $gray-200;
   &:hover{
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    border-color: $primary;
   }
 }
 
 .product-tile-h {
   height:100%;
+}
+
+.card-header{
+  ngx-avatar{
+    position: absolute; top: 5px; left:5px; z-index: 2;
+  }
 }

@@ -15,9 +15,11 @@ export class PhaseTileComponent implements OnInit {
   @Input() phase: Phase;
   @Input() productId: number;
   knowledgeA: any;
+  value = 70;
   score: any;
   answerCount: number;
   questionCount: number;
+
   constructor(
     private knowledgeAreaApiService: KnowledgeAreaApiService,
     private phaseApiService: PhaseApiService,

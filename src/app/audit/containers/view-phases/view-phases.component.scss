@@ -22,3 +22,17 @@
 .phaseDiv{
   margin-bottom: 6rem;
 }
+
+.phaseWrapper{
+  app-phase-tile:nth-child(even){
+    ::ng-deep.phaseContent{
+      flex-direction: row-reverse;
+      position: relative;
+      left: -3px;
+    }
+    ::ng-deep.col-9{
+      text-align: right;
+    }
+  }
+}
+

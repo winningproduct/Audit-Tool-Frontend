@@ -8,9 +8,18 @@ type = "fire"
 >
 </ngx-spinner>
 <app-nav-bar></app-nav-bar>
-<div class="row mt-4">
-  <div class="col-12 col-sm-12 col-md-12 col-lg-12 phaseDiv">
-    <div class="card border-0 bg-light" *ngIf="products != null">
+<div class="row mt-3">
+  <div class="col-12 col-sm-12">
+    <nav aria-label="breadcrumb" *ngIf="products != null">
+      <ol class="breadcrumb bg-white px-0">
+        <li class="breadcrumb-item"><a href="#">Product</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{products[0].name}}</li>
+      </ol>
+    </nav>
+  </div>
+  
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 phaseDiv mt-5">
+    <!-- <div class="card border-0 bg-light" *ngIf="products != null">
       <div class="card-body">
         <div class="d-flex flex-row align-items-start">
           <div>
@@ -22,20 +31,34 @@ type = "fire"
           </div>
         </div>
       </div>
-    </div>
-    <nav aria-label="breadcrumb" class="mt-4" *ngIf="products != null">
-      <ol class="breadcrumb bg-white px-0">
-        <li class="breadcrumb-item"><a [routerLink]="['/audit/products/']">Product</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{products[0].name}}</li>
-      </ol>
-    </nav>
+    </div> -->
+
     <!-- <h5 class="mb-4">Phases</h5> -->
+
     <div class="row">
       <div class="col-12 col-sm-12">
-        <div class="card-deck">
-          <app-phase-tile [productId]="id" [phase]="phase" *ngFor="let phase of phases" class="col col-sm-12 col-md-4 mb-3"></app-phase-tile>
+        <div class="col-2 col-sm-2 d-flex align-items-center justify-content-center">
+          <img src="../assets/img/red-flag.png" style="width:64px; height:auto; margin-left: 37px;"/>
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-12 phaseWrapper">
+          <app-phase-tile [productId]="id" [phase]="phase" *ngFor="let phase of phases" class="d-flex flex-column col-12 col-sm-12"></app-phase-tile>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-12">
+        <div class="col-2 col-sm-2 d-flex align-items-center justify-content-center flex-column">
+          <div style="height:150px; border-left:3px solid #d6dade; position: relative; left: -2px;"></div>
+          <img src="../assets/img/chosen.png" style="width:64px; height:auto;"/>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
 </div>
