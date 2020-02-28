@@ -51,11 +51,10 @@ export class PhaseTileComponent implements OnInit {
   async getProgress() {
     this.result = await this.phaseApiService.getQuestionCount(this.productId, this.phase.id);
     this.answerCount = 0;
-    this.questionCount = this.result.length;
+    this.questionCount = 0;
     this.result.forEach(element => {
-      if (element.answerCount === element.questionCount) {
-        this.answerCount++;
-      }
+      this.answerCount = this.answerCount + element.answerCount;
+      this.questionCount = this.questionCount + element.questionCount;
     });
     if (this.questionCount === 0) {
       this.score = 0;
