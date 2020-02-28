@@ -4,6 +4,7 @@ import { Product } from '@shared/models/product';
 import { KnowledgeAreaApiService } from '@shared/services/api/knowledge-area.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { PhaseApiService } from '@shared/services/api/phase.api.service';
 
 @Component({
   selector: 'app-phase-tile',
@@ -14,14 +15,18 @@ export class PhaseTileComponent implements OnInit {
   @Input() phase: Phase;
   @Input() productId: number;
   knowledgeA: any;
-
+  score: any;
+  answerCount: number;
+  questionCount: number;
   constructor(
     private knowledgeAreaApiService: KnowledgeAreaApiService,
+    private phaseApiService: PhaseApiService,
     private router: Router,
     private spinner: NgxSpinnerService,
   ) {}
 
   async ngOnInit() {
+    await this.getProgress();
     this.spinner.show();
     this.knowledgeA = await this.knowledgeAreaApiService.get(
       this.phase.phaseId,
@@ -40,5 +45,16 @@ export class PhaseTileComponent implements OnInit {
         this.knowledgeA[0].id +
         '/question',
     );
+  }
+
+  async getProgress() {
+    this.score = await this.phaseApiService.getQuestionCount(this.productId, this.phase.id);
+    this.answerCount = 0;
+    this.questionCount = this.score.length;
+    this.score.forEach(element => {
+      if (element.answerCount === element.questionCount) {
+        this.answerCount++;
+      }
+    });
   }
 }

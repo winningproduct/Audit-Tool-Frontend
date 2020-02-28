@@ -25,7 +25,7 @@ type = "fire"
     </div>
     <nav aria-label="breadcrumb" class="mt-4" *ngIf="products != null">
       <ol class="breadcrumb bg-white px-0">
-        <li class="breadcrumb-item"><a href="#">Product</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/audit/products/']">Product</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{products[0].name}}</li>
       </ol>
     </nav>

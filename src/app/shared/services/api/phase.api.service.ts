@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Phase } from '../../models/phase';
-import { productRoute } from '../../constants';
+import { productRoute, questionRoute } from '../../constants';
 
 
 @Injectable({
@@ -18,6 +18,13 @@ export class PhaseApiService {
     public async getPhaseByProductPhaseId(id: number): Promise<Phase> {
         const result = await this.httpClient.get(productRoute + '/' + id + '/productPhase').toPromise();
         return JSON.parse(result['body']) as Phase;
+    }
+
+    public async getQuestionCount(productId: number, phaseId: number): Promise<any> {
+        const result = await this.httpClient
+          .get(questionRoute + 'Count/phase/' + productId + '/' + phaseId)
+          .toPromise();
+        return JSON.parse(result['body']);
     }
 
 }

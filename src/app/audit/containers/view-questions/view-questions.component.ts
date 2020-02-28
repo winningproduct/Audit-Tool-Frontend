@@ -48,8 +48,8 @@ export class ViewQuestionsComponent implements OnInit {
   temp: number;
 
   async ngOnInit() {
-    this.knowledgeAreaApiService.nextMessage(0);
     this.sub = this.route.params.subscribe(async params => {
+      this.knowledgeAreaApiService.nextMessage(0);
       this.spinner.show();
       this.productId = +params['product-id'];
       this.phaseId = +params['product-phase-id'];
