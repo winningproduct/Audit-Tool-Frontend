@@ -6,8 +6,13 @@
 
     .nav-link{
         &.active{
-            border-color:transparent;
-            font-weight: bold;
+            background-color: #f9f5fb !important;
+            color: #8e44ad !important;
+            border-radius: 0px;
+            border-bottom: 2px solid #8e44ad;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            border-right-color: transparent;
         }
 
         &:hover{
