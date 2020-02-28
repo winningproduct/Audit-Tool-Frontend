@@ -15,11 +15,10 @@ export class PhaseTileComponent implements OnInit {
   @Input() phase: Phase;
   @Input() productId: number;
   knowledgeA: any;
-  value = 70;
-  score: any;
+  score: any = 0;
   answerCount: number;
   questionCount: number;
-
+  result: any;
   constructor(
     private knowledgeAreaApiService: KnowledgeAreaApiService,
     private phaseApiService: PhaseApiService,
@@ -50,13 +49,17 @@ export class PhaseTileComponent implements OnInit {
   }
 
   async getProgress() {
-    this.score = await this.phaseApiService.getQuestionCount(this.productId, this.phase.id);
+    this.result = await this.phaseApiService.getQuestionCount(this.productId, this.phase.id);
     this.answerCount = 0;
-    this.questionCount = this.score.length;
-    this.score.forEach(element => {
-      if (element.answerCount === element.questionCount) {
-        this.answerCount++;
-      }
+    this.questionCount = 0;
+    this.result.forEach(element => {
+      this.answerCount = this.answerCount + element.answerCount;
+      this.questionCount = this.questionCount + element.questionCount;
     });
+    if (this.questionCount === 0) {
+      this.score = 0;
+    } else {
+    this.score = (this.answerCount / this.questionCount) * 100;
+    }
   }
 }
