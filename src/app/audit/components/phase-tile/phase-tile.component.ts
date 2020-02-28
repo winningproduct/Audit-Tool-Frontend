@@ -15,8 +15,7 @@ export class PhaseTileComponent implements OnInit {
   @Input() phase: Phase;
   @Input() productId: number;
   knowledgeA: any;
-  value = 70;
-  score: any;
+  score: any = 0;
   answerCount: number;
   questionCount: number;
   result: any;
@@ -58,6 +57,10 @@ export class PhaseTileComponent implements OnInit {
         this.answerCount++;
       }
     });
+    if (this.questionCount === 0) {
+      this.score = 0;
+    } else {
     this.score = (this.answerCount / this.questionCount) * 100;
+    }
   }
 }
