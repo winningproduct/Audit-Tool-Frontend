@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ProductApiService } from '@shared/services/api/product.api.service';
+import { Product } from '@shared/models/product';
+import { Question } from '@shared/models/question';
+import { QuestionApiService } from '@shared/services/api/question.api.service';
+import { KnowledgeAreaApiService } from '@shared/services/api/knowledge-area.service';
+import { KnowledgeArea } from '@shared/models/knowledge-area';
 
 @Component({
   selector: 'app-view-evidence-history',
@@ -13,20 +19,34 @@ export class ViewEvidenceHistoryComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private productApiService: ProductApiService,
+    private questionApiService: QuestionApiService,
+    private knowledgeAreaApiService: KnowledgeAreaApiService,
 
     ) { }
 
   sub: any;
   productId: number;
   questionId: number;
+  phaseId: number;
+  knowledgeAreaId: number;
+  product: Product[];
+  question: Question[];
+  knowledgeArea: KnowledgeArea[];
+
 
   async ngOnInit() {
     this.spinner.show();
     this.sub = this.route.params.subscribe(async params => {
       this.productId = +params['product-id'];
       this.questionId = +params['question-id'];
+      this.phaseId = +params['product-phase-id'];
+      this.knowledgeAreaId = +params['knowledge-area-id'];
     });
+    this.product = await this.productApiService.getById(this.productId);
+    this.question = await this.questionApiService.getById(this.questionId);
+    this.knowledgeArea = await this.knowledgeAreaApiService.getById(this.knowledgeAreaId);
   }
 
 }

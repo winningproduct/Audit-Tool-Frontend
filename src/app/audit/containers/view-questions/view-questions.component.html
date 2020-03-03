@@ -52,6 +52,8 @@ type = "fire"
 
         <div class="mt-5">
           <app-evidence-box
+            [phaseId]="phaseId"
+            [knowledgeAreaId]="knowledgeAreaId"
             [question]="question"
             [index]="index"
             *ngFor="let question of questions; let index = index"

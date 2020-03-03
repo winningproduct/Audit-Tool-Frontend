@@ -26,7 +26,7 @@ const routes: Routes = [
     canActivate : [AuthGuard]
   },
   {
-    path: 'products/:product-id/phases/knowledge-areas/question/:question-id/evidence/versions',
+    path: 'products/:product-id/phases/:product-phase-id/knowledge-areas/:knowledge-area-id/question/:question-id/evidence/versions',
     component: ViewEvidenceHistoryComponent,
     canActivate : [AuthGuard]
   },
