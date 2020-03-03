@@ -35,6 +35,8 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   faSave = faSave;
 
   @Input() question: Question;
+  @Input() phaseId: number;
+  @Input() knowledgeAreaId: number;
   @Input() index: number;
   @ViewChild('editable', {
     static: true,
@@ -194,7 +196,11 @@ export class EvidenceBoxComponent implements OnInit, AfterViewInit {
   navigate() {
     this.router.navigateByUrl('/audit/products/'
     + this.productId
-    + '/phases/knowledge-areas/question/'
+    + '/phases/'
+    + this.phaseId
+    + '/knowledge-areas/'
+    + this.knowledgeAreaId
+    + '/question/'
     + this.question.id
     + '/evidence/versions');
   }
