@@ -17,12 +17,13 @@ export class ViewProductsComponent implements OnInit {
 
   products: Product[];
   userId: string;
-
+  userName: string;
   constructor(private productApi: ProductApiService , private auth: AuthService , private spinner: NgxSpinnerService) { }
 
   async ngOnInit() {
     this.spinner.show();
     const user = await this.auth.getCurrentUser();
+    this.userName = user.given_name;
     if ( user ) {
       this.userId = user.userId;
     }

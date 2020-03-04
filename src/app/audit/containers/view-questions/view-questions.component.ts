@@ -33,7 +33,6 @@ export class ViewQuestionsComponent implements OnInit {
     private spinner: NgxSpinnerService,
 
   ) {
-    this.temp = 0;
   }
 
   items: KnowledgeArea[] = [];
@@ -45,11 +44,11 @@ export class ViewQuestionsComponent implements OnInit {
   url: string;
   QCount: any;
   ACount: number;
-  temp: number;
+  score: number;
 
   async ngOnInit() {
-    this.knowledgeAreaApiService.nextMessage(0);
     this.sub = this.route.params.subscribe(async params => {
+      this.knowledgeAreaApiService.nextMessage(0);
       this.spinner.show();
       this.productId = +params['product-id'];
       this.phaseId = +params['product-phase-id'];
@@ -62,6 +61,7 @@ export class ViewQuestionsComponent implements OnInit {
       await this.getQuestionCount(this.knowledgeAreaId);
       this.knowledgeAreaApiService.sharedACount.subscribe(count => {
         this.ACount = count;
+        this.score = (this.ACount / this.QCount) * 100;
       });
       this.spinner.hide();
     });

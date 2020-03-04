@@ -9,7 +9,6 @@ export const environment = {
   redirectSignIn: 'http://localhost:4200/auth',
   redirectSignOut: 'http://localhost:4200/auth',
   host: window.location.origin + '/dev',
-  // host: 'http://localhost:3000',
 };
 
 /*
