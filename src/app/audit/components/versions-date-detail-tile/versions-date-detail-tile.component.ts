@@ -6,7 +6,7 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-versions-date-detail-tile',
   templateUrl: './versions-date-detail-tile.component.html',
-  styleUrls: []
+  styleUrls: ['./versions-date-detail-tile.component.scss']
 })
 export class VersionsDateDetailTileComponent implements OnInit {
 
