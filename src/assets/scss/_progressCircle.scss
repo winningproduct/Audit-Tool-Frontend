@@ -18,6 +18,17 @@ h1{
   height: 50px;
   border-radius: 50%;
   background-color: $color-progress-circle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px !important;
+    font-weight: bold;
+  }
 }
 
 .progress-circle:after {
