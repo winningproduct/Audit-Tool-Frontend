@@ -1,13 +1,15 @@
 
 <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex flex-row align-items-center justify-content-between" style="height: 5vh;">
   <div class="mr-3 d-flex flex-row align-items-center">
-    <fa-icon [icon]="faArrowLeft" class="text-dark mr-3"></fa-icon>
-    <h6 class="mb-0">28 Feb 2020</h6>
+    <a (click)="navigate()">
+      <fa-icon [icon]="faArrowLeft" class="text-dark mr-3"></fa-icon>    
+    </a>
+    <h6 *ngIf="evidence != null" class="mb-0">{{ evidence[0].createdDate | date:'medium' }}</h6>
   </div>
   <div>
     <button type="submit" class="btn btn-link d-flex px-0 py-0 font-weight-bold" (click)="save()">
       <fa-icon [icon]="faSpinner" *ngIf="submitEvidence" class="text-white fa-spin mr-2 "></fa-icon>
-      Save
+      Revert
     </button>
   </div>
 </div>
