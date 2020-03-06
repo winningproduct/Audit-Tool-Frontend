@@ -14,7 +14,7 @@ export class VersionsDateTileComponent implements OnInit {
   faRedo = faRedo;
   faCaretDown = faCaretDown;
   faSpinner = faSpinner;
-  getVersions = true;
+  getVersions = false;
   @Input() isDay: boolean;
   @Input() innerDate: any;
   @Input() productId: number;
