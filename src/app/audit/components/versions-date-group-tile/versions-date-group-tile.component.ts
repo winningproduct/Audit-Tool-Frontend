@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-versions-date-group-tile',
@@ -9,6 +10,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 export class VersionsDateGroupTileComponent implements OnInit {
   faCaretDown = faCaretDown;
   faSpinner = faSpinner;
+  faCaretUp = faCaretUp;
   isCollapsed = true;
   isDay = false;
   dataReceived = false;
