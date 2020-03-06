@@ -8,11 +8,12 @@ type = "fire"
 >
 </ngx-spinner>
 <app-nav-bar></app-nav-bar>
-<div class="row mt-4">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+
+<div class="row" style="min-height: 100vh; overflow: hidden;">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-9">
         <app-evidence-history-box [productId]="productId" [questionId]="questionId"></app-evidence-history-box>
     </div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-4 border border-bottom-0 border-light px-0">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-3 border border-bottom-0 border-light px-0" style="height: 100vh;">
         <app-versions-tab [productId]="productId" [questionId]="questionId"></app-versions-tab>
     </div>
 </div>

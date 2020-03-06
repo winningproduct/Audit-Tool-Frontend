@@ -4,6 +4,7 @@ import { Evidence } from '@shared/models/evidence';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
 import { DatePipe } from '@angular/common';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -19,6 +20,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   pipe = new DatePipe('en-US');
   submitEvidence = false;
   faSpinner = faSpinner;
+  faArrowLeft = faArrowLeft;
   evidenceReceived = true;
   constructor(
     private authService: AuthService,
