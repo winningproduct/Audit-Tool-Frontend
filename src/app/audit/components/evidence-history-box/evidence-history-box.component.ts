@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-evidence-history-box',
@@ -22,10 +23,17 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   faSpinner = faSpinner;
   faArrowLeft = faArrowLeft;
   evidenceReceived = true;
+  sub: any;
+  param1: any;
+  param2: any;
+  param3: any;
+
   constructor(
     private authService: AuthService,
     private evidenceService: EvidenceApiService,
     private spinner: NgxSpinnerService,
+    private router: Router,
+    private route: ActivatedRoute,
 
   ) {
     this.evidenceService.evidenceId.subscribe(id => {
@@ -37,6 +45,11 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.sub = this.route.params.subscribe(async params => {
+      this.param1 = +params['product-id'];
+      this.param2 = +params['product-phase-id'];
+      this.param3 = +params['knowledge-area-id'];
+    });
     this.evidence = await this.evidenceService.get(this.productId , this.questionId);
     this.spinner.hide();
   }
@@ -64,6 +77,18 @@ export class EvidenceHistoryBoxComponent implements OnInit {
     this.evidence = await this.evidenceService.getEvidenceById(id);
     this.evidenceReceived = true;
 
+  }
+
+  navigate() {
+    this.router.navigateByUrl(
+      '/audit/products/' +
+        this.param1 +
+        '/phases/' +
+        this.param2 +
+        '/knowledge-areas/' +
+        this.param3 +
+        '/question',
+    );
   }
 
 }

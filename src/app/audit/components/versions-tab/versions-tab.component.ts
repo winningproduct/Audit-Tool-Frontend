@@ -34,7 +34,10 @@ export class VersionsTabComponent implements OnInit {
           lastDay: '[Yesterday]',
           lastWeek: '[Last] dddd',
           sameElse: function callback(now) {
-            const x = moment(date.createdDate).fromNow();
+            let x = moment(date.createdDate).fromNow();
+            if (x.includes('days')) {
+              x = 'last 30 days';
+            }
             return '[' + x + ']';
           },
         });
