@@ -44,8 +44,6 @@ export class ViewEvidenceHistoryComponent implements OnInit {
       this.phaseId = +params['product-phase-id'];
       this.knowledgeAreaId = +params['knowledge-area-id'];
       this.product = await this.productApiService.getById(this.productId);
-      this.question = await this.questionApiService.getById(this.questionId);
-      this.knowledgeArea = await this.knowledgeAreaApiService.getById(this.knowledgeAreaId);
       this.hideSpinner();
     });
   }
