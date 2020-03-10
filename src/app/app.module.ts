@@ -53,7 +53,7 @@ import { SharedModule } from '@shared/shared.module';
     AuthService,
     AmplifyService,
     RoleGuardService,
-    
+
 
   ],
   bootstrap: [AppComponent],

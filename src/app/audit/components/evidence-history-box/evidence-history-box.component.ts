@@ -83,7 +83,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
     this.spinner.show();
     this.submitEvidence = true;
     try {
-      this.evidenceService.revertEvidence(this.questionId, this.evidence[0].id);
+      this.evidenceService.revertEvidence(this.questionId, this.productId, this.evidence[0].id);
     } catch (error) {
     } finally {
       setTimeout(() => {
