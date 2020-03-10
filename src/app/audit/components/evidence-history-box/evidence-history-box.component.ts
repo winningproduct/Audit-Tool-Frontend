@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { Evidence } from '@shared/models/evidence';
 import { EvidenceApiService } from '@shared/services/api/evidence.service';
@@ -7,6 +7,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-evidence-history-box',
@@ -28,13 +29,14 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   param2: any;
   param3: any;
   statusColor = '';
+  modalRef: BsModalRef;
 
   constructor(
-    private authService: AuthService,
     private evidenceService: EvidenceApiService,
-    private spinner: NgxSpinnerService,
     private router: Router,
     private route: ActivatedRoute,
+    private modalService: BsModalService,
+    private spinner: NgxSpinnerService,
 
   ) {
     this.evidenceService.evidenceId.subscribe(id => {
@@ -72,7 +74,13 @@ export class EvidenceHistoryBoxComponent implements OnInit {
     }
   }
 
+  revert(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
   async save() {
+    this.modalRef.hide();
+    this.spinner.show();
     this.submitEvidence = true;
     try {
       this.evidenceService.revertEvidence(this.questionId, this.evidence[0].id);
@@ -81,7 +89,13 @@ export class EvidenceHistoryBoxComponent implements OnInit {
       setTimeout(() => {
         this.submitEvidence = false;
       }, 1000);
+      this.spinner.hide();
+      this.navigate();
     }
+  }
+
+  decline(): void {
+    this.modalRef.hide();
   }
 
   async getEvidence(id: number) {

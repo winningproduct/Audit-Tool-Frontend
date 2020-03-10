@@ -1,4 +1,10 @@
-
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to Revert to this Version?</p>
+    <button type="button" class="btn btn-primary button" (click)="save()" >Yes</button>
+    <button type="button" class="btn btn-primary button" (click)="decline()" >No</button>
+  </div>
+</ng-template>
 <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex flex-row align-items-center justify-content-between" style="height: 5vh;">
   <div class="mr-3 d-flex flex-row align-items-center">
     <a (click)="navigate()">
@@ -7,7 +13,7 @@
     <h6 *ngIf="evidence != null" class="mb-0">{{ evidence[0].createdDate | date:'medium' }}</h6>
   </div>
   <div class="d-flex flex-row align-items-center">
-    <button type="submit" class="btn btn-link d-flex px-0 py-0 font-weight-bold" (click)="save()">
+    <button type="submit" class="btn btn-link d-flex px-0 py-0 font-weight-bold" (click)="revert(template)">
       <fa-icon [icon]="faSpinner" *ngIf="submitEvidence" class="text-white fa-spin mr-2 "></fa-icon>
       Revert
     </button>
