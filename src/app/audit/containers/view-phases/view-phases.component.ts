@@ -15,7 +15,7 @@ export class ViewPhasesComponent implements OnInit {
   faEllipsisV = faEllipsisV;
   id: number;
   private sub: any;
-
+  loader = false;
   constructor(
     private phaseApiService: PhaseApiService,
     private route: ActivatedRoute,
@@ -26,11 +26,12 @@ export class ViewPhasesComponent implements OnInit {
   phases: Phase[];
   products: Product[];
   ngOnInit() {
-    this.spinner.show();
     this.sub = this.route.params.subscribe(async params => {
+      this.showSpinner();
       this.id = +params['product-id'];
       await this.getProductDetails(this.id);
       await this.getAllPhases(this.id);
+      this.hideSpinner();
     });
   }
 
@@ -40,5 +41,14 @@ export class ViewPhasesComponent implements OnInit {
 
   async getProductDetails(id: number) {
     this.products = await this.productApiService.getById(id);
+  }
+
+  async showSpinner() {
+    this.spinner.show();
+  }
+
+  async hideSpinner() {
+    this.loader = true;
+    this.spinner.hide();
   }
 }

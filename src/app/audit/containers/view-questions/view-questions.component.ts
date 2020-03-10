@@ -46,9 +46,11 @@ export class ViewQuestionsComponent implements OnInit {
   ACount: number;
   score: number;
   length: number;
+  loader = false;
+
   async ngOnInit() {
     this.sub = this.route.params.subscribe(async params => {
-      this.spinner.show();
+      this.showSpinner();
       this.knowledgeAreaApiService.nextMessage(0);
       this.productId = +params['product-id'];
       this.phaseId = +params['product-phase-id'];
@@ -67,7 +69,7 @@ export class ViewQuestionsComponent implements OnInit {
         this.score = (this.ACount / this.QCount) * 100;
         }
       });
-      this.spinner.hide();
+      this.hideSpinner();
     });
   }
 
@@ -95,6 +97,15 @@ export class ViewQuestionsComponent implements OnInit {
   async getQuestionsByKnowledgeArea(id: number) {
     this.questions = await this.questionApiService.get(id);
     this.length = this.questions.length;
+  }
+
+  async showSpinner() {
+    this.spinner.show();
+  }
+
+  async hideSpinner() {
+    this.loader = true;
+    this.spinner.hide();
   }
 
 }

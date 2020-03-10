@@ -70,7 +70,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
         break;
       }
     }
-    this.spinner.hide();
+    //this.spinner.hide();
   }
 
   async save() {

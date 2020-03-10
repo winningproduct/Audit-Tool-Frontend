@@ -18,15 +18,28 @@ export class ViewProductsComponent implements OnInit {
   products: Product[];
   userId: string;
   userName: string;
+  loader = false;
+
   constructor(private productApi: ProductApiService , private auth: AuthService , private spinner: NgxSpinnerService) { }
 
   async ngOnInit() {
-    this.spinner.show();
+    this.showSpinner();
     const user = await this.auth.getCurrentUser();
     this.userName = user.given_name;
     if ( user ) {
       this.userId = user.userId;
     }
     this.products = await this.productApi.get(this.userId);
+    this.hideSpinner();
   }
+
+  async showSpinner() {
+    this.spinner.show();
+  }
+
+  async hideSpinner() {
+    this.loader = true;
+    this.spinner.hide();
+  }
+
 }

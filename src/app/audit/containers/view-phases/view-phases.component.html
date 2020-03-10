@@ -1,40 +1,23 @@
 <ngx-spinner
 bdOpacity = 1
-bdColor = "#fff"
+bdColor = "rgba(51,51,51,0.8)"
 size = "medium"
 color = "#cf46ff"
 type = "fire"
-[fullScreen] = "true"
+fullScreen = "false"
 >
 </ngx-spinner>
-<app-nav-bar></app-nav-bar>
-<div class="row mt-3">
+<div class="row mt-3" *ngIf="loader">
   <div class="col-12 col-sm-12">
     <nav aria-label="breadcrumb" *ngIf="products != null">
       <ol class="breadcrumb bg-white px-0">
-        <li class="breadcrumb-item"><a href="#">Product</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/audit/products/']">Product</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{products[0].name}}</li>
       </ol>
     </nav>
   </div>
   
   <div class="col-12 col-sm-12 col-md-12 col-lg-12 phaseDiv mt-5">
-    <!-- <div class="card border-0 bg-light" *ngIf="products != null">
-      <div class="card-body">
-        <div class="d-flex flex-row align-items-start">
-          <div>
-            <ngx-avatar size="40" bgColor=#8e44ad name="{{products[0].name}}"></ngx-avatar>
-          </div>
-          <div class="ml-3">
-            <p class="h6">{{products[0].name}}</p>
-            <p>{{products[0].description}}</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <h5 class="mb-4">Phases</h5> -->
-
     <div class="row">
       <div class="col-12 col-sm-12">
         <div class="col-2 col-sm-2 d-flex align-items-center justify-content-center">
@@ -57,8 +40,5 @@ type = "fire"
         </div>
       </div>
     </div>
-
-
-
   </div>
 </div>
