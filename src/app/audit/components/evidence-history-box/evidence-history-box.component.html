@@ -7,7 +7,7 @@
     <h6 *ngIf="evidence != null" class="mb-0">{{ evidence[0].createdDate | date:'medium' }}</h6>
   </div>
   <div class="d-flex flex-row align-items-center">
-    <h5 class="mb-0 mr-3"><span class="badge badge-secondary">{{ evidence[0].status }}</span></h5>
+    <h5 *ngIf="evidence != null"  class="mb-0 mr-3"><span [ngClass]="statusColor" class="badge badge-{{statusColor}}">{{ evidence[0].status }}</span></h5>
     <button type="submit" class="btn btn-link d-flex px-0 py-0 font-weight-bold" (click)="save()">
       <fa-icon [icon]="faSpinner" *ngIf="submitEvidence" class="text-white fa-spin mr-2 "></fa-icon>
       Revert
@@ -20,7 +20,6 @@
     <p *ngIf="!evidenceReceived">Loading ...</p>
     <div *ngIf="evidence != null">
       <div [innerHTML]="evidence[0].content"></div>
-      <p>{{ evidence[0].status }}</p>
       <div class="mb-md-0 mb-2" style="padding-right:5px">
         
       </div>

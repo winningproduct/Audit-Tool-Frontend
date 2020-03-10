@@ -27,6 +27,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
   param1: any;
   param2: any;
   param3: any;
+  statusColor = '';
 
   constructor(
     private authService: AuthService,
@@ -51,6 +52,27 @@ export class EvidenceHistoryBoxComponent implements OnInit {
       this.param3 = +params['knowledge-area-id'];
     });
     this.evidence = await this.evidenceService.get(this.productId , this.questionId);
+    console.log(this.evidence[0].status);
+    switch (this.evidence[0].status) {
+      case 'Fully Complied' : {
+        this.statusColor = 'success';
+        break;
+      }
+      case 'Partialy Complied' : {
+        this.statusColor = 'info';
+        break;
+      }
+      case 'Not Complied' : {
+        this.statusColor = 'warning';
+        break;
+      }
+      case 'Not Applicable' : {
+        this.statusColor = 'secondary';
+        break;
+      }
+    }
+    console.log(this.statusColor);
+
     this.spinner.hide();
   }
 
