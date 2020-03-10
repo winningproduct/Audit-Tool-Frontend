@@ -39,7 +39,6 @@ export class AdminComponent implements OnInit {
     await this.getAllUsers();
     await this.getAllOrganizations();
     const uId = await this.authService.isAdmin();
-    console.log(uId);
     this.spinner.hide();
 
   }
@@ -54,7 +53,6 @@ export class AdminComponent implements OnInit {
 
   async getAllOrganizations() {
     this.organizations = await this.adminService.getAllOrganizations();
-    console.log(this.organizations);
   }
 
   async addUserToProject() {
