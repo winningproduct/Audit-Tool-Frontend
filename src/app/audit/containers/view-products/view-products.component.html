@@ -1,14 +1,13 @@
 <ngx-spinner
 bdOpacity = 1
-bdColor = "#fff"
+bdColor = "rgba(51,51,51,0.8)"
 size = "medium"
 color = "#cf46ff"
 type = "fire"
 [fullScreen] = "true"
 >
 </ngx-spinner>
-<app-nav-bar></app-nav-bar>
-<div class="row">
+<div class="row" *ngIf="loader">
   <div class="col-12 col-sm-12 mt-5 mb-5">
     <div class="card border-0 bg-light">
       <div class="card-body">

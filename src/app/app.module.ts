@@ -20,6 +20,7 @@ import { MomentModule } from 'ngx-moment';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +37,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     AccordionModule.forRoot(),
     CollapseModule.forRoot(),
     InfiniteScrollModule,
-
+    SharedModule
   ],
   providers: [
     {

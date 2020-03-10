@@ -1,15 +1,13 @@
 <ngx-spinner
 bdOpacity = 1
-bdColor = "#fff"
+bdColor = "rgba(51,51,51,0.8)"
 size = "medium"
 color = "#cf46ff"
 type = "fire"
 [fullScreen] = "true"
 >
 </ngx-spinner>
-
-<app-nav-bar></app-nav-bar>
-<div class="row evidenceWrapper">
+<div class="row evidenceWrapper" *ngIf="loader">
     <div class="col-12 col-sm-12 col-md-12 col-lg-9">
         <app-evidence-history-box [productId]="productId" [questionId]="questionId"></app-evidence-history-box>
     </div>

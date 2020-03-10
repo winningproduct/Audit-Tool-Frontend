@@ -40,12 +40,10 @@ export class ProductTileComponent implements OnInit {
   }
 
   async getusers() {
-    this.spinner.show();
     const data = await this.userApiService.getusersByProduct(this.product.id);
     this.allUsers = JSON.parse(data);
     this.firstUsers = this.allUsers.splice(0, 3);
     this.userCount = this.allUsers.length;
-    this.spinner.hide();
   }
 
   async getProgress() {

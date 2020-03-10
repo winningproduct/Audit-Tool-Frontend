@@ -70,19 +70,12 @@ export class EvidenceHistoryBoxComponent implements OnInit {
         break;
       }
     }
-    this.spinner.hide();
   }
 
   async save() {
     this.submitEvidence = true;
-    const evidence = new Evidence();
-    evidence.productId = this.productId;
-    evidence.userId = await this.authService.getCurrentUserId();
-    evidence.content = this.evidence[0].content;
-    evidence.version = this.evidence[0].version;
-    evidence.status = this.evidence[0].status;
     try {
-      this.evidenceService.post(this.questionId, evidence);
+      this.evidenceService.revertEvidence(this.questionId, this.evidence[0].id);
     } catch (error) {
     } finally {
       setTimeout(() => {

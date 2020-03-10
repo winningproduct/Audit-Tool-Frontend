@@ -34,19 +34,26 @@ export class ViewEvidenceHistoryComponent implements OnInit {
   product: Product[];
   question: Question[];
   knowledgeArea: KnowledgeArea[];
-
+  loader = false;
 
   async ngOnInit() {
-    this.spinner.show();
+    this.showSpinner();
     this.sub = this.route.params.subscribe(async params => {
       this.productId = +params['product-id'];
       this.questionId = +params['question-id'];
       this.phaseId = +params['product-phase-id'];
       this.knowledgeAreaId = +params['knowledge-area-id'];
+      this.product = await this.productApiService.getById(this.productId);
+      this.hideSpinner();
     });
-    this.product = await this.productApiService.getById(this.productId);
-    this.question = await this.questionApiService.getById(this.questionId);
-    this.knowledgeArea = await this.knowledgeAreaApiService.getById(this.knowledgeAreaId);
   }
 
+  async showSpinner() {
+    this.spinner.show();
+  }
+
+  async hideSpinner() {
+    this.loader = true;
+    this.spinner.hide();
+  }
 }

@@ -28,15 +28,12 @@ export class PhaseTileComponent implements OnInit {
 
   async ngOnInit() {
     await this.getProgress();
-    this.spinner.show();
     this.knowledgeA = await this.knowledgeAreaApiService.get(
       this.phase.phaseId,
     );
-    this.spinner.hide();
   }
 
   navigate() {
-    this.spinner.show();
     this.router.navigateByUrl(
       '/audit/products/' +
         this.productId +

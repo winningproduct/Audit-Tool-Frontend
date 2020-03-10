@@ -58,4 +58,11 @@ export class EvidenceApiService {
       .toPromise();
     return JSON.parse(result['body']);
   }
+
+  async revertEvidence(questionId: number, evidenceId: number): Promise<boolean> {
+    const result = await this.httpClient
+      .post(questionRoute + '/' + questionId + '/revertEvidence', evidenceId)
+      .toPromise();
+    return JSON.parse(result['body']) as boolean;
+  }
 }
