@@ -58,6 +58,9 @@ type = "fire"
             [index]="index"
             *ngFor="let question of questions; let index = index"
           ></app-evidence-box>
+          <alert type="info w-100" *ngIf="length == 0">
+            <strong>Currently Unavailable</strong> Please contact an administrator for more details
+          </alert>
         </div>
       </div>
     </div>

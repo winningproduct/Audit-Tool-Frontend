@@ -52,7 +52,6 @@ export class EvidenceHistoryBoxComponent implements OnInit {
       this.param3 = +params['knowledge-area-id'];
     });
     this.evidence = await this.evidenceService.get(this.productId , this.questionId);
-    console.log(this.evidence[0].status);
     switch (this.evidence[0].status) {
       case 'Fully Complied' : {
         this.statusColor = 'success';
@@ -71,8 +70,6 @@ export class EvidenceHistoryBoxComponent implements OnInit {
         break;
       }
     }
-    console.log(this.statusColor);
-
     this.spinner.hide();
   }
 
