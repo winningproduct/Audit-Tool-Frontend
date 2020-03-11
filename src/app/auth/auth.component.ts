@@ -24,6 +24,7 @@ export class AuthComponent {
           break;
       }
     });
+    this.isUserLogged();
   }
 
   async isUserLogged() {
