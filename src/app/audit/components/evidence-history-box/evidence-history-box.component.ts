@@ -40,6 +40,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
 
   ) {
     this.evidenceService.evidenceId.subscribe(id => {
+      this.spinner.show();
       this.evidenceId = id;
       if (this.evidenceId) {
         this.getEvidence(this.evidenceId);
@@ -102,6 +103,7 @@ export class EvidenceHistoryBoxComponent implements OnInit {
     this.evidenceReceived = false;
     this.evidence = await this.evidenceService.getEvidenceById(id);
     this.evidenceReceived = true;
+    this.spinner.hide();
 
   }
 
