@@ -1,12 +1,4 @@
-<ngx-spinner
-bdOpacity = 1
-bdColor = "rgba(51,51,51,0.8)"
-size = "medium"
-color = "#cf46ff"
-type = "fire"
-[fullScreen] = "true"
->
-</ngx-spinner>
+
 <div class="row" *ngIf="loader">
   <div class="col-12 col-sm-12 col-md-12 col-lg-12 phaseDiv">
     <nav aria-label="breadcrumb" class="mt-4 mb-4">
@@ -64,4 +56,16 @@ type = "fire"
       </div>
     </div>
   </div>
+</div>
+
+<div  *ngIf="!loader" class="" style="width:100%; height:calc(100vh - 56px); position: relative; display: flex; align-items: center; justify-content: center;">
+  <ngx-spinner 
+  bdOpacity = 1
+  bdColor = "rgba(255,255,255,1)"
+  size = "medium"
+  color = "#cf46ff"
+  type = "fire"
+  [fullScreen] = "false"
+  >
+  </ngx-spinner>
 </div>

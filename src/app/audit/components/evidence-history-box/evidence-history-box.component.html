@@ -5,7 +5,7 @@
     <button type="button" class="btn btn-primary button" (click)="decline()" >No</button>
   </div>
 </ng-template>
-<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex flex-row align-items-center justify-content-between" style="height: 5vh;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex flex-row align-items-center py-3">
   <div class="mr-3 d-flex flex-row align-items-center">
     <a (click)="navigate()">
       <fa-icon [icon]="faArrowLeft" class="text-dark mr-3"></fa-icon>    
@@ -13,14 +13,14 @@
     <h6 *ngIf="evidence != null" class="mb-0">{{ evidence[0].createdDate | date:'medium' }}</h6>
   </div>
   <div class="d-flex flex-row align-items-center">
-    <button type="submit" class="btn btn-link d-flex px-0 py-0 font-weight-bold" (click)="revert(template)">
+    <button type="submit" class="btn btn-secondary d-flex flex-row" (click)="revert(template)">
       <fa-icon [icon]="faSpinner" *ngIf="submitEvidence" class="text-white fa-spin mr-2 "></fa-icon>
       Revert
     </button>
   </div>
 </div>
 
-<div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3 d-flex evidenceContent">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3 d-flex">
   <div class="w-100 px-4 py-4" style="box-shadow: 0 1px 1px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,.16);">
     <p *ngIf="!evidenceReceived">Loading ...</p>
     <div *ngIf="evidence != null">
