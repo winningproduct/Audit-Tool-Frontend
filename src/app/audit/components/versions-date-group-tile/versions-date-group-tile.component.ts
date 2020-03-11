@@ -5,7 +5,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-versions-date-group-tile',
   templateUrl: './versions-date-group-tile.component.html',
-  styleUrls: []
+  styleUrls: ['./versions-date-group-tile.component.scss']
 })
 export class VersionsDateGroupTileComponent implements OnInit {
   faCaretDown = faCaretDown;

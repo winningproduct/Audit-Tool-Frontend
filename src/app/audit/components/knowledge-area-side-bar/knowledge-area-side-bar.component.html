@@ -1,5 +1,6 @@
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
   <a
+    (click) = "loader()"
     *ngFor="let knowledgeArea of knowledgeAreas"
     [routerLink]="['/audit/products/', productId, 'phases', phaseId, 'knowledge-areas', knowledgeArea.id, 'question']"
     [routerLinkActive]="['active']"
@@ -13,3 +14,4 @@
     >{{ knowledgeArea.name }}</a
   >
 </div>
+
